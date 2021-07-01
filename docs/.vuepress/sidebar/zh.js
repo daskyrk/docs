@@ -66,55 +66,34 @@ module.exports = {
       children: [
         'dop/intro',
         {
-          title: '测试管理',
+          title: '设计理念 Concepts',
           collapsable: true,
           children: [
-            'dop/testManagement/function-test',
-            'dop/testManagement/auto-test-getting-started',
+            'dop/concepts/overview',
           ]
         },
         {
-          title: '我的项目',
+          title: '使用指南 Guides',
           collapsable: true,
           children: [
-            'dop/project/application-list',
-            'dop/project/issues',
-            'dop/project/test-case',
-            'dop/project/data-bank',
-            'dop/project/test-plan',
-            'dop/project/params-config',
-            'dop/project/dashboard',
-            'dop/project/addon',
-            'dop/project/resource',
-            'dop/project/ticket',
-            'dop/project/setting',
+            'dop/guides/overview',
+            {
+              title: '测试',
+              collapsable: true,
+              children: [
+                'dop/testing/auto-test-getting-started',
+                'dop/testing/function-test',
+              ]
+            },
           ]
         },
         {
-          title: '我的应用',
+          title: '参考 Reference',
           collapsable: true,
           children: [
-            'dop/application/code',
-            'dop/application/commit',
-            'dop/application/branch',
-            'dop/application/merge',
-            'dop/application/pipeline',
-            'dop/application/deploy',
-            'dop/application/runtime',
-            'dop/application/test-quality',
-            'dop/application/test-issues',
-            'dop/application/test-result',
-            'dop/application/release',
-            'dop/application/setting',
+            'dop/reference/overview',
           ]
         },
-        'dop/workBench/api-management',          
-        'dop/workBench/endpoint-management',
-        'dop/workBench/my-endpoint',
-        'dop/workBench/addon',
-        'dop/workBench/my-approvement',
-        'dop/workBench/my-request-approve',
-        'dop/workBench/public-project',
       ]
     },
     {
