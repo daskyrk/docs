@@ -19,6 +19,14 @@
 
 迭代一般是指产品为完成确定目标的生产过程，整个迭代过程覆盖需求分析、测试、功能上线或者版本发布。迭代中具体产品目标可以包含需求、任务和缺陷。
 
+1. 点击 **DevOps 平台 > 我的项目 > 项目协同 > 迭代**，进入迭代管理页，点击右上角 **新建迭代**。
+
+   <img src="http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/01/6b1152d6-2880-4b2e-b676-86e8fb6a93d7.png" alt="新建迭代" style="zoom:80%;" />
+
+2. 输入名称、时间等信息后点击 **确定**。
+
+   <img src="http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/01/62aaa179-41a6-4a83-adaa-17ba0bfba945.png" alt="迭代信息" style="zoom:50%;" />
+
 
 
 ## 创建需求
