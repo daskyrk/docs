@@ -6,9 +6,9 @@
 
 2. 进入 **管理中心** > **项目管理**。
 
-3. 点击 **添加项目，**选择项目模板后，根据页面提示输入项目名称等信息。
+3. 点击 **添加项目**，选择项目模板后，根据页面提示输入项目名称等信息。
 
-   <img src="http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/01/06d94edd-7262-4a65-b73d-e4d84bdb238c.png" alt="添加项目" style="zoom:50%;" />
+   <img src="http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/01/5d684cbf-5c32-4b79-9f8e-12e16a7fa3f6.png" alt="添加项目" style="zoom:50%;" />
 
 完成项目创建后，请前往 **管理中心 > 项目管理**，选择相应项目后，点击 **项目成员 > 添加成员**，指定研发主管并添加相关用户为项目成员。
 
