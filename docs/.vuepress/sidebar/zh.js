@@ -99,7 +99,6 @@ module.exports = {
             'dop/application/branch',
             'dop/application/merge',
             'dop/application/pipeline',
-            'dop/application/apim',
             'dop/application/deploy',
             'dop/application/runtime',
             'dop/application/test-quality',
@@ -109,7 +108,7 @@ module.exports = {
             'dop/application/setting',
           ]
         },
-        'dop/workBench/api-market',
+        'dop/workBench/api-management',          
         'dop/workBench/endpoint-management',
         'dop/workBench/my-endpoint',
         'dop/workBench/addon',
@@ -135,10 +134,33 @@ module.exports = {
         'msp/alarm-history',
         'msp/dashboard',
         'msp/log-analysis',
-        'msp/api-gateway',
-        'msp/registry',
-        'msp/config-center',
-        'msp/addon-info',
+        {
+          title: 'API 网关',
+          collapsable: true,
+          children: [
+              'msp/api-gateway',
+              'msp/api-gateway-advanced1',
+              'msp/api-gateway-advanced2',
+              'msp/sign-auth',
+              'msp/api-gateway-statuscode',
+              'msp/api-gateway-benchmark',
+          ]
+        },
+        {
+          title: '注册中心',
+          collapsable: true,
+          children: [
+              'msp/dubbo',
+              'msp/spring-cloud'
+          ]
+        },
+        {
+          title: '配置中心',
+          collapsable: true,
+          children: [
+              'msp/config-center',                
+          ]
+        },
       ]
     },
     {
