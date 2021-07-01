@@ -8,6 +8,9 @@ TOC
 
 * 创建项目/应用
 
+## API
+
+* [API 管理](./api/api-management.md)
 
 ## 测试
 

@@ -78,6 +78,13 @@ module.exports = {
           children: [
             'dop/guides/overview',
             {
+              title: 'API',
+              collapsable: true,
+              children: [
+                'dop/api/api-management',
+              ]
+            },
+            {
               title: '测试',
               collapsable: true,
               children: [
