@@ -2,7 +2,7 @@
 
   .page {
     padding-left: 18rem;
-    padding-right: 400px;
+    padding-right: 360px;
   }
 
   .navbar {
@@ -183,7 +183,7 @@
   }
 
   .global-ui .side-anchor {
-    left: calc(50% + 460px);
+    left: calc(50% + 520px);
   }
 }
 
@@ -194,6 +194,16 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .theme-container {
+    .page {
+      padding-right: 2.5rem;
+    }
+
+    .theme-default-content:not(.custom) {
+      width: calc(100% - 2.5rem);
+    }
+  }
+
   .global-ui .side-anchor {
     display: none;
   }
