@@ -2,7 +2,7 @@
 
   .page {
     padding-left: 18rem;
-    margin: unset;
+    padding-right: 400px;
   }
 
   .navbar {
@@ -135,8 +135,8 @@
 
   .theme-default-content:not(.custom) {
     text-align: justify;
-    width: calc(100% - 300px - 400px);
-    max-width: 1000px;
+    width: calc(100% - 5rem);
+    max-width: 920px;
     margin: unset;
 
     img {
@@ -177,48 +177,23 @@
 
 }
 
-@media screen and (min-width: 1760px) {
-  .theme-container {
-    .theme-default-content:not(.custom) {
-      width: 55%;
-      margin-left: 10%;
-    }
+@media screen and (min-width: 2000px) {
+  .theme-container .theme-default-content:not(.custom) {
+    margin: 0 auto;
   }
 
   .global-ui .side-anchor {
-    left: calc(50% + 560px);
+    left: calc(50% + 460px);
   }
 }
 
-@media screen and (min-width: 1400px) and (max-width: 1760px) {
-  .theme-container {
-    .theme-default-content:not(.custom) {
-      width: 64%;
-    }
-  }
-
+@media screen and (min-width: 1700px) and (max-width: 2000px) {
   .global-ui .side-anchor {
-    left: calc(50% + 400px);
-  }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1400px) {
-  .theme-container {
-    .theme-default-content:not(.custom) {
-      width: 65%;
-    }
+    left: calc(300px + 5rem + 920px);
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .theme-container {
-    .theme-default-content:not(.custom) {
-      width: 90%;
-      max-width: 800px;
-      max-width: unset;
-    }
-  }
-
   .global-ui .side-anchor {
     display: none;
   }
