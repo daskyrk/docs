@@ -1,5 +1,10 @@
-
 .theme-container {
+
+  .page {
+    padding-left: 18rem;
+    margin: unset;
+  }
+
   .navbar {
     display: flex;
     align-items: center;
@@ -60,6 +65,7 @@
   }
 
   .sidebar {
+    width: 18rem;
     > .sidebar-links {
       > li:not(:first-child) {
         margin-top: 0;
@@ -129,6 +135,9 @@
 
   .theme-default-content:not(.custom) {
     text-align: justify;
+    width: calc(100% - 300px - 400px);
+    max-width: 1000px;
+    margin: unset;
 
     img {
       max-width: 70%;
@@ -164,5 +173,53 @@
       right: 65px;
       top: 11px !important;
     }
+  }
+
+}
+
+@media screen and (min-width: 1760px) {
+  .theme-container {
+    .theme-default-content:not(.custom) {
+      width: 55%;
+      margin-left: 10%;
+    }
+  }
+
+  .global-ui .side-anchor {
+    left: calc(50% + 560px);
+  }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1760px) {
+  .theme-container {
+    .theme-default-content:not(.custom) {
+      width: 64%;
+    }
+  }
+
+  .global-ui .side-anchor {
+    left: calc(50% + 400px);
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .theme-container {
+    .theme-default-content:not(.custom) {
+      width: 65%;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .theme-container {
+    .theme-default-content:not(.custom) {
+      width: 90%;
+      max-width: 800px;
+      max-width: unset;
+    }
+  }
+
+  .global-ui .side-anchor {
+    display: none;
   }
 }

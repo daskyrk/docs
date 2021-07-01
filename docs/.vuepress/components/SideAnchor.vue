@@ -96,7 +96,7 @@ export default {
 <style lang="stylus">
 .side-anchor {
   position: fixed;
-  left: calc(50% + 600px);
+  left: calc(50% + 360px);
   top: 150px;
   z-index: 1;
   max-height: calc(100% - 135px);
@@ -142,9 +142,4 @@ ul .side-anchor-link:hover {
   width: 0;
 }
 
-@media (max-width: 1200px) {
-  .side-anchor {
-    display: none;
-  }
-}
 </style>
