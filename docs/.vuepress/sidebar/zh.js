@@ -81,15 +81,15 @@ module.exports = {
               title: 'API',
               collapsable: true,
               children: [
-                'dop/api/api-management',
+                'dop/guides/api/api-management',
               ]
             },
             {
               title: '测试',
               collapsable: true,
               children: [
-                'dop/testing/auto-test-getting-started',
-                'dop/testing/function-test',
+                'dop/guides/testing/auto-test-getting-started',
+                'dop/guides/testing/function-test',
               ]
             },
           ]
@@ -144,7 +144,7 @@ module.exports = {
           title: '配置中心',
           collapsable: true,
           children: [
-              'msp/config-center',                
+              'msp/config-center',
           ]
         },
       ]
