@@ -13,7 +13,8 @@ module.exports = {
       collapsable: true,
       children: [
         'about/intro',
-        'about/why-erda'
+        'about/why-erda',
+        'about/platform-design'
       ]
     },
     {
