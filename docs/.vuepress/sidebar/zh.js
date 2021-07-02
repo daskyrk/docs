@@ -64,19 +64,19 @@ module.exports = {
       title: 'DevOps 平台',
       collapsable: true,
       children: [
-        'dop/intro',
+        ['dop/intro', '介绍 Introduction'],
         {
           title: '设计理念 Concepts',
           collapsable: true,
           children: [
-            'dop/concepts/overview',
+            ['dop/concepts/overview', 'Overview'],
           ]
         },
         {
           title: '使用指南 Guides',
           collapsable: true,
           children: [
-            'dop/guides/overview',
+            ['dop/guides/overview', 'Overview'],
             {
               title: 'API',
               collapsable: true,
