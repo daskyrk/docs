@@ -4,7 +4,7 @@
 
 敏捷协作整体上分为三个部分，具体如下图所示：
 
-![敏捷协作](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/06/30/b4b121fb-a45f-4971-8918-6b9953799961.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/06/30/b4b121fb-a45f-4971-8918-6b9953799961.png)
 
 - 在 Sprint 开始之前，产品所有待办内容都会以 Milestone 和 Product Backlog 进行跟踪记录。
 - 项目成员拉通敏捷迭代会议之后，会确定迭代计划，从产品待办内容中拉取优先级和重要度高的内容到 Sprint Backlog 中。
@@ -19,13 +19,13 @@
 
 迭代一般是指产品为完成确定目标的生产过程，整个迭代过程覆盖需求分析、测试、功能上线或者版本发布。迭代中具体产品目标可以包含需求、任务和缺陷。
 
-1. 点击 **DevOps 平台 > 我的项目 > 项目协同 > 迭代**，进入迭代管理页，点击右上角 **新建迭代**。
+进入 **DevOps 平台 > 我的项目 > 项目协同 > 迭代**，在迭代管理页新建迭代，设置迭代的开始、结束日期以及迭代目标。
 
-   <img src="http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/01/6b1152d6-2880-4b2e-b676-86e8fb6a93d7.png" alt="新建迭代" style="zoom:80%;" />
+所有团队成员都可以在迭代中查看此次迭代的起止时间、整个迭代的进度等信息。
 
-2. 输入名称、时间等信息后点击 **确定**。
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/528b9668-58d8-4b07-add5-abe50c7d8cee.png)
 
-   <img src="http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/01/62aaa179-41a6-4a83-adaa-17ba0bfba945.png" alt="迭代信息" style="zoom:50%;" />
+迭代开始后，团队需每日进行站立会议，以同步迭代工作情况，包括昨日完成的工作、今日规划的工作以及发现的问题等，直至迭代完成。
 
 
 
@@ -33,14 +33,38 @@
 
 需求是指用户解决某一问题或达到某一目标的用户故事（即 User Story）。通常一个需求在一个迭代中完成，一个迭代可以包含若干个需求。
 
+进入 **DevOps 平台 > 我的项目 > 项目协同 > 需求**，在需求管理页新建需求。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/ed0b0026-0b80-422b-a3ed-bc0287c5a45c.png)
+
+当创建一个需求时，可以设置该需求的所属迭代、优先级、复杂度、截止时间、预估时间等信息，并指定需求处理人。需求创建完成后，还可以在需求下关联事项，对需求进行任务拆解和分配。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/c75c5e59-a904-40f9-aad4-9ae11168fa45.png)
+
 
 
 ## 创建任务
 
 任务是指为实现产品迭代目标所进行的具体活动。通常情况下会根据需求进行任务拆分，一个需求可以拆分为若干任务跟踪。
 
+进入 **DevOps 平台 > 我的项目 > 项目协同 > 任务**，在任务管理页新建任务。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/77c0efcb-69a4-4d84-8d3d-4dbcf582b801.png)
+
+当创建一个任务时，可以设置该任务的所属迭代、优先级、复杂度、截止时间、预估时间等信息，并指定任务处理人。任务创建完成后，还可以在任务下关联事项。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/42faf552-4439-435d-8aa6-ac35fe9015c8.png)
+
 
 
 ## 报告缺陷
 
 缺陷是指不符合最初定义的业务需求或者交互、性能上不满足要求的问题。
+
+进入 **DevOps 平台 > 我的项目 > 项目协同 > 缺陷**，在缺陷管理页新建缺陷。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/c83a5fff-e128-4bf3-8c67-a0fa44b7b21c.png)
+
+当创建一个缺陷时，可以设置该缺陷的所属迭代、优先级、严重程度、截止日期等信息，并指定缺陷处理人。缺陷创建完成后，还可以在缺陷下关联事项和测试用例。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/9d355341-eea0-4cbf-a24b-697d996814aa.png)
