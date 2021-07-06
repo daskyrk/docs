@@ -200,6 +200,7 @@ module.exports = {
         'cli/explain-args'
       ]
     },
+    'faq'
     'glossary'
     // {
     //   title: '开发语言',
