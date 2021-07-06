@@ -147,8 +147,8 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 以下操作可以让你更好的使用自动化进行测试：
 - 通过 [新增接口-选择接口集市的规范接口](#新增接口-选择接口集市的规范接口) 填充接口定义，以减少接口参数的配置工作
+- [新增接口-通过小试一把进行单接口调试](#新增接口-通过小试一把进行单接口调试)
 - [新增接口-设置断言以进行有效测试](#新增接口-设置断言以进行有效测试)
-- [新增接口-通过小试一把进行单接口调试](#新增接口-通过小试一把进行单接口调试) 
 
 
 
@@ -160,30 +160,45 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/3d54acc0-e435-49b2-87bd-236f36b44d8f.png)
 
+## 新增接口-通过小试一把进行单接口调试
 
+###小试一把的作用
+编写完成的接口测试可以被立即执行，方便自动化测试工程师调试接口测试的配置，比如网络是否联通、是否有拼写错误等小毛病。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/dbe2ade4-c0ce-44b0-b23c-e1afebed295c.png)
+
+###如何使用环境变量进行小试一把（即单接口调试）？
+
+1. 首先需要按照[参数配置](#参数配置)里说明的配置方式，提前准备好环境配置。
+2. 点击新增接口页面的保存并执行按钮，选择配置好的环境配置执行即可：
+   - 当接口的URL去掉域名部分，在单接口调试时，会自动拼接上选择的参数配置里的域名；<br/>
+   - 当接口的URL未去掉域名部分，在单接口调试时，不会拼接上选择的参数配置里的域名；
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/c374af2a-a3c1-4c68-9925-77ff38d4617b.png)
+3. 小试一把，执行结果如下：
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c77a2b4b-8280-43ad-98a2-42fd9f429837.png)
+**注意：**
+   1. 小试一把中可解析的参数表达式如下：
+       - 当前场景参数：${{ params.xxx }}
+       - 全局参数：${{ configs.autotest.xxx }}
+       - mock参数：${{ random.integer }}</br>
+   2. 小试一把中无法解析的参数表达式如下:
+       - 前置场景入参：${{ outputs.12345.xxx }}
+       - 前置接口出参：${{ outputs.12345.xxx }}
 ## 新增接口-设置断言以进行有效测试
 
 ::: tip
 若测试没有断言，那所有用例都将通过，没有阻塞。
 :::
 
-在接口配置页切换到 "Tests" 以设置出参以及断言。
+###如何设置断言？
+1. 在接口配置页切换到 "Tests" 以设置出参以及断言。
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/f8f6212a-ecfd-4698-b2b1-d6ce1554efb8.png)
 
-API 执行结果返回的 Response，出参是从当前请求的 Response 中截取需要的内容，该参数可以在该用例后面的API请求中作为参数使用，在一个 API 中可以定义多个出参。
-参数解析支持状态响应码，Header:K/V，Body:JSON(body) 三种形式。
+2. 可通过[新增接口-通过小试一把进行单接口调试](#新增接口-通过小试一把进行单接口调试)，查看接口返回的Response。</br>
+   出参是从当前请求的 Response 中截取需要的内容，截取方式可参考 [表达式规范](#表达式规范)</br>
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/83f831a5-de2e-4078-8050-fd9a234cdb1b.png)
-
-**出参说明：**
-* 出参名：只能包含英文字母、数字和下划线。
-* 来源： 
-      + Body：JSON ：以 JSON 格式解析 Response Body
-      + Header：K/V ：以键值对格式解析 Response Header
-      + 响应状态码 ：提取 Response 中的状态码
-* 解析表达式：从 Response 截取需要的内容，对应到当前变量。例如：data.items[0].id
-
+   
 **断言说明：**
 断言用于从业务维度判断请求是否成功。
 将某个出参的临界值定义为业务异常判断标准，类似检查点，格式为: Key + Value + Description，
@@ -203,20 +218,19 @@ API 执行结果返回的 Response，出参是从当前请求的 Response 中截
 
 
 
-## 新增接口-通过小试一把进行单接口调试
 
-编写完成的接口测试可以被立即执行，方便自动化测试工程师调试接口测试的配置，比如网络是否联通、是否有拼写错误等小毛病。
+##表达式规范
+参数解析支持状态响应码，Header:K/V，Body:JSON(body) 三种形式。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/dbe2ade4-c0ce-44b0-b23c-e1afebed295c.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/83f831a5-de2e-4078-8050-fd9a234cdb1b.png)
 
--  如何使用环境变量进行小试一把（即单接口调试）？
-    1. 首先需要按照[参数配置](#参数配置)里说明的配置方式，提前准备好环境配置。
-    2. 点击新增接口页面的保存并执行按钮，选择配置好的环境配置：
-       当接口的URL去掉域名部分，在单接口调试时，会自动拼接上选择的参数配置里的域名；<br/>
-       当接口的URL未去掉域名部分，在单接口调试时，不会拼接上选择的参数配置里的域名；
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/c374af2a-a3c1-4c68-9925-77ff38d4617b.png)
-
-
+**出参说明：**
+* 出参名：只能包含英文字母、数字和下划线。
+* 来源：
+  + Body：JSON ：以 JSON 格式解析 Response Body
+  + Header：K/V ：以键值对格式解析 Response Header
+  + 响应状态码 ：提取 Response 中的状态码
+* 解析表达式：从 Response 截取需要的内容，对应到当前变量。例如：data.items[0].id
 
 ## 场景步骤-参数设置
 
