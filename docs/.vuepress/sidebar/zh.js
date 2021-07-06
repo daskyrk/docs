@@ -200,6 +200,13 @@ module.exports = {
         'cli/explain-args'
       ]
     },
+    {
+      title: '常见问题',
+      collapsable: true,
+      children: [
+        'faq/faq',
+      ]
+    },
     'glossary'
     // {
     //   title: '开发语言',
