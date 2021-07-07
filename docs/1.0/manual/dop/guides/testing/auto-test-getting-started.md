@@ -337,9 +337,9 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 ## 引用场景集
 
-###引用场景集的作用
+### 引用场景集的作用
 - 当场景集内的场景可以重复使用时，可以把整体引用到另一个场景集内作为场景使用；
-###如何使用引用场景集
+### 如何使用引用场景集
 1. 创建场景集目录，引用可复用的场景集
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/c995c370-593c-4fb4-a7c0-d7868097e9d7.png)
@@ -356,7 +356,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 ## 数据银行
 
-###平台入口：
+### 平台入口：
 
 > DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 数据银行
 
@@ -376,15 +376,19 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/83ca0c66-31d0-48fa-97a8-aa32f46996e9.png)
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/02224b39-ebf7-4ad9-9072-c19dd87a1a0d.png)
+    
     以下为新增一个MySQL-addon：
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/ff96421f-9784-46cc-9391-bbe2993934ec.png)
+    
     以下为新增一个Redis-addon：
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/0372c21f-ae96-4f85-a98b-fd53ed80012f.png)
+    
     2. 开始构建流水线，等待执行成功
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/1c6d5e30-3baa-4f5e-9b17-f1b30d2a03ce.png)
+    
     3. 部署成功后，可查看项目下的数据银行中，已存在2个新配置的数据源信息
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/e3500259-fd8b-43f2-8bfe-4901052ceaa3.png)
@@ -393,9 +397,11 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     1. 手动新建一个新的MySQL或Redis数据源
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/a722fa70-eaa0-4e09-8242-1dfbbb7b9c43.png)
+    
     以下为新增一个MySQL-服务实例：
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/d0808300-1e90-464d-af59-a3d1864fd075.png)
+    
     以下为新增一个Redis-服务实例，此处需要注意是新买一个服务还是自定义填写已有的服务信息：
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/79ada88f-c89c-4463-a581-227e2e8f83dc.png)
@@ -406,9 +412,11 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/a722fa70-eaa0-4e09-8242-1dfbbb7b9c43.png)
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c3c9a349-0d2a-42f2-a61a-30104a021fd3.png)
+    
     以下为连接一个已存在的Redis-服务实例：
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/897759b1-385c-4eaa-870f-885765c5cfba.png)
+    
     以下为连接一个已存在的MySQL-服务实例：
    
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/e0a76516-094c-4515-bf4f-8e7870008670.png)
@@ -417,31 +425,41 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
    下面以新增MySQL配置单为例，结合业务场景描述下，如何通过配置单实现前置数据准备。
    1. 新增配置单目录，新增配置单，准备语句
     
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c537daca-2dd4-42a5-b207-2a34ec7182ec.png)
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c537daca-2dd4-42a5-b207-2a34ec7182ec.png)
+   
    2. 新增配置单
     
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/29ecdbda-956c-43dd-8cd5-3bec6659e0f8.png)
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/29ecdbda-956c-43dd-8cd5-3bec6659e0f8.png)
+   
    3. 编辑配置单，新增节点
     
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/41cdbac1-91ec-4b4f-80bc-864a59949961.png)
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/41cdbac1-91ec-4b4f-80bc-864a59949961.png)
+   
    4. 新增MySQL配置单，配置数据源、database和语句
     
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f93b5902-1326-4718-9aa6-61c83768db66.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/1d5dafe8-bd50-4b36-a038-9db90100cd12.png)
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f93b5902-1326-4718-9aa6-61c83768db66.png)
+    
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/1d5dafe8-bd50-4b36-a038-9db90100cd12.png)
+   
    5.保存后可执行，调试当前语句是否能执行成功
    
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7d0358ae-e6fb-45f3-9eea-7c85a0e57a01.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7b7ef4b7-e3fe-474b-8cf3-b99fe644ed5e.png)
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7d0358ae-e6fb-45f3-9eea-7c85a0e57a01.png)
+    
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7b7ef4b7-e3fe-474b-8cf3-b99fe644ed5e.png)
+   
    6. 加入到自动化用例的场景中，结合场景使用
     
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7d00c55e-c672-468e-93c6-1465ef55be97.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/08553594-f4b6-44e5-8e02-7682e63f8f52.png)
-   移动后结果如下，该配置单就加到场景中了
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7d00c55e-c672-468e-93c6-1465ef55be97.png)
    
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/01bbc37f-8546-40c6-9a53-4eb604507873.png)
-   点击场景中的执行即可按顺序触发执行脚本，以及查看执行结果
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/08553594-f4b6-44e5-8e02-7682e63f8f52.png)
    
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f17b3035-3fbd-4c19-87b2-8dcb05491efb.png)
+    移动后结果如下，该配置单就加到场景中了
+   
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/01bbc37f-8546-40c6-9a53-4eb604507873.png)
+   
+    点击场景中的执行即可按顺序触发执行脚本，以及查看执行结果
+   
+    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f17b3035-3fbd-4c19-87b2-8dcb05491efb.png)
    7. 可将数据源、database和语句中的表名参数化</br>
       - 作用：
         1. 参数化后可通过切换全局变量中的值而统一切换所有配置单的数据源和database信息；</br>
@@ -450,13 +468,17 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
         1. 点击入参配置
           
         ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/93b5e1b2-5534-4847-8ec8-d2a80ab82dab.png)
+        
         设置参数名称和字段类型，描述和默认值非必填，参数字段是否必输：默认必输。
         
         ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/208e8a44-e913-4e3d-86a5-6c60b080f31f.png)
+        
         ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/60dfce95-1593-44b9-b578-9e951f446a2a.png)
-        **注意：**在配置单直接点击执行，会弹出输入参数的输入框，第一次对应字段会带出该默认值，若修改后，这个字段就会保留最后一次执行时传的参数值；
+        
+        **注意：** 在配置单直接点击执行，会弹出输入参数的输入框，第一次对应字段会带出该默认值，若修改后，这个字段就会保留最后一次执行时传的参数值；
         
         ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/af4e4336-b9d7-44fe-a629-c654d69e7268.png)
+        
         2. 修改配置单中的固定内容，设置为引用入参内容</br>
         具体表达式为：
            ```
@@ -465,6 +487,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
         以下内容进行了参数化：
         
         ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/9d7cab7f-5292-4507-acfd-c832eb0d2bf2.png)   
+        
         3.场景中引入该配置单的地方，需要传入参数内容
         
         ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/9187b977-65f6-4a40-a78f-70481bf0c4e8.png)
@@ -492,6 +515,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     1. 准备1：需要按照[参数配置](#参数配置)里说明的配置方式，提前准备好环境配置。</br>
        
        ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/ce40de7d-77aa-4dd7-8ad2-d67d0307f7e9.png)
+       
        准备2：准备多个空间-创建多个场景集-创建多个场景-创建多个接口 （单场景都调试用过的）
        
        ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/06e6796f-f5c0-42f7-a140-83aa5af532f4.png)
@@ -526,6 +550,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 ### 参数配置包含内容：
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/9e942fd0-08c1-4da0-a129-4f278e51ddda.png)
+
 1. **名称：** 定义配置环境，例如：测试环境、开发环境、生成环境等
 2. **描述：** 可描述根据环境变化，需要注意修改的内容
 3. **环境域名：** 根据定义的名称填写对应环境的固定域名，例如：https://terminus-org.erda.cloud。</br>
@@ -536,15 +561,19 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     1. 先定义环境域名
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/a797e670-ad80-4ec8-84e5-070b26b3d025.png)
+    
     2. 在接口中添加url
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/b7c290a6-3171-4437-8eb8-812e512ccc9f.png)
+    
     下图即为接口url没有设置固定域名的场景
        
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/94d0caf3-c18b-4482-87cc-fed3336f6efc.png)
+    
     3. 选择环境执行
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/4bc8049a-f532-4ed5-b32b-464223cab25b.png)
+    
     4. 执行后自动拼接url
     
     ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/2f824ce0-9da9-4a1a-8015-91df0c88da21.png)
@@ -552,6 +581,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 4. **Header：** 若自动化过程中需要固定某些header参数时，可以选择下拉框中的选项或自定义字段。</br>
    
    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/c3260527-af8f-4c05-aeac-c6c7e1ed26c8.png)
+   
    用户后续选择该执行环境时，若接口中没有同名的header信息，会自动传该环境配置中的header信息到请求接口中;</br>
    用户后续选择该执行环境时，若接口中有同名的header信息，会优先用接口中已定义的header信息传到请求接口中;</br>
    - 使用方法：
@@ -572,6 +602,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
    1. 先定义全局参数key和value
       
       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/90197b9c-ea65-48e1-84b5-f9d849c1d36e.png)
+   
    2. 在场景的场景入参或接口中入参或配置单传参处，引用全局参数</br>
       引用表达式：
       ```
@@ -580,9 +611,11 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
       场景入参：
       
       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/b1ef815e-1eb4-488e-999e-108c02769826.png)
+      
       接口中入参：
       
       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/3361f271-eba7-4455-8ced-b8d10dfb0525.png)
+      
       配置单传参：
       
       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/38e8e71e-e184-415f-80fb-132ee3e8e93f.png)
