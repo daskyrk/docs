@@ -1,12 +1,12 @@
-# dice.yml
+# erda.yml
 
 ## 概述
 
-dice.yml 文件采用 Yaml 语法编写，是一个微服务应用部署的描述文件，由服务基本信息和服务编排关系两部分组成，具体包含了微服务的 Docker 镜像、资源需求（CPU 和 Memory 等）、微服务之间的依赖关系、环境变量以及 AddOn 等信息。一个复杂的微服务应用只要编写了一个有效的 dice.yml 描述文件，就能够被 Erda 一键部署和编排，拉起整个微服务应用。
+erda.yml 文件采用 Yaml 语法编写，是一个微服务应用部署的描述文件，由服务基本信息和服务编排关系两部分组成，具体包含了微服务的 Docker 镜像、资源需求（CPU 和 Memory 等）、微服务之间的依赖关系、环境变量以及 AddOn 等信息。一个复杂的微服务应用只要编写了一个有效的 erda.yml 描述文件，就能够被 Erda 一键部署和编排，拉起整个微服务应用。
 
 完整例子位于文档尾部。
 
-## dice.yml 文件全局结构
+## erda.yml 文件全局结构
 
 ```yaml
 version: 2.0
@@ -24,7 +24,7 @@ services: {}
 addons: {}
 ```
 
-dice.yml 文件全局结构定义有 5 项全局配置，分别如下：
+erda.yml 文件全局结构定义有 5 项全局配置，分别如下：
 
 ### version
 
@@ -32,7 +32,7 @@ version 的值目前定义为 2.0，只需要配置为：`version: 2.0` 即可�
 
 ### values
 
-values 用以设置不同环境中的变量，以便在一份 dice.yml 中维护各个环境下的配置。它的格式为:
+values 用以设置不同环境中的变量，以便在一份 erda.yml 中维护各个环境下的配置。它的格式为:
 
 ```yaml
 values:
@@ -86,7 +86,7 @@ services 定义具体的一组 service 集合，为整个应用需要被编排�
 
 ```yaml
 services:
-  # serviceA 是自定义的服务 A 的名字，不是 dice.yml 的配置项。
+  # serviceA 是自定义的服务 A 的名字，不是 erda.yml 的配置项。
   serviceA:
     resources:
       cpu: 0.1
@@ -100,7 +100,7 @@ services:
     envs:
       ADDON_PLATFORM_ADDR: addon
 
-  # serviceB 是自定义的服务 B 的名字，不是 dice.yml 的配置项。
+  # serviceB 是自定义的服务 B 的名字，不是 erda.yml 的配置项。
   serviceB:
     ...
 ```
@@ -128,7 +128,7 @@ addons:
 
 ## 配置项
 
-dice.yml 内置了一套配置项用来定义整个微服务应用，它们是编写 dice.yml 的基础。 配置项分为全局配置项、service 配置项、addon 配置项。
+erda.yml 内置了一套配置项用来定义整个微服务应用，它们是编写 erda.yml 的基础。 配置项分为全局配置项、service 配置项、addon 配置项。
 
 ### 全局配置项
 
@@ -197,8 +197,8 @@ envs:
 
 ```yaml
 hosts:
-  - 127.0.0.1 www.terminus.io
-  - 127.0.0.2 dice.terminus.io
+  - 127.0.0.1 www.erda.local
+  - 127.0.0.1 erda.local
 ```
 
 #### resources

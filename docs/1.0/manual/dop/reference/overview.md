@@ -2,5 +2,5 @@
 
 TODO
 
-* dice.yml 参考
+* erda.yml 参考
 * pipeline.yml 参考

@@ -71,6 +71,9 @@ module.exports = {
           collapsable: true,
           children: [
             ['dop/concepts/overview', 'Overview'],
+            ['dop/concepts/agile-info', '高效协同'],
+            ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
+            ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
           ]
         },
         {
@@ -78,6 +81,27 @@ module.exports = {
           collapsable: true,
           children: [
             ['dop/guides/overview', 'Overview'],
+            {
+              title: '协作',
+              collapsable: true,
+              children: [
+                ['dop/guides/agile/best-practices', '最佳实践'],
+              ]
+            },
+            {
+              title: '部署和管理',
+              collapsable: true,
+              children: [
+                'dop/guides/deploy/deploy-from-git',
+                'dop/guides/deploy/deploy-from-image',
+                'dop/guides/deploy/config',
+                'dop/guides/deploy/config-center',
+                'dop/guides/deploy/management',
+                'dop/guides/deploy/metrics_logs.md',
+                'dop/guides/deploy/branch-rule',
+                'dop/guides/deploy/db-migration',
+              ]
+            },
             {
               title: 'API',
               collapsable: true,
@@ -91,6 +115,30 @@ module.exports = {
               children: [
                 'dop/guides/testing/auto-test-getting-started',
                 'dop/guides/testing/function-test',
+              ]
+            },
+            {
+              title: '移动开发',
+              collapsable: true,
+              children: [
+                'dop/guides/mobileapp/basic',
+                'dop/guides/mobileapp/framework',
+                'dop/guides/mobileapp/local-environment',
+                'dop/guides/mobileapp/howto-dev',
+                'dop/guides/mobileapp/management',
+                'dop/guides/mobileapp/certificates',
+                'dop/guides/mobileapp/libraries',
+                'dop/guides/mobileapp/ios-ci'
+              ]
+            },
+            {
+              title: '开发语言',
+              collapsable: true,
+              children: [
+                'dop/guides/language/java',
+                'dop/guides/language/javascript',
+                'dop/guides/language/php',
+                'dop/guides/language/python',
               ]
             },
           ]
