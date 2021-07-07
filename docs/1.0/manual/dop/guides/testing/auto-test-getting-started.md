@@ -144,14 +144,16 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 以下操作可以让你更好的使用自动化进行测试：
 
 - 通过 [新增接口-选择接口集市的规范接口](#接口集市) 填充接口定义，以减少接口参数的配置工作
-- [新增接口-通过小试一把进行单接口调试](#小试一把)
-- [新增接口-设置断言以进行有效测试](#设置断言)
+- 新增接口-通过[小试一把](#小试一把)，进行单接口调试
+- 新增接口-通过[设置断言](#设置断言)，以进行有效测试
 
 ### 接口集市
 
 自动化测试工程师最苦恼的是和开发工程师沟通接口的定义，如果接口数量庞大并且频繁修改，所有的时间都将消耗在无止尽的沟通和调整测试用例。
 
-在接口配置界面便可以直接选择集市中已上传的规范接口，如果和你对接的开发工程师是 “[API-first](../../api/api-management.md/#API设计引导)” 理念的践行者，那一切都变得很容易。
+在接口配置界面便可以直接选择集市中已上传的规范接口，如何将接口信息上传到集市中，请看API 管理-API 设计。
+
+如果和你对接的开发工程师是 “API-first” 理念的践行者，那一切都变得很容易。
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/3d54acc0-e435-49b2-87bd-236f36b44d8f.png)
 
@@ -175,44 +177,39 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 3. 小试一把，执行结果如下：
 
    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c77a2b4b-8280-43ad-98a2-42fd9f429837.png)
-   **注意：**
+   
+    **注意：**
     1. 小试一把中可解析的参数表达式如下：
-        - 当前场景参数：
+        - 当前场景参数：<code v-pre>${\{ params.xxxx }\}</code>
+    
+        - 全局参数：<code v-pre>${\{ configs.autotest.xxxx }\}</code>
 
-          <code v-pre>${{ params.xxxx }}</code>
-
-        - 全局参数：
-
-          <code v-pre>${{ configs.autotest.xxxx }}</code>
-
-        - mock参数：
-
-          <code v-pre>${{ random.integer }}</code>
+        - mock参数：<code v-pre>${\{ random.integer }\}</code>
 
     2. 小试一把中无法解析的参数表达式如下:
-        - 前置场景入参：
+        - 前置场景入参：<code v-pre>${\{ outputs.12345.xxxx }\}</code>
           
-          <code v-pre>${{ outputs.12345.xxxx }}</code>
-        - 前置接口出参：
-          
-          <code v-pre>${{ outputs.12345.xxxx }}</code>
+        - 前置接口出参：<code v-pre>${\{ outputs.12345.xxxx }\}</code>
           
 
 ### 设置断言
 
-::: tip 若测试没有断言，那所有用例都将执行通过，没有测试意义。
+::: tip 
+
+ 若测试没有断言，那所有用例都将执行通过，没有测试意义。
+
 :::
 
 #### 如何设置断言
+ 1. 在接口配置页切换到 "Tests" 以设置出参以及断言。
 
-1. 在接口配置页切换到 "Tests" 以设置出参以及断言。
+ ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/f8f6212a-ecfd-4698-b2b1-d6ce1554efb8.png)
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/f8f6212a-ecfd-4698-b2b1-d6ce1554efb8.png)
+ 2. 可通过[新增接口-通过小试一把进行单接口调试](#新增接口-通过小试一把进行单接口调试)，查看接口返回的Response。</br>
+ 出参是从当前请求的 Response 中截取需要的内容，截取方式可参考 [表达式规范](#表达式规范)</br>
 
-2. 可通过[新增接口-通过小试一把进行单接口调试](#新增接口-通过小试一把进行单接口调试)，查看接口返回的Response。</br>
-   出参是从当前请求的 Response 中截取需要的内容，截取方式可参考 [表达式规范](#表达式规范)</br>
+#### 断言说明
 
-**断言说明：**
 断言用于从业务维度判断请求是否成功。 将某个出参的临界值定义为业务异常判断标准，类似检查点，格式为: Key + Value + Description， 检查点可分为响应状态码、响应 Header、响应 Body 3 种类型。
 多个断言之间是"且"关系。支持形式如下：
 
@@ -260,7 +257,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 ### 平台有哪些维度参数
 
 * 平台参数-出参：接口出参、场景出参
-* 平台参数-入参：接口、配置单入参、场景入参
+* 平台参数-入参：接口入参、配置单入参、场景入参
 
 ### 接口出参
 
@@ -305,11 +302,14 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 ### 什么是本场景入参
 本场景入参即为在步骤中引用场景入参。
-1. 可在params、header、body、出参获取、断言判断中使用。
+1. 可在params、header、body、出参获取、断言判断中使用。</br>
+1)先设置场景入参
+   
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/ff6af49c-3b18-4ead-8251-de8ba8fa9c56.png)
+
+2)在接口中引用
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/443a8a3b-6689-4b07-998f-eb847bd0d21d.png)
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/ff6af49c-3b18-4ead-8251-de8ba8fa9c56.png)
 
 2. 执行计划执行时，本场景入参引用的是场景入参中的引用值；当前场景执行和小试一把时，本场景入参引用的是场景入参中的调试值；
 
@@ -522,6 +522,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
    点击场景中的执行即可按顺序触发执行脚本，以及查看执行结果
 
    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f17b3035-3fbd-4c19-87b2-8dcb05491efb.png)
+   
     7. 可将数据源、database和语句中的表名参数化</br>
         - 作用：
             1. 参数化后可通过切换全局变量中的值而统一切换所有配置单的数据源和database信息；</br>
@@ -542,9 +543,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
           ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/af4e4336-b9d7-44fe-a629-c654d69e7268.png)
 
             2. 修改配置单中的固定内容，设置为引用入参内容</br>
-               具体表达式为：
-
-               <code v-pre>${{ params.xxxx }}</code>
+               具体表达式为：<code v-pre>${\{ params.xxxx }\}</code>
           
           以下内容进行了参数化：
 
@@ -555,9 +554,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
           ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/9187b977-65f6-4a40-a78f-70481bf0c4e8.png)
             - 传入的参数内容也可以是表达式，具体表达式的意义，可参考[场景步骤-参数设置](#场景步骤-参数设置)</br>
             - 如果传入全局环境变量，意味着参数值可跟着不同环境进行切换。</br>
-              具体表达式为：
-
-              <code v-pre>${{ configs.autotest.xxxx }}</code>
+              具体表达式为：<code v-pre>${\{ params.xxxx }\}</code>
 
           ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c9f30b96-ad60-4813-8fee-426ef7b246b7.png)
 
@@ -667,9 +664,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
        ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/90197b9c-ea65-48e1-84b5-f9d849c1d36e.png)
 
     2. 在场景的场景入参或接口中入参或配置单传参处，引用全局参数</br>
-       引用表达式：
-
-       <code v-pre>${{ configs.autotest.xxxx }}</code>
+       引用表达式：<code v-pre>${\{ configs.autotest.xxxx }\}</code>
 
        场景入参：
 
