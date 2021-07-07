@@ -10,13 +10,13 @@ CLI 是 Erda
 #### MacOS
 
 ```bash
-wget -O /usr/local/bin/erda https://terminus-erda.oss-cn-hangzhou.aliyuncs.com/cli/mac/erda && chmod +x /usr/local/bin/erda
+wget -O /usr/local/bin/erda https://erda-release.oss-cn-hangzhou.aliyuncs.com/cli/mac/erda && chmod +x /usr/local/bin/erda
 ```
 
 #### Linux
 
 ```bash
-wget -O /usr/bin/erda https://terminus-erda.oss-cn-hangzhou.aliyuncs.com/cli/linux/erda && chmod +x /usr/bin/erda
+wget -O /usr/bin/erda https://erda-release.oss-cn-hangzhou.aliyuncs.com/cli/linux/erda && chmod +x /usr/bin/erda
 ```
 
 ## 使用
