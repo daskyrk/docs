@@ -1,4 +1,4 @@
-# 设计理念 Concepts
+# 设计理念
 
 TODO: description
 

@@ -65,22 +65,22 @@ module.exports = {
       title: 'DevOps 平台',
       collapsable: true,
       children: [
-        ['dop/intro', '介绍 Introduction'],
+        ['dop/intro', '介绍 | Introduction'],
         {
-          title: '设计理念 Concepts',
+          title: '设计理念 | Concepts',
           collapsable: true,
           children: [
-            ['dop/concepts/overview', 'Overview'],
+            ['dop/concepts/overview', '概述 | Overview'],
             ['dop/concepts/agile-info', '高效协同'],
             ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
             ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
           ]
         },
         {
-          title: '使用指南 Guides',
+          title: '使用指南 | Guides',
           collapsable: true,
           children: [
-            ['dop/guides/overview', 'Overview'],
+            ['dop/guides/overview', '概述 | Overview'],
             {
               title: '协作',
               collapsable: true,
@@ -144,7 +144,7 @@ module.exports = {
           ]
         },
         {
-          title: '参考 Reference',
+          title: '参考 | Reference',
           collapsable: true,
           children: [
             'dop/reference/overview',
