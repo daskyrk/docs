@@ -178,11 +178,11 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     1. 小试一把中可解析的参数表达式如下：
         - 当前场景参数：
           ```
-          ${{ params.xxx }}
+          ${{ params.xxxx }}
           ```
         - 全局参数：
           ```
-          ${{ configs.autotest.xxx }}
+          ${{ configs.autotest.xxxx }}
           ```
         - mock参数：
           ```
@@ -191,11 +191,11 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     2. 小试一把中无法解析的参数表达式如下:
         - 前置场景入参：
           ```
-          ${{ outputs.12345.xxx }}
+          ${{ outputs.12345.xxxx }}
           ```
         - 前置接口出参：
           ```
-          ${{ outputs.12345.xxx }}
+          ${{ outputs.12345.xxxx }}
           ```
 
 ### 设置断言
@@ -305,11 +305,10 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 ### 什么是本场景入参
 本场景入参即为在步骤中引用场景入参。
-1. 可在params、header、body、出参获取、断言判断中使用。</br>
-引用表达式:
-   
+1. 可在params、header、body、出参获取、断言判断中使用。
+- 引用表达式:
     ```
-    ${{ params.xxx }}
+    ${{ params.xxxx }}
     ```
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/443a8a3b-6689-4b07-998f-eb847bd0d21d.png)
@@ -549,7 +548,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
             2. 修改配置单中的固定内容，设置为引用入参内容</br>
                具体表达式为：
                ```
-               ${{ params.xxx }}
+               ${{ params.xxxx }}
                ```
           以下内容进行了参数化：
 
@@ -562,7 +561,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
             - 如果传入全局环境变量，意味着参数值可跟着不同环境进行切换。</br>
               具体表达式为：
               ```
-              ${{ configs.autotest.xxx }}
+              ${{ configs.autotest.xxxx }}
               ```
 
           ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c9f30b96-ad60-4813-8fee-426ef7b246b7.png)
@@ -675,7 +674,7 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
     2. 在场景的场景入参或接口中入参或配置单传参处，引用全局参数</br>
        引用表达式：
        ```
-       ${{ configs.autotest.xxx }}
+       ${{ configs.autotest.xxxx }}
        ```
        场景入参：
 
