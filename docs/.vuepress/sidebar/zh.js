@@ -209,13 +209,6 @@ module.exports = {
       ]
     },
     {
-      title: '快数据平台',
-      collapsable: true,
-      children: [
-        'fdp/intro',
-      ]
-    },
-    {
       title: '管理中心',
       collapsable: true,
       children: [
