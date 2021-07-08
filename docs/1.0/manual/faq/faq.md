@@ -27,6 +27,7 @@
 ## 如何查看错误日志？
 
 1. 进入 **DevOps 平台 > 我的应用 > 部署中心**，点击容器日志，此时显示的是标准输出（stdout）日志。
+
    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/292c236d-6725-42a4-8dca-103aad5a7c81.png)
 
 2. 点击顶部切换开关，查看标准错误（stderr）日志。
@@ -102,20 +103,19 @@ addons:
 
 * 场景一：多个容器需要共享某些特定文件（如支付证书）时，一个应用的多个实例将共享一块存储，对支付证书进行存取。dice.yaml 中的配置参考如下：
 
-
-   ```yaml
+```yaml
 volumes:
 - storage: nfs
   path: /data/cert
-   ```
+```
 
 * 场景二：部署一个需要持久化存储的服务时（如 oracle），可以在 dice.yaml 中声明一块 Local 类型的 Volumes，则该 Pod 在重启后也会再次分配到当前宿主机上。
 
-   ```yaml
+```yaml
 volumes:
 - storage: local
   path: /u01/app/oracle
-   ```
+```
 
 
 
