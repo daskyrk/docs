@@ -96,7 +96,7 @@ export default {
 <style lang="stylus">
 .side-anchor {
   position: fixed;
-  right: 0;
+  right: 2rem;
   top: 150px;
   z-index: 1;
   max-height: calc(100% - 135px);
