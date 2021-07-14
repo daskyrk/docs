@@ -33,7 +33,7 @@ module.exports = {
       ]
     },
     {
-      title: '部署配置',
+      title: '安装配置',
       collapsable: true,
       children: [
         'install/requirement',
