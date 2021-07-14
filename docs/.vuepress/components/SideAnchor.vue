@@ -98,6 +98,7 @@ export default {
   position: fixed;
   right: 2rem;
   top: 150px;
+  bottom: 5rem;
   z-index: 1;
   max-height: calc(100% - 135px);
   overflow: auto;
