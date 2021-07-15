@@ -73,7 +73,7 @@ module.exports = ctx => ({
     ],
     ['@vuepress/back-to-top', true],
     ['vuepress-plugin-code-copy', {
-      // selector: String,
+      selector: '.extra-class',
       align: 'top',
       color: '#ccc',
       // backgroundTransition: Boolean,
