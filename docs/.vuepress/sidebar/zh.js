@@ -9,31 +9,25 @@ module.exports = {
   '/1.0/manual/': [
     // '',
     {
-      title: '关于 Erda',
+      title: '了解 Erda',
       collapsable: true,
       children: [
         'about/intro',
-        'about/why-erda',
         'about/platform-design'
       ]
     },
     {
-      title: '快速入门',
+      title: '快速开始',
       collapsable: true,
       children: [
         'quick-start/premise',
         'quick-start/create-org',
         'quick-start/create-project',
         'quick-start/create-application',
-        'quick-start/agile-cooperation',
-        'quick-start/agile-dev',
-        'quick-start/auto-test',
-        'quick-start/microservice',
-        'quick-start/edge-publish',
       ]
     },
     {
-      title: '安装配置',
+      title: '安装部署',
       collapsable: true,
       children: [
         'install/requirement',
@@ -199,41 +193,6 @@ module.exports = {
       ]
     },
     {
-      title: '边缘计算平台',
-      collapsable: true,
-      children: [
-        'ecp/intro',
-        'ecp/application',
-        'ecp/resource',
-        'ecp/config-set',
-      ]
-    },
-    {
-      title: '管理中心',
-      collapsable: true,
-      children: [
-        'org-center/intro',
-        'org-center/project',
-        'org-center/certificate',
-        'org-center/approve',
-        'org-center/announcement',
-        'org-center/audit',
-        'org-center/setting',
-      ]
-    },
-    {
-      title: '平台后台',
-      collapsable: true,
-      children: [
-        'admin/intro',
-        'admin/org',
-        'admin/user',
-        'admin/audit',
-        'admin/config',
-        'admin/cluster',
-      ]
-    },
-    {
       title: '命令行工具',
       collapsable: true,
       children: [
@@ -249,64 +208,4 @@ module.exports = {
       ]
     },
     'glossary'
-    // {
-    //   title: '开发语言',
-    //   collapsable: true,
-    //   children: [
-    //     'language/java',
-    //     'language/javascript',
-    //     'language/php',
-    //     'language/python',
-    //   ]
-    // },
-    // {
-    //   title: '安全',
-    //   collapsable: true,
-    //   children: [
-    //     'safe/identity-management',
-    //     'safe/isolation',
-    //     'safe/enable-https',
-    //     'safe/api-security',
-    //     'safe/operator-system-security',
-    //     'safe/docker-security',
-    //     'safe/kubernets-security',
-    //     'safe/public-cloud-security',
-    //     'safe/private-cloud-security',
-    //   ]
-    // },
-    // {
-    //   title: 'Add-ons',
-    //   collapsable: true,
-    //   children: [
-    //     'addons/design',
-    //     'addons/out-of-the-box',
-    //     'addons/custom'
-    //   ]
-    // },
-    // {
-    //   title: 'Actions',
-    //   collapsable: true,
-    //   children: [
-    //     'actions/',
-    //     'actions/runner'
-    //   ]
-    // },
-    // {
-    //   title: '问题排查和服务支持',
-    //   collapsable: true,
-    //   children: [
-    //     'support/diagnostics',
-    //     'support/cicd'
-    //   ]
-    // },
-    // {
-    //   title: '平台安装',
-    //   collapsable: true,
-    //   children: [
-    //     'install/deployment-architecture',
-    //     'install/env-requirements',
-    //     'install/env-check'
-    //   ]
-    // }
-  ],
 }
