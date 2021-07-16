@@ -11,7 +11,7 @@ Erda 是新一代数字化云原生 PaaS 平台，核心包含了三大平台模
 
 混合云管理平台基于 K8s 架构的容器云服务，提供 K8s 的可视化管理，常见公有云的资源管理和编排，同时提供了立体式的智能监控告警。混合云管理能够将应用部署到不同的云平台之上，实现混合云架构。
 
-![产品大图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/06/29/48a2d150-e2b2-4ff8-b093-c34df4776e4b.png)
+![产品全景图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/16/43624f0c-06cc-4c54-bc7c-40a87738e355.png)
 
 ## Erda 为什么有三大平台？
 
