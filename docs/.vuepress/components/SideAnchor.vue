@@ -78,7 +78,7 @@ export default {
     window.onload = this.getAnchorList;
     window.onscroll = debounce(this.freshAnchor);
     setTimeout(() => {
-        this.hover=false
+      this.hover = false;
     }, 2000);
   },
 
@@ -98,9 +98,8 @@ export default {
   position: fixed;
   right: 2rem;
   top: 150px;
-  bottom: 5rem;
   z-index: 1;
-  max-height: calc(100% - 135px);
+  max-height: calc(100% - 190px);
   overflow: auto;
   border-left: 0.2rem $accentColor solid;
   font-size: 14px;
@@ -109,6 +108,7 @@ export default {
   scrollbar-width: none;
   -ms-overflow-style: none;
   transition: opacity 0.3s ease-out;
+  box-shadow: -2px 0px 10px 0px $borderColor;
 }
 
 .side-anchor.out {
@@ -142,5 +142,4 @@ ul .side-anchor-link:hover {
 .side-anchor::-webkit-scrollbar {
   width: 0;
 }
-
 </style>

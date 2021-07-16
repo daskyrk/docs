@@ -2,7 +2,7 @@
 
   .page {
     padding-left: 18rem;
-    padding-right: 360px;
+    padding-right: 300px;
   }
 
   .navbar {
@@ -159,8 +159,8 @@
 
   .theme-default-content:not(.custom) {
     text-align: justify;
-    width: calc(100% - 5rem);
-    max-width: 920px;
+    width: 100%;
+    max-width: 1000px;
     margin: unset;
   }
 
@@ -199,13 +199,20 @@
   }
 
   .global-ui .side-anchor {
-    left: calc(50% + 520px);
+    left: calc(50% + 550px);
   }
 }
 
 @media screen and (min-width: 1700px) and (max-width: 2000px) {
   .global-ui .side-anchor {
-    left: calc(300px + 5rem + 920px);
+    left: calc(300px + 5rem + 1000px);
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1700px) {
+  .global-ui .side-anchor {
+    max-width: 220px;
   }
 }
 
