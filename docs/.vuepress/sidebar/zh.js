@@ -208,4 +208,5 @@ module.exports = {
       ]
     },
     'glossary'
+  ]
 }
