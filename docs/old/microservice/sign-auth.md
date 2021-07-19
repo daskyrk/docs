@@ -4,7 +4,7 @@
 
 ## HMAC 签名认证 (推荐)
 
-该算法主要依据 [HTTP 签名草案](https://tools.ietf.org/html/draft-cavage-http-signatures-12) 建立，使用的 Kong 原生的[hmac-auth 插件](https://docs.konghq.com/hub/kong-inc/hmac-auth/) 
+该算法主要依据 [HTTP 签名草案](https://tools.ietf.org/html/draft-cavage-http-signatures-12) 建立，使用的 Kong 原生的[hmac-auth 插件](https://docs.konghq.com/hub/kong-inc/hmac-auth/)
 
 
 ### 签名方式
@@ -13,7 +13,7 @@
 
 首先来看一个标准的 Authorization 请求头:
 
-```text
+```json
 Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date request-line", signature="gaweQbATuaGmLrUr3HE0DzU1keWGCt3H96M28sSHTG8="
 ```
 
@@ -97,12 +97,12 @@ System.out.println(DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now
 curl -i -X GET http://localhost/requests?name=bob \
       -H 'Host: hmac.com' \
       -H 'Date: Thu, 22 Jun 2017 21:12:36 GMT' \
-      -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line", signature="FiPTWoayUGvlaAk6HbnxEzlXo0JO2HhiDGEwsR4yKPo="' 
+      -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line", signature="FiPTWoayUGvlaAk6HbnxEzlXo0JO2HhiDGEwsR4yKPo="'
 ```
 
 Authorization 头中指定了用于签名的请求头，`date`,`host` 以及特殊的请求行`request-line`，按顺序进行字符串拼接，获得`待签名字符串`：
 
-```text
+```json
 date: Thu, 22 Jun 2017 21:12:36 GMT
 host: hmac.com
 GET /requests?name=bob HTTP/1.1
@@ -110,7 +110,7 @@ GET /requests?name=bob HTTP/1.1
 
 接着，对`待签名字符串`进行签名，签名规则如下：
 
-```text
+```json
 signed_string=HMAC-SHA256(<signing_string>, "secret")
 signature=base64(<signed_string>)
 ```
@@ -123,7 +123,7 @@ signature=base64(<signed_string>)
 
 ```bash
 echo -ne "date: Thu, 22 Jun 2017 21:12:36 GMT\nhost: hmac.com\nGET /requests?name=bob HTTP/1.1" | \
-openssl dgst -sha256 -hmac "qdWre3pJxitNm9NOBRH3EpWeVYepnt3f" -binary | base64 
+openssl dgst -sha256 -hmac "qdWre3pJxitNm9NOBRH3EpWeVYepnt3f" -binary | base64
 ```
 
 使用 java 代码生成签名:
@@ -177,13 +177,13 @@ curl -i -X POST http://localhost/requests \
       -H 'Host: hmac.com' \
       -H 'Date: Thu, 22 Jun 2017 21:12:36 GMT' \
       -H 'Digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52' \
-      -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line digest", signature="CZSUv+kxWHN/vPEbwARg4r+NN3Vnb9+Aaq5XOQiENJA="' 
+      -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line digest", signature="CZSUv+kxWHN/vPEbwARg4r+NN3Vnb9+Aaq5XOQiENJA="'
       -d '{"name": "bob"}'
 ```
 
 Authorization 头中指定了用于签名的请求头，`date`,`host`，特殊的请求行`request-line`，以及请求 body 的签名值`digest`，按顺序进行字符串拼接，获得`待签名字符串`：
 
-```text
+```json
 date: Thu, 22 Jun 2017 21:12:36 GMT
 host: hmac.com
 GET /requests?name=bob HTTP/1.1
@@ -192,7 +192,7 @@ digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52
 
 生成 `signature` 的方式与不存在 body 时是一致的，不再赘述
 
-## 参数签名认证 
+## 参数签名认证
 
 所有的参数（包括 appKey，但不包括签名参数 sign 自身）都按字符序增序排列，然后在排列好的参数串末尾加上 appSecret，对这整个字符串进行 SHA512 签名，生成签名参数 sign
 
@@ -218,7 +218,7 @@ abc=123&appKey=foobar&name=dadumy.secret
 
 再计算这段字符串的SHA512，得到签名值为:
 
-```text
+```json
 f97efc239eef4eafe69bfe41438740199d939e2e123c4c5a6b5d0b5e58d295a2818d6444c5c7b9e5985e751ad93f9c854e1966e59a63a1eeceb31e46641e291a
 ```
 
@@ -267,7 +267,7 @@ appKey=foobar&data={"userName":"abc","gender":"male"}my.secret
 
 再计算这段字符串的 SHA512，得到签名值为:
 
-```text
+```json
 ec23eeda5f88abe26311ed020439172eea409e3475875c87e9abfa8a6856138e767608e8497435f573ccb417a90448c78abdca4a0de12c4da4583aa3add7bf52
 ```
 

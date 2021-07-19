@@ -84,7 +84,7 @@ Erda 通过统一的任务插件机制支撑不同的构建能力，利用这一
 ```
 
 **init.gradle**
-```gradle
+```java
 def NEXUS_SERVER = "{{NEXUS_URL}}/repository/public/"
 def NEXUS_USERNAME = "{{NEXUS_USERNAME}}"
 def NEXUS_PASSWORD = "{{NEXUS_PASSWORD}}"
@@ -139,7 +139,7 @@ settings.xml 样例
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-  
+
   <servers>
     <server>
       <id>terminus</id>
@@ -401,7 +401,7 @@ TODO: 详细介绍
 
 `/root/.m2/repository` 目录是 linux 中 maven 本地仓库的地址，缓存过后就可以进行加速构建
 
-#### 详细 caches 文档 
+#### 详细 caches 文档
 
 [actions-caches](../actions/#用户手册)
 

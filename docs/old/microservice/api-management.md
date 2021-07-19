@@ -15,7 +15,7 @@ API 设计中心输出的文档完全符合 OAS3 协议标准，任何时候都�
 <!-- API 设计中心的设计思路 -->
 
 Erda API 设计中心将 API 文档托管到代码仓库中，这一设计使得接口描述和接口实现紧密地绑定到一起。
-```text
+```json
 // API 文档保存到 .erda/apidocs 目录下
 // 非侵入式目录, 不影响仓库目录主要结构
 // 如果应用下有多个微服务, 文档按服务名命名
@@ -92,7 +92,7 @@ Response 包含响应体信息。
 
 在左侧目录栏选择 API 列表，按引导新建一个 URI，并填写 path。 URI 对应的结构被称为 pathItem。
 在 pathItem 中选择一个 HTTP 方法进行编辑。
-    
+
 ##### 4.1 编写接口 Summary
 
 接口也被成为 operation，URI + HTTP Method 确定一个接口。
@@ -134,8 +134,8 @@ Body 通常是 Object 类型，其编写方式与定义数据类型类似。
 
 填写 API 名称、ID、语义化版本号后可以将文档发布到集市。然后可以在集市查看和管理已发布的文档。
 
-![发布文档到 API 集市](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/03/132f1ade-2186-4721-a60a-b0bb31cb5d11.png) 
-    
+![发布文档到 API 集市](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/03/132f1ade-2186-4721-a60a-b0bb31cb5d11.png)
+
 ### API 设计 FAQ
 #### 我的文档保存到了哪里？
 
@@ -162,7 +162,7 @@ Body 通常是 Object 类型，其编写方式与定义数据类型类似。
 
 要在 API 设计中导入数据库表模型字段，要求将数据迁移脚本按本平台建议的最佳实践组织在相应的目录。
 目录结构如下：
-```text
+```json
 root_from_repo
     ├── .erda
     │   ├── apidocs
@@ -175,7 +175,7 @@ root_from_repo
     │   │   │    ├── 0000_my_service_base   // 子目录以迁移序号和有语义的短语命名
     │   │   │    │   ├── schema.sql         // schema.sql 用以存放 DDL 脚本
     │   │   │    │   └── data.sql           // data.sql 用以存放 DML 脚本
-    │   │   │    └── 0001_my_service_some_feature 
+    │   │   │    └── 0001_my_service_some_feature
     │   │   │        ├── schema.sql
     │   │   │        └── data.sql
     │   │   │
@@ -285,7 +285,7 @@ stages:
     - publish-api-asset:
         params:
           display_name: 测试                     # API 资源名称
-          asset_id: test                        # API 资源 ID 
+          asset_id: test                        # API 资源 ID
           spec_path: ${java-demo}/swagger.json  # API 文档所在的路径
           runtime_id: ${dice:OUTPUT:runtimeID}  # 用于将 API 资源与实例关联起来
           service_name: test-service            # 服务名称, 与 dice.yml 中一致

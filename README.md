@@ -123,7 +123,7 @@ footer: Copyright © 2012-present terminus
 ```
 * [Emoji](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json)
 * 提示区块，有tip|warning|danger|details四种类型
-```text
+```
 ::: tip 这是提示标题
 这是一个提示
 :::

@@ -78,7 +78,7 @@ Erda 集群是一套分布式系统，需要保证节点间时间的同步。目
 sudo systemctl status ntpd.service
 ```
 
-```fallback
+```log
 ntpd.service - Network Time Service
 Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
 Active: active (running) since 一 2017-12-18 13:13:19 CST; 3s ago
@@ -92,7 +92,7 @@ ntpstat
 
 - 如果输出 `synchronised to NTP server`，表示正在与 NTP 服务器正常同步：
 
-  ```fallback
+  ```log
   synchronised to NTP server (85.199.214.101) at stratum 2
   time correct to within 91 ms
   polling server every 1024 s
@@ -100,13 +100,13 @@ ntpstat
 
 - 以下情况表示 NTP 服务未正常同步：
 
-  ```fallback
+  ```log
   unsynchronised
   ```
 
 - 以下情况表示 NTP 服务未正常运行：
 
-  ```fallback
+  ```log
   Unable to talk to NTP daemon. Is it running?
   ```
 
