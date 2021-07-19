@@ -99,6 +99,7 @@ export default {
   right: 2rem;
   top: 150px;
   z-index: 1;
+  max-width: 25rem;
   max-height: calc(100% - 190px);
   overflow: auto;
   border-left: 0.2rem $accentColor solid;
