@@ -65,6 +65,8 @@
   }
 
   .sidebar {
+    background-color: #sidebarBgColor;
+
     width: 18rem;
     > .sidebar-links {
       > li:not(:first-child) {
@@ -80,7 +82,7 @@
       border-left: none;
 
       &.active {
-        background-color: $sidebarBgColor;
+        background-color: $sidebarActiveBgColor;
         border-right: 3px solid $accentColor;
       }
     }
