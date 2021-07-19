@@ -113,6 +113,11 @@ module.exports = ctx => ({
       var defaultImageRenderer = md.renderer.rules.image;
       md.renderer.rules.image = function (tokens, idx, options, env, self) {
         var token = tokens[idx];
+        for (const attr of token.attrs) {
+          if (attr[0] === 'data-src' && attr[1].includes('.oss')) {
+            attr[1] = attr[1] + '?x-oss-process=image/resize,w_1600/format,webp';
+          }
+        }
         const originText = defaultImageRenderer(tokens, idx, options, env, self);
         return token.attrGet('alt')
           ? originText + '<span class="img-title">' + token.attrGet('alt') + '</span>'
