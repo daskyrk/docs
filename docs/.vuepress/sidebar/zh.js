@@ -12,8 +12,7 @@ module.exports = {
       title: '了解 Erda',
       collapsable: true,
       children: [
-        'about/intro',
-        'about/platform-design'
+        'about/intro'
       ]
     },
     {
