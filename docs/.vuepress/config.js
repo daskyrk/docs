@@ -72,6 +72,7 @@ module.exports = ctx => ({
       },
     ],
     ['@vuepress/back-to-top', true],
+    ['img-lazy'],
     ['vuepress-plugin-code-copy', {
       selector: '.extra-class',
       align: 'top',

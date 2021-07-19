@@ -44,5 +44,8 @@
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-flowchart": "^1.4.3",
     "watchpack": "^2.2.0"
+  },
+  "dependencies": {
+    "vuepress-plugin-img-lazy": "^1.0.4"
   }
 }
