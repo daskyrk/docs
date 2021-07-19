@@ -48,7 +48,7 @@ Erda 平台中对于用户来说有三层组织层次，即组织层、项目层
 
 ## 高级名词
 
-![应用环境实例架构图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/18/ef25e765-f783-42ef-a8fa-d9cd319ff412.png)
+![应用环境实例架构图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/19/4d03b30c-2b79-4e53-bbab-bf4919bad36a.png)
 
 #### 环境
 
