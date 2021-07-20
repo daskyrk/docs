@@ -16,11 +16,13 @@ module.exports = {
       ]
     },
     {
-      title: '安装部署',
+      title: '安装配置',
       collapsable: true,
       children: [
-        'install/requirement',
-        'install/step-by-step',
+        'install/quick-install',
+        'install/helm-install',
+        'install/high-availability',
+        'install/provider-install',
         'install/upgrade'
       ]
     },
@@ -35,20 +37,10 @@ module.exports = {
       title: '多云管理平台',
       collapsable: true,
       children: [
-        'cmp/intro',
-        'cmp/cluster-overview',
-        'cmp/cluster-management',
-        'cmp/cloud-resource',
-        'cmp/domain-management',
-        'cmp/service-list',
-        'cmp/addon-list',
-        'cmp/job-list',
-        'cmp/dashboard',
-        'cmp/report',
-        'cmp/alarm-statistics',
-        'cmp/alarm-list',
-        'cmp/alarm-strategy',
-        'cmp/alarm-custom',
+        'cmp/example',
+        'cmp/concept',
+        'cmp/best-practice',
+        'cmp/guide',
       ]
     },
     {
@@ -146,19 +138,10 @@ module.exports = {
       title: '微服务治理平台',
       collapsable: true,
       children: [
-        'msp/intro',
-        'msp/topology',
-        'msp/monitor-service',
-        'msp/monitor-browser',
-        'msp/monitor-mobile',
-        'msp/error-analysis',
-        'msp/trace',
-        'msp/service-status',
-        'msp/alarm',
-        'msp/custom-alarm',
-        'msp/alarm-history',
-        'msp/dashboard',
-        'msp/log-analysis',
+        'msp/example',
+        'msp/concept',
+        'msp/best-practice',
+        'msp/guide',
         {
           title: 'API 网关',
           collapsable: true,
@@ -186,6 +169,16 @@ module.exports = {
               'msp/config-center',
           ]
         },
+      ]
+    },
+    {
+      title: '边缘计算平台',
+      collapsable: true,
+      children: [
+        'ecp/example',
+        'ecp/concept',
+        'ecp/best-practice',
+        'ecp/guide',
       ]
     },
     {
