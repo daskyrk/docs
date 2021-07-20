@@ -16,22 +16,19 @@ module.exports = {
       ]
     },
     {
-      title: '快速开始',
-      collapsable: true,
-      children: [
-        'quick-start/premise',
-        'quick-start/create-org',
-        'quick-start/create-project',
-        'quick-start/create-application',
-      ]
-    },
-    {
       title: '安装部署',
       collapsable: true,
       children: [
         'install/requirement',
         'install/step-by-step',
         'install/upgrade'
+      ]
+    },
+    {
+      title: '快速开始',
+      collapsable: true,
+      children: [
+        'quick-start/premise'
       ]
     },
     {
