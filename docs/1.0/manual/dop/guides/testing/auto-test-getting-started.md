@@ -1,49 +1,31 @@
 # 自动化测试
 
-## 介绍
-欢迎使用 Erda 自动化测试
+## 指引
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/4ba35bac-139a-4bc7-a157-3a79fd6d60a4.png)
-
-在使用自动化测试之前你需要提前掌握必要的知识：
-
-* 自动化测试基本概念
-* HTTP 基本知识
-
-## 如何从工程角度管理自动化测试用例
-
-项目进入正轨后，往往伴随着成百的业务流程，以及成千的 API，而一个接口又有可能有多种参数场景。自动化测试工程师在编写测试流程以及流程中的单元接口时，尤其时多人协作编写时，需要有合理的规划和管理才能让自动化持续。
-
-Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集合)】>【[场景](#场景)】三级管理能力。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/109f4836-4f70-4099-b47f-a68e1c3e8d72.png)
-
-## 自动化测试使用流程图
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/25caf8f8-5145-45d3-9b2e-fd141412dde0.png)
-
-## 平台入口
-
+入口：
 > DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 测试用例 -> 自动化测试
 
-
-创建一个或选择一个已有的测试空间，进入空间
-
+创建一个或选择一个已有的测试空间，进入空间</br>
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/591e5b5a-6202-4eef-a414-295c0efbaec1.png)
 
-功能指引：
-
+功能指引：</br>
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/4b0bd884-46d9-45f5-80f2-56161119aa1d.png)
+
+Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集合)】>【[场景](#场景)】三级管理能力。</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/109f4836-4f70-4099-b47f-a68e1c3e8d72.png)
+
+自动化测试使用流程图</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/25caf8f8-5145-45d3-9b2e-fd141412dde0.png)
 
 ## 测试空间
 
- 一个项目下可以创建多个测试空间，测试空间之间无任何关联，不互相影响，是完全隔离的空间。 很多项目只需要一个默认测试空间即可，使用多个测试空间有以下几种情况：
-    1. 一个项目下有多个子项目，子项目间没有产品上的联动，它们的自动化用例可以完全独立在自己空间
-    2. 一个项目要同时支持多个版本，那可以一个版本一个空间，当进入新版本迭代时，可以通过复制老版本的空间以创建新版本的空间，并在新版本空间上进行功能变动后的调整
+一个项目下可以创建多个测试空间，测试空间之间无任何关联，不互相影响，是完全隔离的空间。 很多项目只需要一个默认测试空间即可，使用多个测试空间有以下几种情况：
+1. 一个项目下有多个子项目，子项目间没有产品上的联动，它们的自动化用例可以完全独立在自己空间
+2. 一个项目要同时支持多个版本，那可以一个版本一个空间，当进入新版本迭代时，可以通过复制老版本的空间以创建新版本的空间，并在新版本空间上进行功能变动后的调整
 
- 注意：
-    1. 只有项目所有者和项目经理才有权限创建测试空间</br>
-    2. 空间复制需要较长时间，复制过程中时，原空间无法操作</br>
+注意：
+1. 只有项目所有者和项目经理才有权限创建测试空间
+2. 空间复制需要较长时间，复制过程中时，原空间无法操作
 
 ## 场景集合
 
@@ -76,110 +58,198 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 
 场景的设计理念是短小、尽量内聚，在同一个场景集合下场景们有一定的关联，一定的执行依赖，一定的数据依赖。
 
-## 场景中的步骤 - 编排
+### 创建场景
 
-场景步骤可选有 “接口”、“配置单”、“等待”。步骤为接口可以测试接口是否按照预期执行和返回，步骤为配置单可以执行 SQL 等数据准备逻辑，步骤为等待可以为这个测试场景插入思考时间。
+进入测试管理-测试用例目录，选择自动化测试，进入对应的测试空间，选择一个场景集，选择"添加场景"</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/735d336c-e4ae-4324-b802-f08af7ac6a1d.png)</br>
 
-步骤默认为串行执行，即按自上而下的顺序执行；点击步骤左侧上下箭头即可进行上下拖拽调整顺序。
+#### 添加场景入参
 
-点击接口右侧“+”：步骤也可以进行按组并行，默认添加到组内的最后。
+添加场景完成后，在场景集中选中添加的场景，点击右侧场景入参区域的“添加“按钮即可完成场景入参添加</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/93e07492-885f-46d4-b6db-f92093ef2989.png)</br>
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/6f32f97b-0d51-4831-b0d4-d1d6c7c7afa9.png)
+#### 添加场景步骤
 
-点击拖动：拖动（1）是拖动组间的串行顺序，拖动（2）是并行顺序，可以在同组内，也可以跨组拖动。
+添加场景完成后，在场景集中选中添加的场景，点击右侧场景步骤区域的“接口“、”配置单“、等待其中任一按钮即可完成场景步骤添加</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/10ab89b0-78ce-4631-829d-9b3960ba7023.png)</br>
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/bc0eea30-9a8d-4682-83e0-10ee7a7749a1.png)
+##### 步骤类型
 
-点击解除并行关系：并行的接口关系解除，自动移到当前组下一行改为串行关系
+场景步骤类型分为：接口、配置单、等待
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/78deb95b-3209-4e7c-8472-2bc0dc270769.png)
+1、接口
+点击”接口“按钮后，即可填写接口步骤信息。其中市场原型可以选择API管理中定义的接口，也可以不选择市场原型，直接输入URL</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/3770d0c0-35f4-4f48-a574-a3fc2045d8ec.png)</br>
 
-点击接口右侧复制按钮：复制一个内容完全相同的接口，名字自动拼接"_copy"
+2、配置单
+点击”配置单“按钮后，即可选择对应的配置单，具体的配置单配置详见[配置单](#配置单)</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/d227caf7-8d92-4f66-ad36-2043047f02fc.png)</br>
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/0aa6bd02-a7b1-4f3e-909c-4bf2a47279f9.png)
+3、等待
+点击”等待“按钮后，即可添加等待的步骤，时间可输入</br>
 
-## 场景中的步骤 - 接口
+##### 步骤编排
 
-点击场景步骤的 “+ 接口”，填写接口请求参数
+场景步骤的执行顺序支持编排，执行方式支持串行执行以及并行执行。执行顺序的编排可以通过步骤前面的拖拽按钮进行拖拽操作，执行方式可以通过点击”添加并行接口“按钮进行编辑，支持重新修改为串行执行，详见下图：</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/09/f7586ecd-a42f-4310-ab97-dda0c52abd76.png)</br>
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/8e6967df-f066-4960-91e8-f3085d436ad5.png)
+##### 请求参数
 
-- 自动化测试目前支持哪些类型的请求？
-    1. 目前只支持HTTP和HTTPS请求。
-    2. 目前支持的请求方式有：GET、POST、PUT、DELETE、OPTIONS、PATCH、COPY、HEAD等
+接口步骤的请求参数主要包含：Params、Headers以及Body。其中参数的值可选：固定值、本场景入参、 前置接口入参、全局变量入参以及mock参数。参数的值支持选择和过滤，选择后自动生成参数表达式
+本场景入参表达式：
+```
+${{ params.xxxx }}
+```
+前置接口入参表达式：
+```
+${{ outputs.12345.xxxx }}
+```
+全局变量入参表达式：
+```
+${{ configs.autotest.xxxx }}
+```
+mock参数表达式：
+```
+${{ random.integer }}
+```
+其他类型的mock参数写法参考：[mock参数](#mock参数)</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/09/4345bf30-8881-475a-ad4b-3e033969b0c5.png)</br>
 
-以下操作可以让你更好的使用自动化进行测试：
+##### 出参
 
-- 通过 [新增接口-选择接口集市的规范接口](#接口集市) 填充接口定义，以减少接口参数的配置工作
-- 新增接口-通过[小试一把](#小试一把)，进行单接口调试
-- 新增接口-通过[设置断言](#设置断言)，以进行有效测试
+步骤支持添加出参。出参的作用：作为断言参数、添加到场景出参、传递给下一个步骤。出参的表达式写法请参考：[出参表达式](#出参表达式)</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/a2e79b30-bec5-4c3c-bbaa-8d0536d5f3bd.png)</br>
 
-### 通过 API 集市已发布 API 添加接口
+##### 断言
 
-自动化测试工程师最苦恼的是和开发工程师沟通接口的定义，如果接口数量庞大并且频繁修改，所有的时间都将消耗在无止尽的沟通和调整测试用例。
+步骤支持添加断言，可以通过选择对应的接口步骤、选中”Tests“TAB页后添加出参以及断言来完成断言的添加，具体断言的添加方式见[断言说明](#断言说明)</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/67be4e55-256a-43c6-b595-43d076f6e881.png)</br>
 
-在接口配置界面便可以直接选择集市中已发布的规范接口，如何将接口信息上传到集市中，请看 API 管理- API 设计。
+#### 添加场景出参
 
-“API-first” 理念的践行，让自动化测试变得更容易。
+场景支持将步骤的出参添加到场景的出参中传递出去，供后面的场景作为入参使用，添加步骤如下图</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/dbc00871-0ca9-47e1-b3d8-dd8ed7f4c243.png)</br>
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/3d54acc0-e435-49b2-87bd-236f36b44d8f.png)
+#### 执行明细
 
-### 小试一把
+自动化测试支持查看单个场景的执行明细， 包含：执行详情、执行历史、步骤接口以及步骤日志</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/f0556a77-ca69-45b3-853d-ddc71a349d08.png)</br>
 
-小试一把即单接口调试，编写完成的接口可以立即被执行，方便自动化测试工程师尽快调试单接口的连通性。通过最小单元进行调试，可快速去除用例中因拼写错误等原因导致的无法执行成功的问题。
+### 引用场景
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/dbe2ade4-c0ce-44b0-b23c-e1afebed295c.png)
+场景集支持引用其他场景集，可以实现跨场景集的参数续传。执行该场景集时，被引用的场景集也会被全部执行。可以进入测试管理-测试用例目录，选择一个场景集后，点击”引用场景集“按钮完成操作</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/a5eb7c76-1e7b-480b-beae-be695d80e3c7.png)</br>
 
-#### 如何执行小试一把
+## 数据银行
 
-1. 依赖环境配置的需要按照[参数配置](#参数配置)里说明的配置方式，提前准备好环境配置。
-2. 点击接口页面的保存并执行按钮，选择环境配置执行，不依赖环境配置的执行环境选择"无"
-    - 当接口的URL去掉域名部分，在单接口调试时，会自动拼接上选择的参数配置里的域名；<br/>
-    - 当接口的URL未去掉域名部分，在单接口调试时，不会拼接上选择的参数配置里的域名；
+入口：
+> DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 数据银行
 
-      
-    ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/02/c374af2a-a3c1-4c68-9925-77ff38d4617b.png)
+### 数据源
 
-3. 查看执行结果：
+目前平台支持添加MySQL、Redis以及Custom服务三种数据源</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/722cdb30-7c9c-43a7-8154-c31bdba86fb3.png)</br>
 
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c77a2b4b-8280-43ad-98a2-42fd9f429837.png)
-   
-    **注意：**
-    1. 小试一把中可解析的参数表达式如下：
-        - 当前场景参数：<code v-pre>${\{ params.xxxx }\}</code>
-    
-        - 全局参数：<code v-pre>${\{ configs.autotest.xxxx }\}</code>
+### 配置单
 
-        - mock参数：<code v-pre>${\{ random.integer }\}</code>
+配置单配置的是执行脚本，例如MySQL脚本、Redis脚本、shell脚本</br>
+配置单支持配置入参</br>
 
-    2. 小试一把中无法解析的参数表达式如下:
-        - 前置场景入参：<code v-pre>${\{ outputs.12345.xxxx }\}</code>
-          
-        - 前置接口出参：<code v-pre>${\{ outputs.12345.xxxx }\}</code>
-          
+##### 配置单管理
 
-### 设置断言
+进入数据银行页面后，选择”配置单“TAB页，该页面可以进行配置单目录的增删改查、配置单的增删改查操作</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/fb1877dd-fab4-4df5-808a-813b9524be16.png)</br>
 
-::: tip 
+##### 配置信息
 
- 若测试没有断言，那所有用例都将执行通过，没有测试意义。
+选择具体的配置单后，可以对配置单的流水线进行修改，可以修改的信息包含：入参配置、节点信息</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/d424215f-2f02-4229-adb8-5ba815b27666.png)</br>
+示例MYSQL配置单：</br>
+点击配置信息-流水线的”编辑“按钮后，选中MYSQL配置单节点，可以对该配置单的任务名称、版本、执行条件、任务参数(datasource/database/sql)、运行资源(cpu/mem)以及循环策略进行配置</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/09/d324d531-3529-49a7-a71b-b18f8033c77c.png)</br>
 
-:::
+##### 执行明细
 
-#### 如何设置断言
- 1. 接口配置页切换到 "Tests" 设置出参和断言。
+配置单支持查看每个配置单的执行明细，明细包含：构建详情、执行记录。点击配置单节点右上方的”...“按钮可以查看配置单的执行日志</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/09/e3d6799f-c393-4858-970c-28cf9b1741c5.png)</br>
 
- ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/f8f6212a-ecfd-4698-b2b1-d6ce1554efb8.png)
+## 执行计划
 
- 2. 通过[新增接口-通过小试一把进行单接口调试](#新增接口-通过小试一把进行单接口调试)，查看接口返回的Response。</br>
- 出参是从当前请求的 Response 中截取需要的内容，该参数可以在该用例后面的API请求中作为参数使用，在一个 API 中可以定义多个出参。 </br>
- 截取方式可参考 [表达式规范](#表达式规范)</br>
- 
-#### 断言说明
+入口：
+> DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 执行计划
 
-断言用于从业务维度判断请求是否成功。 将某个出参的临界值定义为业务异常判断标准，类似检查点，格式为: Key + Value + Description， 检查点可分为响应状态码、响应 Header、响应 Body 3 种类型。
-多个断言之间是"且"关系。支持形式如下：
+### 新建执行计划
 
+进入执行计划目录后，选择”自动化测试“TAB页，点击右上方的”新建计划“按钮即可完成执行计划的新建</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/bb21cb5b-22c0-4800-97dd-87494cf8f5ff.png)</br>
+
+进入执行计划详情页，执行计划支持场景级的添加、删除以及执行集顺序的编排</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/a1651adb-1a74-4f5f-9198-f480c73ec6ec.png)</br>
+
+### 执行
+
+执行计划支持手动触发执行，执行时支持选择不同的环境，具体的环境配置参考[参数配置](#参数配置)</br>
+
+### 执行明细
+
+执行完成后，平台支持执行明细的查看，主要包含：执行详情、执行步骤以及执行历史，其中执行步骤支持点击查看具体的执行结果和日志</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/05df8b14-45c7-4fdc-b18d-7f6afc90cbdc.png)</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/09/7dd57057-f6fb-4291-85ea-7cd8903b99e7.png)</br>
+
+## 参数配置
+
+入口：
+> DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 参数配置
+
+### 添加配置
+
+进入参数配置页面后，选择”自动化测试“TAB页，点击右上角的”添加配置“按钮，即可进入参数配置的页面</br>
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/08/96597ab9-00f5-4185-82ec-60c3e66a11d0.png)</br>
+
+配置主要分为三类：环境域名、header以及global</br>
+
+##### 环境域名
+
+1. 当接口步骤中定义了域名，则选择该环境执行时，仍使用接口步骤中定义的域名
+2. 当接口步骤中未定义域名，则选择该环境执行时，默认使用当前配置的环境域名执行
+
+##### Header
+
+1. 用户后续选择该执行环境时，若接口中没有同名的header信息，会自动传该环境配置中的header信息到请求接口中
+2. 用户后续选择该执行环境时，若接口中有同名的header信息，会优先用接口中已定义的header信息传到请求接口中
+
+##### Global
+
+全局参数配置，引用表达式：
+```
+${{ configs.autotest.xxxx }}
+```
+可以在场景入参、接口入参以及配置单配置中使用
+
+
+## 断言说明
+
+添加断言的前置条件：设置出参以及出参表达式，用例必须设置断言以进行有效测试，用例如果没有断言，任何情况下该用例都将通过。
+
+### 出参表达式
+
+场景步骤的出参支持三种类型的参数解析，分为：Status，Header:K/V，Body:JSON(body) ，解析的表达式遵循Linux jq表达式规范，具体参考：https://stedolan.github.io/jq/manual/</br>
+举例如下：</br>
+假设response结果如下： { "data":[ { "id":185, "ss":"aa1" }, { "id":186, "ss":"aa2" }, { "id":187, "ss":"aa3" } ] }</br>
+1. 获取data下list中所有ID</br>
+   表达式：[.data[] | try .id] </br>
+   结果为:[185,186,187]
+2. 获取data下ss="aa2"的ID</br>
+   表达式：.data[] | select(.ss=="aa2").id</br>
+   结果为：186
+3. 获取data下ss="aa1"的ID，和data下ss="aa2"的ID，拼接成list[]</br>
+   表达式：[(.data[] | select(.ss=="aa1").id),(.data[] | select(.ss=="aa2").id)]</br>
+   结果为：[185,186]
+
+
+### 断言类型
+
+断言支持形式如下：
 * 大于、大于等于、小于、小于等于: 支持整数，小数。
 * 等于、不等于: 支持整数，小数，字符串，对象(数组，Map)。
 * 包含、不包含: 支持字符串和正则匹配。
@@ -190,106 +260,9 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
       表示集合：{[-200,200],-1,2}
     + 字符串仅支持集合、示例：{“abc”,”bcd”,”200”,”-200”,”已报名”,”报名成功”}
 
-### 出参表达式规范
+## mock参数
 
-参数解析支持状态响应码Status，Header:K/V，Body:JSON(body) 三种形式。
-
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/83f831a5-de2e-4078-8050-fd9a234cdb1b.png)
-
-**出参说明：**
-
-* 出参名：只能包含英文字母、数字和下划线。
-* 来源：
-    + Body：JSON ：以 JSON 格式解析 Response Body
-    + Header：K/V ：以键值对格式解析 Response Header
-    + 响应状态码Status ：提取 Response 中的状态码
-* 解析表达式：从 Response 截取需要的内容，对应到当前变量。例如：data.items[0].id，具体表达式请看linux jq表达式规范，官方地址如下：https://stedolan.github.io/jq/manual/
-    + 常用获取出参表达式如下：</br>
-      假设response结果如下： { "data":[ { "id":185, "ss":"aa1" }, { "id":186, "ss":"aa2" }, { "id":187, "ss":"aa3" } ] }
-        1. 获取data下list中所有ID</br>
-           表达式：[.data[] | try .id] </br>
-           结果为:[185,186,187]
-        2. 获取data下ss="aa2"的ID</br>
-           表达式：.data[] | select(.ss=="aa2").id</br>
-           结果为：186
-        3. 获取data下ss="aa1"的ID，和data下ss="aa2"的ID，拼接成list[]</br>
-           表达式：[(.data[] | select(.ss=="aa1").id),(.data[] | select(.ss=="aa2").id)]</br>
-           结果为：[185,186]
-
-## 参数设置
-
-::: tip
-参数化是接口自动化重要的基础功能之一，合理的参数化设置可有效降低自动化用例维护的成本。
-:::
-
-### 接口出参
-
-#### 接口出参设置的作用
-
-1. 出参的值可被当前场景中后续接口作为入参引用；
-2. 用来做断言；
-
-#### 接口如何设置出参
-
-1. 根据当前接口返回的 response 信息，通过linux jq表达式，解析出参。</br>
-   出参需设置参数名、获取参数方式、获取参数表达式，具体如何使用表达式获取参数，请看[表达式规范](#表达式规范)
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/a60c913a-11b8-4adf-9996-f8ddf7cb525b.png)
-
-### 场景出参
-
-#### 场景出参的使用场景
-
-    通过设置场景出参被后续场景作为场景入参引用来实现参数跨场景传递
-
-#### 场景如何设置出参
-
-1. 场景中添加出参：填写出参名称、描述和出参值（当前场景中的接口出参选择）
-
-注意： 接口出参只可被同一场景集中该场景之后的场景引用到。跨场景集不可引用，前置场景也无法使用。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/1ec9f9f0-40bb-42b1-9ac0-b63a8ed785b3.png)
-
-### 场景入参
-#### 场景入参有哪些
-- 前置场景出参
-- mock
-- 全局变量入参
-
-### 接口、配置单步骤入参
-#### 步骤入参有哪些
-- 本场景入参
-- 前置场景出参
-- mock
-- 全局变量入参
-
-### 什么是本场景入参
-本场景入参即为在步骤中引用场景入参。
-1. 可在params、header、body、出参获取、断言判断中使用。</br>
-1)先设置场景入参
-   
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/ff6af49c-3b18-4ead-8251-de8ba8fa9c56.png)
-
-2)在接口中引用
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/443a8a3b-6689-4b07-998f-eb847bd0d21d.png)
-
-2. 执行计划执行时，本场景入参引用的是场景入参中的引用值；当前场景执行和小试一把时，本场景入参引用的是场景入参中的调试值；
-
-
-### 什么是前置场景出参
-在同一场景集下，当前场景可引用前置场景设置的场景出参，引用方式如下：
-1. 准备前置场景出参，具体方法参考[场景如何设置出参](#场景如何设置出参)
-2. 新建一个新的场景，即可获取到同一场景集下，该场景之前的所有场景设置的场景出参。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/abca8cd8-19ef-4e52-b26a-48e88398746a.png)
-
-### 什么是mock参数
-随机生成参数，使用示例，有以下多种随机类型:
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/d115acc4-be27-4b20-afbd-06672868e58c.png)
-
+mock参数支持的类型如下：
 * string: 所有字符串，如: Abc,
 * integer: 整型，如: 100
 * float: 浮点型，如: 13.14
@@ -309,335 +282,10 @@ Erda 提供了【[测试空间](#测试空间)】>【[场景集合](#场景集�
 * datetime: 当前时间、格式：2020-01-01 15:04:05
 * datetime_hour: 1小时前时间、格式：2020-01-01 14:04:05
 
-### 什么是全局变量入参
-- 引用的是[参数配置](#参数配置)中的Global参数，具体设置步骤如下：</br>
-
-    1. 设置参数：
-
-  ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/fffb550f-d685-4dc2-aa11-08b00f29ac12.png)
-
-    2. 引用参数：
-
-  ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/e88a4615-139e-4484-8360-b0c543e1bad4.png)
-
-- 什么情况下将参数设置成全局参数：
-  1. 修改频率不高 
-  2. 值的内容会随环境切换而变化
-  3. 被多处引用
-
-### 参数优先级使用参考
-  1. 推荐优先级1： 优先使用接口查询到结果设置出参，进行传参
-  2. 推荐优先级2： 在当前场景内设置参数形成闭环
-  3. 推荐优先级3： 前置场景出参和全局参数
-
-## 场景中的步骤 - 配置单
-
-配置单是可以被多个场景/多个场景集合（或者说流程）使用的，可复用的数据初始化/数据清理的公共逻辑。 所以配置单的配置在独立的入口：[数据银行](#数据银行)。
-
-选择已经创建好的配置单，按照配置单定义的入参配置即可。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/de5a1f10-f680-43e7-8d9e-de69b919c713.png)
-
-## 场景中的步骤 - 等待
-
-设置等待时间以实现场景执行的暂停和恢复。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/03/04/aa64ad4d-609c-4c95-ae8f-cd511cb6f041.png)
-
-## 场景中 Cookie 保持
-
-1. 当前场景下，若有登录接口，登录接口访问成功后，接口返回的header中如果有set-cookie参数，平台会将该参数值自动传到当前场景的之后的接口的请求header-cookie中；</br>
-   **注意：**
-    1. 当前场景中 cookie 续传
-    2. 登录接口返回的header中要有set-cookie参数才会续传
-    3. 如果同一场景有2个登录接口，向上取最近的登录接口返回的set-cookie参数为准
-
-## 引用场景集
-
-### 引用场景集的作用
-
-- 当场景集内的场景可以重复使用时，可以把整体引用到另一个场景集内作为场景使用；
-
-### 如何使用引用场景集
-
-1. 创建场景集目录，引用可复用的场景集
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/c995c370-593c-4fb4-a7c0-d7868097e9d7.png)
-2. 引用场景集，重命名
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/753e5bda-a96d-4258-8cdf-8964ca7fee00.png)
-3. 引用场景集一般的使用场景如下：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/7918741a-e7df-4af8-a9b0-e444e74e09e5.png)
-4. 最后加入到执行计划中执行，测试场景集的正确性
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/9a8a0508-3079-4f11-a8fe-96540b11f116.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/07/c79de57a-fdff-4a17-9b2d-89878ee490f4.png)
-
-## 数据银行
-
-### 平台入口：
-
-> DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 数据银行
-
-### 数据银行的作用
-
-使用过接口自动化平台的朋友们都知道，我们在实现接口自动化过程中，除了需要调用不同的接口，许多场景还需要通过查询数据库结果来判断用例执行后的正确性。除此以外可能还需要借助操作数据库、Redis和shell脚本等功能，来实现场景执行前的数据准备和场景执行后的数据删除等操作。而这些功能需求在我们的自动化测试平台，就是通过数据银行来实现的。
-
-### 数据银行中配置单和数据源的概念和关系
-
-配置单配置的是执行脚本，例如MySQL脚本、Redis脚本、shell脚本；</br>
-数据源配置的是连接不同环境的数据库或Redis的连接信息，通过配置的信息访问对应数据库和Redis；</br>
-配置单配置完执行脚本，需要选择在哪个环境的数据库或redis中执行，这就需要选择不同的数据源进行执行；</br>
-**注意:** shell脚本执行不区分环境，所以不用配置数据源，可直接执行，可以理解为是在新起的一个虚拟机中执行的脚本。
-
-### 数据源
-
-1. 数据源分为MySql和Redis两种。
-2. 数据源有3种创建或连接方式：</br>
-   方式一: 在项目部署时，选择添加MySQL或Redis的addon,项目选择develop分支部署成功后，数据银行-数据源模块就会有一个对应的新的数据源了；</br>
-    1. 找一个应用，在dice.yml中以添加插件（addon）的形式来拉起一个新的MySQL或Redis服务；
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/83ca0c66-31d0-48fa-97a8-aa32f46996e9.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/02224b39-ebf7-4ad9-9072-c19dd87a1a0d.png)
-
-   以下为新增一个MySQL-addon：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/ff96421f-9784-46cc-9391-bbe2993934ec.png)
-
-   以下为新增一个Redis-addon：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/0372c21f-ae96-4f85-a98b-fd53ed80012f.png)
-
-    2. 开始构建流水线，等待执行成功
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/1c6d5e30-3baa-4f5e-9b17-f1b30d2a03ce.png)
-
-    3. 部署成功后，可查看项目下的数据银行中，已存在2个新配置的数据源信息
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/e3500259-fd8b-43f2-8bfe-4901052ceaa3.png)
-
-   方式二: 选择创建MySQL或Redis数据源，根据填写的信息连接对应已存在的数据源。</br>
-    1. 手动新建一个新的MySQL或Redis数据源
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/a722fa70-eaa0-4e09-8242-1dfbbb7b9c43.png)
-
-   以下为新增一个MySQL-服务实例：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/d0808300-1e90-464d-af59-a3d1864fd075.png)
-
-   以下为新增一个Redis-服务实例，此处需要注意是新买一个服务还是自定义填写已有的服务信息：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/79ada88f-c89c-4463-a581-227e2e8f83dc.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/8fdf5b5f-5cbf-401f-ac93-822bd29a2483.png)
-
-   方式三: 选择创建custom自定义数据源，根据填写的信息连接对应已存在的数据源。
-    1. 选择custom选项，可连接MySQL和Redis
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/a722fa70-eaa0-4e09-8242-1dfbbb7b9c43.png)
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c3c9a349-0d2a-42f2-a61a-30104a021fd3.png)
-
-   以下为连接一个已存在的Redis-服务实例：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/897759b1-385c-4eaa-870f-885765c5cfba.png)
-
-   以下为连接一个已存在的MySQL-服务实例：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/e0a76516-094c-4515-bf4f-8e7870008670.png)
-
-### 配置单
-
-1. 如何使用配置单？</br>
-   下面以新增MySQL配置单为例，结合业务场景描述下，如何通过配置单实现前置数据准备。
-    1. 新增配置单目录，新增配置单，准备语句
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c537daca-2dd4-42a5-b207-2a34ec7182ec.png)
-
-    2. 新增配置单
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/29ecdbda-956c-43dd-8cd5-3bec6659e0f8.png)
-
-    3. 编辑配置单，新增节点
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/41cdbac1-91ec-4b4f-80bc-864a59949961.png)
-
-    4. 新增MySQL配置单，配置数据源、database和语句
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f93b5902-1326-4718-9aa6-61c83768db66.png)
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/1d5dafe8-bd50-4b36-a038-9db90100cd12.png)
-
-   5.保存后可执行，调试当前语句是否能执行成功
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7d0358ae-e6fb-45f3-9eea-7c85a0e57a01.png)
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7b7ef4b7-e3fe-474b-8cf3-b99fe644ed5e.png)
-
-    6. 加入到自动化用例的场景中，结合场景使用
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/7d00c55e-c672-468e-93c6-1465ef55be97.png)
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/08553594-f4b6-44e5-8e02-7682e63f8f52.png)
-
-   移动后结果如下，该配置单就加到场景中了
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/01bbc37f-8546-40c6-9a53-4eb604507873.png)
-
-   点击场景中的执行即可按顺序触发执行脚本，以及查看执行结果
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/f17b3035-3fbd-4c19-87b2-8dcb05491efb.png)
-   
-    7. 可将数据源、database和语句中的表名参数化</br>
-        - 作用：
-            1. 参数化后可通过切换全局变量中的值而统一切换所有配置单的数据源和database信息；</br>
-            2. 配置单复用，例如查询功能的配置单可通过参数化表名而达到配置单的复用；
-        - 如何操作？
-            1. 点击入参配置
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/93b5e1b2-5534-4847-8ec8-d2a80ab82dab.png)
-
-          设置参数名称和字段类型，描述和默认值非必填，参数字段是否必输：默认必输。
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/208e8a44-e913-4e3d-86a5-6c60b080f31f.png)
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/60dfce95-1593-44b9-b578-9e951f446a2a.png)
-
-          **注意：** 在配置单直接点击执行，会弹出输入参数的输入框，第一次对应字段会带出该默认值，若修改后，这个字段就会保留最后一次执行时传的参数值；
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/af4e4336-b9d7-44fe-a629-c654d69e7268.png)
-
-            2. 修改配置单中的固定内容，设置为引用入参内容</br>
-               具体表达式为：<code v-pre>${\{ params.xxxx }\}</code>
-          
-          以下内容进行了参数化：
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/9d7cab7f-5292-4507-acfd-c832eb0d2bf2.png)
-
-          3.场景中引入该配置单的地方，需要传入参数内容
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/9187b977-65f6-4a40-a78f-70481bf0c4e8.png)
-            - 传入的参数内容也可以是表达式，具体表达式的意义，可参考[场景步骤-参数设置](#场景步骤-参数设置)</br>
-            - 如果传入全局环境变量，意味着参数值可跟着不同环境进行切换。</br>
-              具体表达式为：<code v-pre>${\{ params.xxxx }\}</code>
-
-          ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/06/c9f30b96-ad60-4813-8fee-426ef7b246b7.png)
-
-## 执行计划
-
-### 平台入口
-
-> DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 执行计划
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/99ddff24-1875-4297-b715-dd9affe94445.png)
-
-### 执行计划功能介绍
-
-1. **使用场景：** 当所有场景集的接口调试通过后，通过构建执行计划来调度接口，以完成某一维度或目的的测试任务。例如：某一功能或服务冒烟任务、某一功能或服务回归任务等；
-2. **使用方法：**
-    1. 准备1：需要按照[参数配置](#参数配置)里说明的配置方式，提前准备好环境配置。</br>
-
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/ce40de7d-77aa-4dd7-8ad2-d67d0307f7e9.png)
-
-       准备2：准备多个空间-创建多个场景集-创建多个场景-创建多个接口 （单场景都调试用过的）
-
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/06e6796f-f5c0-42f7-a140-83aa5af532f4.png)
-
-    2. 创建一个新的执行计划,注意选择接口所在的空间
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/c871e095-5ed4-42a9-8c02-0f87f86de4d6.png)
-
-    3. 点击新建的执行计划，进入测试计划，添加需要的场景集
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/aa53c5dd-cd3c-44ea-824f-c54919e38813.png)
-
-    4. 选择配置的环境执行即可,最后可通过点击执行明细查看整个执行计划的执行结果
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/179b0140-5aa7-4439-a099-41db70075923.png)
-
-
-3. **注意：** 在执行执行计划的过程中，使用的参数场景入参的引用值
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/46816b05-10ae-4e2e-8681-e7ea0ddc87be.png)
-
-## 参数配置
-
-### 平台入口
-
-> DevOps 平台 -> 我的项目 -> 项目详情 -> 测试管理 -> 参数配置 -> 自动化测试
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/9a0defa3-1439-4bc1-a96a-650bb58de941.png)
-
-### 参数配置包含内容
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/9e942fd0-08c1-4da0-a129-4f278e51ddda.png)
-
-1. **名称：** 定义配置环境，例如：测试环境、开发环境、生成环境等
-2. **描述：** 可描述根据环境变化，需要注意修改的内容
-3. **环境域名：** 根据定义的名称填写对应环境的固定域名，例如：https://terminus-org.erda.cloud。</br>
-    - 注意： </br>
-      用户后续选择该执行环境时，若接口url没有设置固定域名，会自动拼接该域名发起请求；</br>
-      用户后续选择该执行环境时，若接口url中已经有固定域名，会优先使用接口中固定的域名发起请求；</br>
-    - 使用方法：
-
-    1. 先定义环境域名
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/a797e670-ad80-4ec8-84e5-070b26b3d025.png)
-
-    2. 在接口中添加url
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/b7c290a6-3171-4437-8eb8-812e512ccc9f.png)
-
-   下图即为接口url没有设置固定域名的场景
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/94d0caf3-c18b-4482-87cc-fed3336f6efc.png)
-
-    3. 选择环境执行
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/4bc8049a-f532-4ed5-b32b-464223cab25b.png)
-
-    4. 执行后自动拼接url
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/2f824ce0-9da9-4a1a-8015-91df0c88da21.png)
-
-4. **Header：** 若自动化过程中需要固定某些header参数时，可以选择下拉框中的选项或自定义字段。</br>
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/c3260527-af8f-4c05-aeac-c6c7e1ed26c8.png)
-
-   用户后续选择该执行环境时，若接口中没有同名的header信息，会自动传该环境配置中的header信息到请求接口中;</br>
-   用户后续选择该执行环境时，若接口中有同名的header信息，会优先用接口中已定义的header信息传到请求接口中;</br>
-    - 使用方法：
-
-    1. 先定义全局参数key和value
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/1fd70752-4e32-4987-8985-3a4988c0cb21.png)
-
-    2. 选择执行选择配置的环境配置
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/3bac8a88-1e94-4bbd-a78e-d9f862edd290.png)
-
-    3. 查看执行明细中，每个接口的执行结果，例如其中一个接口的请求详情对应如下，和环境配置中设置的header中的key和value一致：
-
-   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/a4bb674d-3a5b-40a7-9910-b3f05ace417a.png)
-
-5. **Global：**
-   若自动化过程中，多个测试接口（无论是否是同一场景或同一场景集或同一空间等），当它们的输入都引用到同一个特定的值或者遵循某一特定的规律，且可能随着环境切换而变化的内容，都可以配置到环境配置的Global参数中，例如：数据库链接信息等。</br>
-    - 使用方法：
-
-    1. 先定义全局参数key和value
-
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/90197b9c-ea65-48e1-84b5-f9d849c1d36e.png)
-
-    2. 在场景的场景入参或接口中入参或配置单传参处，引用全局参数</br>
-       引用表达式：<code v-pre>${\{ configs.autotest.xxxx }\}</code>
-
-       场景入参：
-
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/b1ef815e-1eb4-488e-999e-108c02769826.png)
-
-       接口中入参：
-
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/3361f271-eba7-4455-8ced-b8d10dfb0525.png)
-
-       配置单传参：
-
-       ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/05/38e8e71e-e184-415f-80fb-132ee3e8e93f.png)
+## Cookie保持
+
+当前场景下，若有登录接口，登录接口访问成功后，接口返回的Header中如果有Set-Cookie参数，平台会将该参数值自动传到当前场景之后的接口的请求Header-Cookie中</br>
+** 注意：**</br>
+1. 仅限同一场景中Cookie续传，不支持跨场景的Cookie续传
+2. 登录接口返回的Header中要有Set-Cookie参数才会续传
+3. 如果同一场景有2个登录接口，向上取最近的登录接口返回的Set-Cookie参数为准
