@@ -143,30 +143,44 @@ module.exports = {
         'msp/best-practice',
         'msp/guide',
         {
+          title: '使用指南 | Guides',
+          collapsable: true,
+          children: [
+            'msp/guides/apm/topology', '全局拓扑',
+            {
+              title: '应用监控 | APM',
+              collapsable: true,
+              children: [
+                ['dop/guides/apm/service-list', '服务列表'],
+              ]
+            },
+          ]
+        },
+        {
           title: 'API 网关',
           collapsable: true,
           children: [
-              'msp/api-gateway',
-              'msp/api-gateway-advanced1',
-              'msp/api-gateway-advanced2',
-              'msp/sign-auth',
-              'msp/api-gateway-statuscode',
-              'msp/api-gateway-benchmark',
+              'msp/old/api-gateway',
+              'msp/old/api-gateway-advanced1',
+              'msp/old/api-gateway-advanced2',
+              'msp/old/sign-auth',
+              'msp/old/api-gateway-statuscode',
+              'msp/old/api-gateway-benchmark',
           ]
         },
         {
           title: '注册中心',
           collapsable: true,
           children: [
-              'msp/dubbo',
-              'msp/spring-cloud'
+              'msp/old/dubbo',
+              'msp/old/spring-cloud'
           ]
         },
         {
           title: '配置中心',
           collapsable: true,
           children: [
-              'msp/config-center',
+              'msp/old/config-center',
           ]
         },
       ]
