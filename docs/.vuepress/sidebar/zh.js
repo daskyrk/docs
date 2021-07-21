@@ -41,6 +41,16 @@ module.exports = {
         'cmp/concept',
         'cmp/best-practice',
         'cmp/guide',
+        {
+          title: '集群管理',
+          collapsable: true,
+          children: [
+            'cmp/cluster-intro.md',
+            'cmp/cluster-management.md',
+            'cmp/cluster-autoscaling.md',
+            'cmp/cluster-node-labels.md',
+          ]
+        },
       ]
     },
     {
