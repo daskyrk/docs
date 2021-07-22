@@ -138,49 +138,63 @@ module.exports = {
       title: '微服务治理平台',
       collapsable: true,
       children: [
-        'msp/example',
-        'msp/concept',
-        'msp/best-practice',
-        'msp/guide',
         {
-          title: '使用指南 | Guides',
+          title: '场景示例',
           collapsable: true,
           children: [
-            'msp/guides/apm/topology', '全局拓扑',
+          ]
+        },
+        {
+          title: '设计理念',
+          collapsable: true,
+          children: [
+          ]
+        },
+        {
+          title: '最佳实践',
+          collapsable: true,
+          children: [
+          ]
+        },
+        {
+          title: '使用指南',
+          collapsable: true,
+          children: [
+            ['msp/guides/apm/topology', '全局拓扑'],
             {
-              title: '应用监控 | APM',
+              title: '应用监控',
               collapsable: true,
               children: [
-                ['dop/guides/apm/service-list', '服务列表'],
+                'msp/guides/apm/service-list'
               ]
             },
-          ]
-        },
-        {
-          title: 'API 网关',
-          collapsable: true,
-          children: [
-              'msp/old/api-gateway',
-              'msp/old/api-gateway-advanced1',
-              'msp/old/api-gateway-advanced2',
-              'msp/old/sign-auth',
-              'msp/old/api-gateway-statuscode',
-              'msp/old/api-gateway-benchmark',
-          ]
-        },
-        {
-          title: '注册中心',
-          collapsable: true,
-          children: [
-              'msp/old/dubbo',
-              'msp/old/spring-cloud'
-          ]
-        },
-        {
-          title: '配置中心',
-          collapsable: true,
-          children: [
-              'msp/old/config-center',
+            {
+              title: 'API 网关',
+              collapsable: true,
+              children: [
+                  'msp/old/api-gateway',
+                  'msp/old/api-gateway-advanced1',
+                  'msp/old/api-gateway-advanced2',
+                  'msp/old/sign-auth',
+                  'msp/old/api-gateway-statuscode',
+                  'msp/old/api-gateway-benchmark',
+              ]
+            },
+            {
+              title: '注册中心',
+              collapsable: true,
+              children: [
+                  'msp/old/dubbo',
+                  'msp/old/spring-cloud'
+              ]
+            },
+            {
+              title: '配置中心',
+              collapsable: true,
+              children: [
+                  'msp/old/config-center',
+              ]
+            },
           ]
         },
       ]
