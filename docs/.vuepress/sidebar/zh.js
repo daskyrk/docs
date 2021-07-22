@@ -203,6 +203,16 @@ module.exports = {
       ]
     },
     {
+      title: '快数据平台',
+      collapsable: true,
+      children: [
+        'fdp/example',
+        'fdp/concept',
+        'fdp/best-practice',
+        'fdp/guide',
+      ]
+    },
+    {
       title: '命令行工具',
       collapsable: true,
       children: [
@@ -215,6 +225,13 @@ module.exports = {
       collapsable: true,
       children: [
         'faq/faq',
+      ]
+    },
+    {
+      title: '发布声明',
+      collapsable: true,
+      children: [
+        'release-notes/v1.1',
       ]
     },
     'glossary'
