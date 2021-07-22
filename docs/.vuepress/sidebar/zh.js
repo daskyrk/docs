@@ -135,18 +135,70 @@ module.exports = {
           title: '场景示例',
           collapsable: true,
           children: [
+            {
+              title: 'API 网关',
+              collapsable: true,
+              children: [
+                'msp/examples/apigw/config',
+                'msp/examples/apigw/rate-limit',
+                'msp/examples/apigw/custom-header',
+                'msp/examples/apigw/access-limit',
+                'msp/examples/apigw/cors',
+                'msp/examples/apigw/openapi',
+              ],
+            },
+            {
+              title: '注册中心&配置中心',
+              collapsable: true,
+              children: [
+                'msp/examples/nc/dubbo',
+                'msp/examples/nc/springcloud',
+                'msp/examples/nc/spring',
+              ],
+            },
           ]
         },
         {
           title: '设计理念',
           collapsable: true,
           children: [
+            {
+              title: 'API 网关',
+              collapsable: true,
+              children: [
+                'msp/concepts/apigw/arch',
+                'msp/concepts/apigw/core',
+              ],
+            },
+            {
+              title: '注册中心&配置中心',
+              collapsable: true,
+              children: [
+                'msp/concepts/nc/arch',
+                'msp/concepts/nc/core',
+              ],
+            },
           ]
         },
         {
           title: '最佳实践',
           collapsable: true,
           children: [
+            {
+              title: 'API 网关',
+              collapsable: true,
+              children: [
+                'msp/practice/apigw/iac',
+                'msp/practice/apigw/apim',
+              ],
+            },
+            {
+              title: '注册中心&配置中心',
+              collapsable: true,
+              children: [
+                'msp/practice/nc/mse',
+              ],
+            },
           ]
         },
         {
@@ -165,27 +217,18 @@ module.exports = {
               title: 'API 网关',
               collapsable: true,
               children: [
-                  'msp/old/api-gateway',
-                  'msp/old/api-gateway-advanced1',
-                  'msp/old/api-gateway-advanced2',
-                  'msp/old/sign-auth',
-                  'msp/old/api-gateway-statuscode',
-                  'msp/old/api-gateway-benchmark',
+                'msp/guides/apigw/policy',
+                'msp/guides/apigw/auth',
+                'msp/guides/apigw/bench',
+                'msp/guides/apigw/status',
               ]
             },
             {
-              title: '注册中心',
+              title: '注册中心&配置中心',
               collapsable: true,
               children: [
-                  'msp/old/dubbo',
-                  'msp/old/spring-cloud'
-              ]
-            },
-            {
-              title: '配置中心',
-              collapsable: true,
-              children: [
-                  'msp/old/config-center',
+                'msp/guides/nc/console',
+                'msp/guides/nc/info',
               ]
             },
           ]
