@@ -14,20 +14,50 @@
 
 * 手动创建，主要使用 Erda 工具链
 * 一键创建集群
+* 导入自建的 Kubernetes 集群
 
-### 手动创建导入
-手动创建导入集群，需要手动创建集群并将其导入平台, 步骤如下：
-* 在集群创建前，需要先[检查系统规格和参数](../install/requirement.md)
-* 然后[手动创建集群](../install/step-by-step.md)
-* 最后导入已创建的集群
+### 导入已创建的集群
+
+Erda 提供了三种导入自建 Kubernetes 集群的方式
+
+- KubeConfig
+- Service Account
+- Cluster Agent
 
 >  导入集群的入口： 多云管理平台 -> 资源管理 -> 集群管理 -> 添加集群 -> Kubernetes(导入已创建的Erda Kubernetes集群)
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/18/13aed94a-cf2f-4fff-8570-57951548f7ce.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/22/425b640a-9499-4363-9efb-3ab263935c99.png)
+
+#### KubeConfig 及 Service Account 方式
+
+适用场景：KubeConfig 及 Service Account 认证方式，适用于集群**有开放 API Server 端口**的场景
+
+集群导入后会对目标初始化,  初始化过程可以通过状态进行查看。初始化过程包含：部署 Erda 监控、集群客户端、镜像仓库等组件、对所有集群节点标记企业标识
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/22/e2a450bd-5571-4074-ace4-031f9f603ba6.png)
+
+
+
+#### Cluster Agent 方式
+
+适用场景：Cluster Agent，适用于集群无开放 API Server 端口场景
+
+导入流程
+
+- 认证方式选择 Cluster Agent，添加集群成功后，会生成集群初始化命令
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/22/bf8b4df0-befb-4acc-946b-d1a5da117275.png)
+
+- 目标集群执行初始化命令
+
+- Erda 平台查看初始化状态，初始化过程包含：部署 Erda 监控、集群客户端、镜像仓库等组件、对所有集群节点标记企业标识
+
+
 
 ::: tip
 创建完成后集群是需要和具体的[项目](../org-center/project.md)进行绑定，才能被使用起来。
 :::
+
 > 项目集群设置的入口：管理中心 -> 项目管理 -> 选择对应的项目 -> 集群设置。
 
 ### 一键创建集群
@@ -82,5 +112,4 @@ Erda 提供了一键创建集群功能，包含如下 3 种类型：
 注意：集群下线并不会真正意义上销毁集群，只是将集群从平台释放不再纳管进行调度使用，实际的集群资源还在，如果需要真正销毁需要手动关闭所有的机器资源。
 
 > 集群下线入口： 多云管理平台 -> 资源管理 -> 集群管理 -> 操作（集群下线）
-
 
