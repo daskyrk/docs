@@ -9,7 +9,7 @@ module.exports = {
   '/1.0/manual/': [
     // '',
     {
-      title: '了解 Erda',
+      title: '关于 Erda',
       collapsable: true,
       children: [
         'about/intro'
@@ -19,7 +19,6 @@ module.exports = {
       title: '安装配置',
       collapsable: true,
       children: [
-        'install/quick-install',
         'install/helm-install',
         'install/high-availability',
         'install/provider-install',
@@ -47,9 +46,9 @@ module.exports = {
       title: 'DevOps 平台',
       collapsable: true,
       children: [
-        ['dop/intro', '介绍 | Introduction'],
+        ['dop/example'],
         {
-          title: '设计理念 | Concepts',
+          title: '设计理念',
           collapsable: true,
           children: [
             ['dop/concepts/overview', '概述 | Overview'],
@@ -58,8 +57,9 @@ module.exports = {
             ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
           ]
         },
+        ['dop/best-practice'],
         {
-          title: '使用指南 | Guides',
+          title: '使用指南',
           collapsable: true,
           children: [
             ['dop/guides/overview', '概述 | Overview'],
@@ -125,13 +125,6 @@ module.exports = {
             },
           ]
         },
-        {
-          title: '参考 | Reference',
-          collapsable: true,
-          children: [
-            'dop/reference/overview',
-          ]
-        },
       ]
     },
     {
@@ -142,33 +135,6 @@ module.exports = {
         'msp/concept',
         'msp/best-practice',
         'msp/guide',
-        {
-          title: 'API 网关',
-          collapsable: true,
-          children: [
-              'msp/api-gateway',
-              'msp/api-gateway-advanced1',
-              'msp/api-gateway-advanced2',
-              'msp/sign-auth',
-              'msp/api-gateway-statuscode',
-              'msp/api-gateway-benchmark',
-          ]
-        },
-        {
-          title: '注册中心',
-          collapsable: true,
-          children: [
-              'msp/dubbo',
-              'msp/spring-cloud'
-          ]
-        },
-        {
-          title: '配置中心',
-          collapsable: true,
-          children: [
-              'msp/config-center',
-          ]
-        },
       ]
     },
     {
