@@ -9,7 +9,7 @@ module.exports = {
   '/1.0/manual/': [
     // '',
     {
-      title: '了解 Erda',
+      title: '关于 Erda',
       collapsable: true,
       children: [
         'about/intro'
@@ -19,7 +19,6 @@ module.exports = {
       title: '安装配置',
       collapsable: true,
       children: [
-        'install/quick-install',
         'install/helm-install',
         'install/high-availability',
         'install/provider-install',
@@ -47,9 +46,9 @@ module.exports = {
       title: 'DevOps 平台',
       collapsable: true,
       children: [
-        ['dop/intro', '介绍 | Introduction'],
+        ['dop/example', '场景示例'],
         {
-          title: '设计理念 | Concepts',
+          title: '设计理念',
           collapsable: true,
           children: [
             ['dop/concepts/overview', '概述 | Overview'],
@@ -58,8 +57,9 @@ module.exports = {
             ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
           ]
         },
+        ['dop/best-practice', '最佳实践'],
         {
-          title: '使用指南 | Guides',
+          title: '使用指南',
           collapsable: true,
           children: [
             ['dop/guides/overview', '概述 | Overview'],
@@ -123,13 +123,6 @@ module.exports = {
                 'dop/guides/language/python',
               ]
             },
-          ]
-        },
-        {
-          title: '参考 | Reference',
-          collapsable: true,
-          children: [
-            'dop/reference/overview',
           ]
         },
       ]

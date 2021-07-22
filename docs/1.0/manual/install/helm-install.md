@@ -1,6 +1,6 @@
-# 基于 helm 命令安装 Erda 
+# 基于 helm 命令安装
 
-### 先决条件
+## 安装要求
 
 - Kuberentes 1.16 - 1.18
   - 至少需要 4 个节点 (1 个 Master 和 3 个 Worker)
@@ -9,11 +9,11 @@
 - Docker 19.03 +
 - CentOS 7.4 +
 - Helm 3 +
-- 泛域名(可选项，用于访问 Erda 平台，如 *.erda.io)
+- 泛域名（可选项，用于访问 Erda 平台，例如 *.erda.io）
 
 
 
-### 安装 Erda
+## 安装步骤
 
 1. 在您的 Kubernetes Master 节点上下载 [压缩包](https://github.com/erda-project/erda/releases) 并解压
 	
@@ -28,22 +28,23 @@
 
 2. 在 Kubernetes Master 节点上设置安装 Erda 时的必要配置
 
-   - 请确保 `~/.kube/` 路径下有 **kubeconfig** 文件
-      - 请确保 kubeconfig 文件中有如下配置
-      	- `certificate-authority-data`
-      	- `client-certificate-data`
-      	- `client-key-data`
+   * 请确保 `~/.kube/` 路径下有 **kubeconfig** 文件
 
-      
-      
-   - 设置 Erda 安装前的配置并且执行 `prepare.sh` 脚本
+   - 请确保 kubeconfig 文件中有如下配置
+   	- `certificate-authority-data`
+   	- `client-certificate-data`
+   	- `client-key-data`
+
    
+
+   - 设置 Erda 安装前的配置并且执行 `prepare.sh` 脚本
+
      - 脚本中会执行如下操作:
        - 生成 ETCD 的 SSL
        - 生成多集群管理的 SSL
        - 为节点设置上 Erda 应用所需要用的标签
        - Erda 安装工具中需要的一些配置
-   
+
      ```shell
      # 可以在此处指定 Erda 组件所在的命名空间，默认为 default 且当前仅支持 default 命名空间
      export ERDA_NAMESPACE="default"
@@ -61,7 +62,7 @@
      
 
    - 修改 docker daemon 文件中的 `insecure-registries` 字段
-   
+
       ```shell
       # 在*每台节点*上编辑 /etc/docker/daemon.json 文件
       ...
@@ -75,9 +76,9 @@
       ```
 
       
-   
+
    - 在每个节点上设置 NFS 作为网络共享存储
-   
+
       - 如您有如阿里云的网络共享存储您可以用如下命令将其设置在**每台节点**上:
       
         ```shell
@@ -87,7 +88,7 @@
         
         mount -t nfs -o vers=4,minorversion=0,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport file-system-id.region.nas.aliyuncs.com:/ /netdata  
         ```
-   
+
       - 否则您需要执行如下脚本，它会协助安装 NFS 组件，在当前节点上创建 `/netdata` 文件夹并将其挂载到剩余的节点上
 
         ```shell
@@ -96,15 +97,14 @@
       
       
       
-      
    - 您需要在 LB 机器上开放 80， 443 端口，这台机器将承载所有的外部流量
-   
+
       ```shell
       # 您可以使用如下命令在您的 Kubernetes 集群上找到 LB 节点：
       
       kubectl get node -o wide --show-labels | grep dice/lb
       ```
-   
+
       - 记住节点的 IP，您将会在后续设置**泛域名**时用到该节点 IP
 
 
@@ -139,13 +139,13 @@
 
    - 如果您购买了真实的泛域名，您需要将其与上述获取到的 LB 节点 IP 绑定
 
-     > 举例如下，假设您有 LB 节点的 IP 为 10.0.0.1，泛域名(ERDA_GENERIC_DOMAIN 变量中设置)为 `erda.io`, 您需要将 LB 节点 IP 与泛域名在您的解析器（如 DNS 或 F5 服务器）上绑定
+     > 例如，假设您有 LB 节点的 IP 为 10.0.0.1，泛域名(ERDA_GENERIC_DOMAIN 变量中设置)为 `erda.io`, 您需要将 LB 节点 IP 与泛域名在您的解析器（如 DNS 或 F5 服务器）上绑定
 
      
 
    - 如果没有真实的泛域名地址, 您需要在您浏览器所在的机器上将下列的 URL 写到 `etc/hosts` 文件中，请替换 IP 为 **LB 节点**的 IP
 
-     > 举例如下:  假设您有 LB 节点的 IP 为 10.0.0.1，泛域名(ERDA_GENERIC_DOMAIN 变量中设置)为 `erda.io`, org-name 为 `erda-test`. 所以您需要将下列的信息写入到 `/etc/hosts` 文件中
+     > 例如:  假设您有 LB 节点的 IP 为 10.0.0.1，泛域名（ERDA_GENERIC_DOMAIN 变量中设置）为 `erda.io`, org-name 为 `erda-test`. 所以您需要将下列的信息写入到 `/etc/hosts` 文件中
 
      ```shell
      10.0.0.1 collector.erda.io
@@ -166,4 +166,4 @@
 
      
 
-5. 在您设置过 `/etc/hosts` 文件的机器上用浏览器访问 `http://erda.io`，并开始您的 Erda 之旅
+5. 在您设置过 `/etc/hosts` 文件的机器上用浏览器访问 `http://erda.io`，并开始您的 Erda 之旅。
