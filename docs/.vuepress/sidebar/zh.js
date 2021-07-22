@@ -46,7 +46,7 @@ module.exports = {
       title: 'DevOps 平台',
       collapsable: true,
       children: [
-        ['dop/example'],
+        ['dop/example', '场景示例'],
         {
           title: '设计理念',
           collapsable: true,
@@ -57,7 +57,7 @@ module.exports = {
             ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
           ]
         },
-        ['dop/best-practice'],
+        ['dop/best-practice', '最佳实践'],
         {
           title: '使用指南',
           collapsable: true,
