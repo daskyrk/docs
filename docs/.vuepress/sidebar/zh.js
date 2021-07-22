@@ -26,7 +26,7 @@ module.exports = {
       ]
     },
     {
-      title: '快速开始',
+      title: '快速入门',
       collapsable: true,
       children: [
         'quick-start/premise'
