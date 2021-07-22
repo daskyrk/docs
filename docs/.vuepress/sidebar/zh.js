@@ -26,7 +26,7 @@ module.exports = {
       ]
     },
     {
-      title: '快速开始',
+      title: '快速入门',
       collapsable: true,
       children: [
         'quick-start/premise'
@@ -40,6 +40,16 @@ module.exports = {
         'cmp/concept',
         'cmp/best-practice',
         'cmp/guide',
+        {
+          title: '集群管理',
+          collapsable: true,
+          children: [
+            'cmp/cluster-intro.md',
+            'cmp/cluster-management.md',
+            'cmp/cluster-autoscaling.md',
+            'cmp/cluster-node-labels.md',
+          ]
+        },
       ]
     },
     {
@@ -246,6 +256,16 @@ module.exports = {
       ]
     },
     {
+      title: '快数据平台',
+      collapsable: true,
+      children: [
+        'fdp/example',
+        'fdp/concept',
+        'fdp/best-practice',
+        'fdp/guide',
+      ]
+    },
+    {
       title: '命令行工具',
       collapsable: true,
       children: [
@@ -258,6 +278,13 @@ module.exports = {
       collapsable: true,
       children: [
         'faq/faq',
+      ]
+    },
+    {
+      title: '发布声明',
+      collapsable: true,
+      children: [
+        'release-notes/v1.1',
       ]
     },
     'glossary'

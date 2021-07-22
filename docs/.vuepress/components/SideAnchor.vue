@@ -99,6 +99,7 @@ export default {
   right: 2rem;
   top: 150px;
   z-index: 1;
+  min-width: 13rem;
   max-width: 25rem;
   max-height: calc(100% - 190px);
   overflow: auto;

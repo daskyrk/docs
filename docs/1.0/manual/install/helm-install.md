@@ -6,16 +6,16 @@
   - 至少需要 4 个节点 (1 个 Master 和 3 个 Worker)
   - 每个节点 4 CPU 16 G 内存
   - **不要在集群上安装 ingress controller 组件**
-- Docker 19.03 +
-- CentOS 7.4 +
-- Helm 3 +
-- 泛域名（可选项，用于访问 Erda 平台，例如 *.erda.io）
+- Docker 19.03 及以上
+- CentOS 7.4 及以上
+- Helm 3 及以上
+- 泛域名（可选，用于访问 Erda 平台，例如 *.erda.io）
 
 
 
 ## 安装步骤
 
-1. 在您的 Kubernetes Master 节点上下载 [压缩包](https://github.com/erda-project/erda/releases) 并解压
+1. 在您的 Kubernetes Master 节点上下载 [压缩包](https://github.com/erda-project/erda/releases) 并解压。
 	
    > **Note**: 当前仅支持 Linux 系统
    
@@ -26,7 +26,7 @@
 
 
 
-2. 在 Kubernetes Master 节点上设置安装 Erda 时的必要配置
+2. 在 Kubernetes Master 节点上设置安装 Erda 时的必要配置。
 
    * 请确保 `~/.kube/` 路径下有 **kubeconfig** 文件
 
@@ -61,7 +61,7 @@
 
      
 
-   - 修改 docker daemon 文件中的 `insecure-registries` 字段
+   - 修改 docker daemon 文件中的 `insecure-registries` 字段。
 
       ```shell
       # 在*每台节点*上编辑 /etc/docker/daemon.json 文件
@@ -97,7 +97,7 @@
       
       
       
-   - 您需要在 LB 机器上开放 80， 443 端口，这台机器将承载所有的外部流量
+   - 您需要在 LB 机器上开放 80， 443 端口，这台机器将承载所有的外部流量。
 
       ```shell
       # 您可以使用如下命令在您的 Kubernetes 集群上找到 LB 节点：
@@ -109,7 +109,7 @@
 
 
 
-3. 通过 Helm 安装 Erda Helm 包，并且等待所有的 Erda 组件准备就绪
+3. 通过 Helm 安装 Erda Helm 包，并且等待所有的 Erda 组件准备就绪。
 
    ```shell
    # 安装 erda-base
