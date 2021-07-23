@@ -252,7 +252,15 @@ module.exports = {
         'ecp/example',
         'ecp/concept',
         'ecp/best-practice',
-        'ecp/guide',
+        {
+          title: '使用指南',
+          collapsable: true,
+          children: [
+            ['ecp/resource', '资源管理'],
+            ['ecp/config-set', '配置管理'],
+            ['ecp/application', '应用管理'],
+          ]
+        },
       ]
     },
     {
