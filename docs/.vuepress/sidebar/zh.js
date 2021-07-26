@@ -158,7 +158,15 @@ module.exports = {
               title: '应用监控',
               collapsable: true,
               children: [
-                'msp/guides/apm/service-list'
+                'msp/guides/apm/service-analysis',
+                'msp/guides/apm/browser-monitor',
+                'msp/guides/apm/browser-monitor-config',
+                'msp/guides/apm/trace',
+                'msp/guides/apm/status',                
+                'msp/guides/apm/alarm',
+                'msp/guides/apm/custom-alarm',
+                'msp/guides/apm/dashboard',
+                'msp/guides/apm/dashboard-advanced',
               ]
             },
             {
