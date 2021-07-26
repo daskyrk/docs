@@ -1,11 +1,11 @@
-# 基于 helm 命令安装
+# 基于 Helm 命令安装
 
 ## 安装要求
 
 - Kuberentes 1.16 - 1.18
-  - 至少需要 4 个节点 (1 个 Master 和 3 个 Worker)
+  - 至少 4 个节点 (1 个 Master 和 3 个 Worker)
   - 每个节点 4 CPU 16 G 内存
-  - **不要在集群上安装 ingress controller 组件**
+  - 不要在集群上安装 ingress controller 组件
 - Docker 19.03 及以上
 - CentOS 7.4 及以上
 - Helm 3 及以上
