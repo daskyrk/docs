@@ -8,7 +8,13 @@ const { fs, path } = require('@vuepress/shared-utils')
 module.exports = {
   '/1.0/manual/': [
     // '',
-    'intro'
+    {
+      title: '关于 Erda',
+      collapsable: true,
+      children: [
+        'about/intro'
+      ]
+    },
     {
       title: '安装配置',
       collapsable: true,
