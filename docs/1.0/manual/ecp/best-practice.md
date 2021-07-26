@@ -2,9 +2,9 @@
 
 ## 运维实践
 Erda 边缘计算平台旨在解决分布在众多地理位置的同类应用，将您的应用的能力延伸的距离用户最近的地方，以获取更好的用户体验，因此涉及稳定性的边缘站点的资源规划就显得尤为重要，我们建议您：
-* 所有的边缘站点尽可能采购同一厂商，同一型号的服务器。
+* 所有的边缘站点尽可能采购同一厂商、同一型号的服务器。
 * 不必采购虚拟化平台，直接基于物理机部署，减少 IT 成本。
-* 单台主机规格最小为 4C， 8G。
+* 单台主机规格最小为 4C，8G。
 * 边缘应用最少部署双实例，由客户端做负载均衡。
 * 使用 Erda 的流水线来基于代码生成制品镜像，基于镜像部署边缘应用。
 ## 云边协同
@@ -12,21 +12,22 @@ Erda 边缘计算平台旨在解决分布在众多地理位置的同类应用，
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/995a93a6-6f50-42b4-8944-a37c7f243e4d.png)
 
-## 使用Erda制作边缘应用镜像
+## 使用 Erda 制作边缘应用镜像
 
-Erda 边缘计算平台默认使用镜像来发布应用，镜像可以是任意可以被边缘节点访问到的镜像仓库，我们建议是 [dockerhub](https://www.docker.com/products/docker-hub), 你可以使用 Erda 的流水线功能来将你的代码打包成镜像并且推送到 dockerhub 中。
+Erda 边缘计算平台默认使用镜像来发布应用，镜像可以是任意可以被边缘节点访问到的镜像仓库，我们建议是 [dockerhub](https://www.docker.com/products/docker-hub), 您可以使用 Erda 的流水线功能来将您的代码打包成镜像并且推送到 dockerhub 中。
 
-跟普通应用一样，你需要创建一个应用并且写好具备代码拉取，构建的 pipeline.yaml，最后再增加一个容器镜像推送的action 将打好的镜像推送到 dockerhub 中，具体步骤如下：
+跟普通应用一样，您需要创建一个应用并且写好具备代码拉取，构建的 pipeline.yaml，最后再增加一个容器镜像推送的 action 将打好的镜像推送到 dockerhub 中，具体步骤如下：
 
-1,  增加一个容器推送的节点
+1. 增加一个容器推送的节点
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/e1340599-66bb-41f2-b3ca-ad2fbb60fe98.png
 )
 
-2, 切换到代码编辑模式，增加如下参数
+2. 切换到代码编辑模式，增加如下参数
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/a2649930-49b0-467c-924c-38f1617b8ce9.png
 )
+
 ```
 - docker-push:
     alias: docker-push
@@ -39,4 +40,4 @@ Erda 边缘计算平台默认使用镜像来发布应用，镜像可以是任意
       password: xxxx                                      // 外部镜像仓库用密码
 ```
 
-3, 最后运行流水线，成功后便可以使用 dockerhub 中的镜像来发布边缘应用。
+3. 最后运行流水线，成功后便可以使用 dockerhub 中的镜像来发布边缘应用。
