@@ -23,10 +23,7 @@ wget -O /usr/bin/erda https://erda-release.oss-cn-hangzhou.aliyuncs.com/cli/linu
 
 #### 配置
 
-Erda CLI 安装好后，需要正确配置 Erda Server 地址才能够通过 login 登录 Erda
-平台， CLI
-的大多数子命令都需要先登录后才能执行，只有少部分命令不需要登录，比如：dice.yml
-相关命令。
+Erda CLI 安装好后，需要正确配置 Erda Server 地址才能够通过 login 登录 Erda 平台， CLI 的大多数子命令都需要先登录后才能执行，只有少部分命令不需要登录，比如：dice.yml 相关命令。
 
 Erda CLI 的配置文件里写入正确的 server 地址即可，如果目录不存在请先创建目录：
 
@@ -37,7 +34,7 @@ server: https://openapi.example.io
 
 #### 登录
 
-安装并配置 CLI 之后， 执行 erda login 来登录账户
+安装并配置 CLI 之后， 执行 `erda login` 来登录账户。
 
 ```bash
 erda login
