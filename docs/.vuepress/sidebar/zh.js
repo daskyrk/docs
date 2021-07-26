@@ -29,7 +29,8 @@ module.exports = {
       title: '快速入门',
       collapsable: true,
       children: [
-        'quick-start/premise'
+        'quick-start/premise',
+        'quick-start/newbie'
       ]
     },
     {
