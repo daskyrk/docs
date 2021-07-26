@@ -462,6 +462,7 @@ stages:
       # 若不指定，则使用平台当前的稳定版
       version: 1.0
       params:
+        dice_yml: ${git-checkout}/dice.yml # dice.yml 文件路径
         replacement_images: # 通过 ${backend}/${frontend} 引用打包结果
         - ${backend}/pack-result
         - ${frontend}/pack-result
