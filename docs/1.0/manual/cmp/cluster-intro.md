@@ -5,8 +5,7 @@
 集群管理主要包含如下内容：
 - [集群管理](./cluster-management.md)，如添加集群、集群配置修改、集群升级、集群下线
 - [扩缩容](./cluster-autoscaling.md)，添加机器、机器下线
-- [节点标签设置](./cluster-node-labels.md)，通过标签来对机器进行分类，以满足不同的调度需求
-
+- [节点标签设置](./cluster-node-labels.md)，通过标签对机器进行分类，以满足不同的调度需求
 
 
 
