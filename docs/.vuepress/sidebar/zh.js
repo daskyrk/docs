@@ -77,7 +77,7 @@ module.exports = {
               title: '协作',
               collapsable: true,
               children: [
-                ['dop/guides/agile/best-practices', '最佳实践'],
+                ['dop/guides/agile/best-practices', '如何实践'],
               ]
             },
             {
