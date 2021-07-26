@@ -55,22 +55,23 @@ Erda 设计了自定义标签：**location-xx**，以支持用户将指定的应
 - 集群服务标签，用于指定运行 Erda 平台微服务组件，比如 API 网关、配置中心、注册中心。当前 Erda 的通知中心也使用了同样的标签。标签名为：“**location-cluster-service**”。如果需要独占，还需要再设置 “**location**” 标签；
 - 机器异常，需要锁定机器不再调度新的服务。标签名：“locked”；
 
-> 注意：当前如果是手动进行宿主机下线，则在下线前先给宿主机设置 **offline** 标签，用于监控系统联动。
+> 注意：当前如果是手动进行宿主机下线，则在下线前先给宿主机设置 offline 标签，用于监控系统联动。
 
 ## 标签汇总
 
 - **pack-job**: 打包任务标，能够跑打包任务。
 - **job**: 短时任务标，非打包任务。
-- **service-stateless**: 无状态服务标，Erda 部署的 runtime 服务使用该标签。
-- **service-stateful**: 有状态服务标，可用于部署 addon 服务。
-- **workspace-xxx**: 环境标，包括：workspace-dev, workspace-test, workspace-staging, workspace-prod，分别对应 Erda 部署的四个环境。
+- **service-stateless**：无状态服务标，Erda 部署的 runtime 服务使用该标签。
+- **service-stateful**：有状态服务标，可用于部署 addon 服务。
+- **workspace-xxx**：环境标，包括：workspace-dev，workspace-test，workspace-staging，workspace-prod，分别对应 Erda 部署的四个环境。
 - **location-cluster-service**：集群服务标签，用来调度集群共用的服务组件，比如 API 网关、注册中心等。
 - **location-xx**：自定义标签，支持用户将指定的应用运行到指定的节点。
 - **location**：独占标签，打了该标签的节点只能运行 location-cluster-service 和 location-xx 对应的应用。
-- **locked**: 锁定该机器，避免被调度。
-- **offline**: 节点下线标签
-- **platform**: 平台组件标，运行 Erda 平台组件。
+- **locked**：锁定该机器，避免被调度。
+- **offline**：节点下线标签
+- **platform**：平台组件标，运行 Erda 平台组件。
 
-设置标签的操作入口位于：`多云管理平台 -> 集群总览 -> 机器列表 -> 选择机器设置标签`。
+设置标签的操作入口位于：多云管理平台 > 集群总览 > 机器列表 > 选择机器设置标签
 
 > 除了这个入口，还可以在添加机器时直接配置所需的标签。
+
