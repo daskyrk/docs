@@ -1,4 +1,4 @@
-# 必读概念
+# 基本概念
 
 ![新手指南](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/18/2fecd25d-0f70-4459-82ed-6af06f022335.png)
 
