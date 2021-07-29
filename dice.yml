@@ -15,9 +15,5 @@ services:
         port: 80
         path: /
         duration: 300
-addons:
-  i:
-    plan: monitor:basic
-    options:
-      version: '3.6'
+addons: {}
 envs: {}
