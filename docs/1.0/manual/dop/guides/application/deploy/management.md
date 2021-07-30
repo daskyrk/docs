@@ -246,7 +246,7 @@ services:
 
 ## 重启
 
-重启只会重新拉取 [配置](./config.md)，并不会改变运行程序的逻辑。若代码有变更，请使用 [源码部署](./deploy-from-git.md)
+重启只会重新拉取 [配置](config.md)，并不会改变运行程序的逻辑。若代码有变更，请使用 [源码部署](../../../best-practices/CICD/deploy-from-git.md)
 
 ## 版本回滚
 
