@@ -157,35 +157,35 @@ module.exports = {
                                     collapsable: true,
                                     children: [
                                         ['', '质量报告和问题列表'],
-                                        ['', '门禁规则配置'],
-                                        ['', '单元测试'],
+                                        ['dop/guides/application/codequality/sonar', '门禁规则配置'],
+                                        ['dop/guides/application/codequality/unittest', '单元测试'],
                                     ]
                                 },
                             ]
                         },
-                    ]
-                },
-                ['dop/api-management', 'API集市'],
-                {
-                    title: '测试平台',
-                    collapsable: true,
-                    children: [
-                        'dop/testing/auto-test-getting-started',
-                        'dop/testing/function-test',
-                    ]
-                },
-                {
-                    title: '移动开发',
-                    collapsable: true,
-                    children: [
-                        'dop/mobileapp/basic',
-                        'dop/mobileapp/framework',
-                        'dop/mobileapp/local-environment',
-                        'dop/mobileapp/howto-dev',
-                        'dop/mobileapp/management',
-                        'dop/mobileapp/certificates',
-                        'dop/mobileapp/libraries',
-                        'dop/mobileapp/ios-ci'
+                        ['dop/api-management', 'API集市'],
+                        {
+                            title: '测试平台',
+                            collapsable: true,
+                            children: [
+                                'dop/testing/auto-test-getting-started',
+                                'dop/testing/function-test',
+                            ]
+                        },
+                        {
+                            title: '移动开发',
+                            collapsable: true,
+                            children: [
+                                'dop/mobileapp/basic',
+                                'dop/mobileapp/framework',
+                                'dop/mobileapp/local-environment',
+                                'dop/mobileapp/howto-dev',
+                                'dop/mobileapp/management',
+                                'dop/mobileapp/certificates',
+                                'dop/mobileapp/libraries',
+                                'dop/mobileapp/ios-ci'
+                            ]
+                        },
                     ]
                 },
             ]

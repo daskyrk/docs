@@ -11,7 +11,7 @@
 
 > DevOps 平台 -> 项目 -> 工单列表
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/a682dd53-2598-4359-9687-00f8aa8d76a6.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/a682dd53-2598-4359-9687-00f8aa8d76a6.png)
 
 ## 与协同的区别
 
@@ -32,9 +32,9 @@ Erda 作为基础平台性产品，用户会比较多，零零碎碎的答疑和
 
 这里有两个很关键的点：
 
-1. Review 先挑选的是那些简单的、能快速解决的问题。
+- Review 先挑选的是那些简单的、能快速解决的问题。
 
-2. 放入到迭代队列，而不是需求池。
+- 放入到迭代队列，而不是需求池。
 
 我们为什么不把工单直接放入需求池？
 
