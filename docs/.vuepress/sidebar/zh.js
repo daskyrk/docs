@@ -121,7 +121,7 @@ module.exports = {
                                 ['dop/guides/project/agile', '项目协同'],
                                 ['dop/guides/project/ticket', '工单'],
                                 ['', '项目大盘'],
-                                ['', '扩展服务'],
+                                ['dop/guides/project/addon', '扩展服务'],
                                 ['', '资源汇总'],
                                 ['', '通知管理'],
                             ]
@@ -144,8 +144,8 @@ module.exports = {
                                     title: '部署中心',
                                     collapsable: true,
                                     children: [
-                                        ['', '制品部署'],
-                                        ['', '制品管理'],
+                                        ['dop/guides/application/deploy/release-deploy', '制品部署'],
+                                        ['dop/guides/application/deploy/release-manage', '制品管理'],
                                         'dop/guides/application/deploy/config',
                                         'dop/guides/application/deploy/config-center',
                                         'dop/guides/application/deploy/management',
@@ -156,7 +156,7 @@ module.exports = {
                                     title: '代码质量',
                                     collapsable: true,
                                     children: [
-                                        ['', '质量报告和问题列表'],
+                                        ['dop/guides/application/codequality/sonar.md', '质量报告和问题列表'],
                                         ['', '门禁规则配置'],
                                         ['', '单元测试'],
                                     ]
