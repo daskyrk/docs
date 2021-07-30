@@ -1,6 +1,6 @@
 # 基于 Docker Image 部署
 
-基于 Docker Image 部署本质上和 [基于 Git 源码部署](./deploy-from-git.md) 没有区别，不需要的步奏就是源码构建 Image 产物。
+基于 Docker Image 部署本质上和 [基于 Git 源码部署](deploy-from-git.md) 没有区别，不需要的步奏就是源码构建 Image 产物。
 
 首先准备好 [项目和应用](../platform-design.md#项目和应用)。项目创建只有企业管理员才能完成，企业管理员添加并设置好项目所有者之后，项目其他成员可以由项目所有者添加指定。应用创建可以由应用所有者、应用主管和项目经理进行创建，并添加指定应用所有者。具体角色权限可以参考[角色和权限](../platform-design.md#角色和权限)
 

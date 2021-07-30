@@ -76,4 +76,4 @@ services 下的 web 关键字只是此处的一个举例，web 是一个 service
 
 #### 下一步推荐学习
 
-* [动态配置](./config-center.md)
+* [动态配置](config-center.md)

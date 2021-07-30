@@ -61,7 +61,14 @@ module.exports = {
             title: 'DevOps 平台',
             collapsable: true,
             children: [
-                ['dop/example', '场景示例'],
+                {
+                    title: '场景示例',
+                    collapsable: true,
+                    children: [
+                        ['', 'Erda 的持续集成'],
+                        ['', '业务项目管理'],
+                    ]
+                },
                 {
                     title: '设计理念',
                     collapsable: true,
@@ -70,9 +77,38 @@ module.exports = {
                         ['dop/concepts/agile-info', '高效协同'],
                         ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
                         ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
+                        ['', 'gitflow'],
                     ]
                 },
-                ['dop/best-practice', '最佳实践'],
+                {
+                    title: '最佳实践',
+                    collapsable: true,
+                    children: [
+                        {
+                            title: 'CI/CD',
+                            collapsable: true,
+                            children: [
+                                'dop/best-practices/CICD/deploy-from-git',
+                                'dop/best-practices/CICD/deploy-from-image',
+                                ['', '部署一个 Go Web 程序'],
+                                ['', '更灵活的自定义构建你的 Java 应用'],
+                                ['', '使用缓存加速你的构建'],
+                                ['', '使用Nexus加速你的构建'],
+                                ['', '你的镜像是如何被管理的'],
+                                {
+                                    title: '开发语言',
+                                    collapsable: true,
+                                    children: [
+                                        'dop/best-practices/CICD/language/java',
+                                        'dop/best-practices/CICD/language/javascript',
+                                        'dop/best-practices/CICD/language/php',
+                                        'dop/best-practices/CICD/language/go',
+                                    ]
+                                },
+                            ]
+                        },
+                    ]
+                },
                 {
                     title: '使用指南',
                     collapsable: true,
@@ -84,68 +120,72 @@ module.exports = {
                             children: [
                                 ['dop/guides/project/agile', '项目协同'],
                                 ['dop/guides/project/ticket', '工单'],
+                                ['', '项目大盘'],
+                                ['', '扩展服务'],
+                                ['', '资源汇总'],
+                                ['', '通知管理'],
                             ]
                         },
                         {
-                            title: '协作',
+                            title: '应用管理',
                             collapsable: true,
                             children: [
-                                ['dop/guides/agile/best-practices', '如何实践'],
+                                {
+                                    title: '代码仓库',
+                                    collapsable: true,
+                                    children: []
+                                },
+                                {
+                                    title: '流水线',
+                                    collapsable: true,
+                                    children: []
+                                },
+                                {
+                                    title: '部署中心',
+                                    collapsable: true,
+                                    children: [
+                                        ['', '制品部署'],
+                                        ['', '制品管理'],
+                                        'dop/guides/application/deploy/config',
+                                        'dop/guides/application/deploy/config-center',
+                                        'dop/guides/application/deploy/management',
+                                        'dop/guides/application/deploy/metrics_logs.md',
+                                    ]
+                                },
+                                {
+                                    title: '代码质量',
+                                    collapsable: true,
+                                    children: [
+                                        ['', '质量报告和问题列表'],
+                                        ['', '门禁规则配置'],
+                                        ['', '单元测试'],
+                                    ]
+                                },
                             ]
                         },
-                        {
-                            title: '部署和管理',
-                            collapsable: true,
-                            children: [
-                                'dop/guides/deploy/deploy-from-git',
-                                'dop/guides/deploy/deploy-from-image',
-                                'dop/guides/deploy/config',
-                                'dop/guides/deploy/config-center',
-                                'dop/guides/deploy/management',
-                                'dop/guides/deploy/metrics_logs.md',
-                                'dop/guides/deploy/branch-rule',
-                                'dop/guides/deploy/db-migration',
-                            ]
-                        },
-                        {
-                            title: 'API',
-                            collapsable: true,
-                            children: [
-                                'dop/guides/api/api-management',
-                            ]
-                        },
-                        {
-                            title: '测试',
-                            collapsable: true,
-                            children: [
-                                'dop/guides/testing/auto-test-getting-started',
-                                'dop/guides/testing/function-test',
-                            ]
-                        },
-                        {
-                            title: '移动开发',
-                            collapsable: true,
-                            children: [
-                                'dop/guides/mobileapp/basic',
-                                'dop/guides/mobileapp/framework',
-                                'dop/guides/mobileapp/local-environment',
-                                'dop/guides/mobileapp/howto-dev',
-                                'dop/guides/mobileapp/management',
-                                'dop/guides/mobileapp/certificates',
-                                'dop/guides/mobileapp/libraries',
-                                'dop/guides/mobileapp/ios-ci'
-                            ]
-                        },
-                        {
-                            title: '开发语言',
-                            collapsable: true,
-                            children: [
-                                'dop/guides/language/java',
-                                'dop/guides/language/javascript',
-                                'dop/guides/language/php',
-                                'dop/guides/language/python',
-                            ]
-                        },
+                    ]
+                },
+                ['dop/api-management', 'API集市'],
+                {
+                    title: '测试平台',
+                    collapsable: true,
+                    children: [
+                        'dop/testing/auto-test-getting-started',
+                        'dop/testing/function-test',
+                    ]
+                },
+                {
+                    title: '移动开发',
+                    collapsable: true,
+                    children: [
+                        'dop/mobileapp/basic',
+                        'dop/mobileapp/framework',
+                        'dop/mobileapp/local-environment',
+                        'dop/mobileapp/howto-dev',
+                        'dop/mobileapp/management',
+                        'dop/mobileapp/certificates',
+                        'dop/mobileapp/libraries',
+                        'dop/mobileapp/ios-ci'
                     ]
                 },
             ]
