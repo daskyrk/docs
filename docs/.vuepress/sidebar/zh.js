@@ -91,8 +91,8 @@ module.exports = {
                                 'dop/best-practices/CICD/deploy-from-git',
                                 'dop/best-practices/CICD/deploy-from-image',
                                 ['', '部署一个 Go Web 程序'],
-                                ['', '更灵活的自定义构建你的 Java 应用'],
-                                ['', '使用缓存加速你的构建'],
+                                ['dop/best-practices/CICD/deploy-from-java-build', '更灵活的自定义构建你的 Java 应用'],
+                                ['dop/best-practices/CICD/deploy-from-caches-build', '使用缓存加速你的构建'],
                                 ['', '使用Nexus加速你的构建'],
                                 ['', '你的镜像是如何被管理的'],
                                 {
@@ -120,7 +120,7 @@ module.exports = {
                             children: [
                                 ['dop/guides/project/agile', '项目协同'],
                                 ['dop/guides/project/ticket', '工单'],
-                                ['', '项目大盘'],
+                                ['dop/guides/project/statistics', '项目大盘'],
                                 ['dop/guides/project/addon', '扩展服务'],
                                 ['', '资源汇总'],
                                 ['', '通知管理'],
