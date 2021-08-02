@@ -122,8 +122,8 @@ module.exports = {
                                 ['dop/guides/project/ticket', '工单'],
                                 ['dop/guides/project/statistics', '项目大盘'],
                                 ['dop/guides/project/addon', '扩展服务'],
-                                ['', '资源汇总'],
-                                ['', '通知管理'],
+                                ['dop/guides/project/resource-summary', '资源汇总'],
+                                ['dop/guides/project/notification-management', '通知管理'],
                             ]
                         },
                         {
