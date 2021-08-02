@@ -115,6 +115,17 @@ ${{ random.integer }}
 其他类型的mock参数写法参考：[mock参数](#mock参数)</br>
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/09/4345bf30-8881-475a-ad4b-3e033969b0c5.png)</br>
 
+##### 循环策略
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/02/be190457-f6cf-4fd9-949a-d58a5db46048.png)</br>
+
+循环策略的配置意思是当条件没成立就会一直循环执行，当循环次数达到了`最大循环次数`就会退出
+
+- 循环结束条件，可以配置例如 `task_status == 'Success'` 当前任务的状态是否是成功状态,`task_status == 'Failed'` 当前任务的状态是否是失败状态, <code v-text="'${{ outputs.40025.status }} == 401'"/> 前置步骤 `40025` 的出参 `status` 是否等于 `401`
+- 最大循环次数(N)，代表循环条件没有成立的时候最大的循环次数
+- 衰退比例(decline_ratio)，衰退最大值(decline_limit_sec)，起始间隔(interval_sec) 3 个参数遵循一个计算公式 `loop_interval = min(interval_sec * (decline_ratio)^N, decline_limit_sec)`, 通过公式计算得到的就是每次循环的间隔时间
+
+
 ##### 出参
 
 步骤支持添加出参。出参的作用：作为断言参数、添加到场景出参、传递给下一个步骤。出参的表达式写法请参考：[出参表达式](#出参表达式)</br>
