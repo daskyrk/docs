@@ -77,7 +77,7 @@ module.exports = {
                         ['dop/concepts/agile-info', '高效协同'],
                         ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
                         ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
-                        ['', 'gitflow'],
+                        ['dop/concepts/gitflow', 'gitflow'],
                     ]
                 },
                 {
