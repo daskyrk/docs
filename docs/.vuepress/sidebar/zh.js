@@ -93,8 +93,8 @@ module.exports = {
                                 ['', '部署一个 Go Web 程序'],
                                 ['dop/best-practices/CICD/deploy-from-java-build', '更灵活的自定义构建你的 Java 应用'],
                                 ['dop/best-practices/CICD/deploy-from-caches-build', '使用缓存加速你的构建'],
-                                ['', '使用Nexus加速你的构建'],
-                                ['', '你的镜像是如何被管理的'],
+                                ['dop/best-practices/CICD/nexus', '使用Nexus加速你的构建'],
+                                ['dop/best-practices/CICD/manage-mirror', '你的镜像是如何被管理的'],
                                 {
                                     title: '开发语言',
                                     collapsable: true,
@@ -133,7 +133,7 @@ module.exports = {
                                 {
                                     title: '代码仓库',
                                     collapsable: true,
-                                    children: []
+                                    children: ['dop/guides/application/codehub/code-hub']
                                 },
                                 {
                                     title: '流水线',
