@@ -90,7 +90,7 @@ module.exports = {
                             children: [
                                 'dop/best-practices/CICD/deploy-from-git',
                                 'dop/best-practices/CICD/deploy-from-image',
-                                ['', '部署一个 Go Web 程序'],
+                                ['dop/best-practices/CICD/deploy-from-go-build', '部署一个 Go Web 程序'],
                                 ['dop/best-practices/CICD/deploy-from-java-build', '更灵活的自定义构建你的 Java 应用'],
                                 ['dop/best-practices/CICD/deploy-from-caches-build', '使用缓存加速你的构建'],
                                 ['dop/best-practices/CICD/nexus', '使用Nexus加速你的构建'],
