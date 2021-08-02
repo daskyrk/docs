@@ -8,7 +8,7 @@
 
 > DevOps 平台 -> 我的项目 -> 项目协同
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/a9547836-7654-4bbb-83d3-aa4ab4dc03f6.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/a9547836-7654-4bbb-83d3-aa4ab4dc03f6.png)
 
 现在就让我们一起开启敏捷开发全流程管理之旅吧。
 
@@ -20,7 +20,7 @@
 
 如下图所示，就是我们erda项目的里程碑。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/903f1895-f9a6-4b2b-9a93-31ae8ccf0041.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/903f1895-f9a6-4b2b-9a93-31ae8ccf0041.png)
 
 ## 需求管理
 
@@ -32,13 +32,13 @@
 
 点击右上角的`新建事项`并选中`需求`进行添加，在需求创建页面，可以指定处理人、所属迭代、优先级、复杂度以及截止日期、标签等。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/31db229b-0ef8-472f-aeb1-74e59165be01.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/31db229b-0ef8-472f-aeb1-74e59165be01.png)
 
 ### 消息订阅
 
 在事项详情页里我们可以关注该事项，当事项内容、状态、备注等发生变动时，都能够接收到站内信和邮件通知。事项创建者自动关注该事项。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/0b071f9b-030a-4cc0-b3db-05d587bbdbde.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/30/bacfe99f-ddd7-48b8-bb33-bd93d784e2da.png)
 
 ### 需求拆分
 
@@ -50,7 +50,7 @@
 
 如下图所示，对于导出Excel的这个需求，创建并关联了两个子任务，分别为前端和后端派了一个任务。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/88d03962-4386-49b6-993c-f99fa5223cf4.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/88d03962-4386-49b6-993c-f99fa5223cf4.png)
 
 ### 规划与排期
 
@@ -65,13 +65,13 @@
 
 当然，也可以在创建需求的时候指定相应的版本。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/24f4f567-4a36-49b9-b1b8-c4304df778d4.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/24f4f567-4a36-49b9-b1b8-c4304df778d4.png)
 
 ### 迭代队列
 
 在研发团队里，PD 最需要核心设计的是迭代队列，注意：这里提到的是队列，这个队列里需要长期装满 3 个迭代，其中的 1 个迭代里存放着最优先要解决的需求和问题。为什么这里是 3 个迭代的队列，而不是 1 个迭代呢？可以思考一下，我们在系统架构中，引入消息队列中间件的作用。PD 和开发之间完全可以通过这种方式来解耦的，开发只需要从队列中取设计好的产品任务解决问题就好，PD 只需要不断地从需求池里取内容经过设计后再合理排入到迭代队列中即可，两边的角色都可以实现自我驱动，不需要严格同步工作，所以这里的核心是为了异步工作。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/7996e364-a856-40cc-9b81-834afd339549.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/7996e364-a856-40cc-9b81-834afd339549.png)
 
 那么，这个队列为什么是迭代队列，而不直接设计成需求队列，开发直接取需求而不是取迭代呢？
 
@@ -85,9 +85,9 @@
 
 ### 活动日志
 
-研发人员在处理某个事项的时候，可以记录相关日志，为了更好的追踪。
+研发人员在处理某个事项的过程中，可以记录问题产生的原因、解决办法等相关日志。这样能更好的方便他人来追踪此事项。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/f51d0b98-35b7-4917-8367-5da7442617c7.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/f51d0b98-35b7-4917-8367-5da7442617c7.png)
 
 ### 事项看板
 
@@ -95,21 +95,21 @@
 
 如下图所示，我们可以看到有截止日期、优先级、状态和自定义四种看板。
 
-截止日期：未指定、已到期、已到期、30天内到期、未来。
+> **截止日期**：未指定、已到期、已到期、30天内到期、未来。
+>
+> **优先级**：紧急、高、中、低。
+>
+> **状态**：待处理、进行中、已完成。
+>
+> **自定义**：可以根据自己的业务需求制定自己的看板。
 
-优先级：紧急、高、中、低。
-
-状态：待处理、进行中、已完成。
-
-自定义：可以根据自己的业务需求制定自己的看板。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/9f86e25f-b0ff-4723-853f-43521e17ef27.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/30/ffa82283-1706-49fc-9d86-c929647d3719.png)
 
 ### 甘特图
 
 甘特图可以用来追踪研发计划完成的进度。还可以方便TL直观展示各成员的任务的分布情况，方便自己和管理人员对于人员任务的安排。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/13b789a5-24f3-4683-94e9-512fadc51a24.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/13b789a5-24f3-4683-94e9-512fadc51a24.png)
 
 ## 缺陷管理
 
@@ -117,11 +117,11 @@
 
 点击右上角`新建缺陷`按钮添加一个缺陷。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/52783e97-7ada-4d22-abb7-ef1b5aebf0be.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/52783e97-7ada-4d22-abb7-ef1b5aebf0be.png)
 
 如果一个缺陷关联了其他的需求、任务、缺陷时，可以在缺陷详情页面里关联事项。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/1747b5e5-256f-4175-8c7d-d3151e0f4261.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/28/1747b5e5-256f-4175-8c7d-d3151e0f4261.png)
 
 ## 事项工作流
 
@@ -131,11 +131,11 @@
 
 > DevOps 平台 -> 项目 -> 项目设置 -> 事项工作流
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/95152605-0faa-4062-b2f0-5ecda6fa0cea.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/95152605-0faa-4062-b2f0-5ecda6fa0cea.png)
 
 如需改变工作流类型，您可以选择具体的事项类型进行修改。可以进行状态设置，也可以进行流转设置。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/7046d79b-a9cc-4a80-b3f4-35f47cb3db49.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/7046d79b-a9cc-4a80-b3f4-35f47cb3db49.png)
 
 
 
@@ -147,4 +147,4 @@
 
 > DevOps 平台 -> 项目 -> 项目设置 -> 标签设置
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/ce3df06a-fdd3-425a-b082-529028b4be30.png)
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/ce3df06a-fdd3-425a-b082-529028b4be30.png)

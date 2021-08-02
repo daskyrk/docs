@@ -156,9 +156,9 @@ module.exports = {
                                     title: '代码质量',
                                     collapsable: true,
                                     children: [
-                                        ['dop/guides/application/codequality/sonar.md', '质量报告和问题列表'],
-                                        ['', '门禁规则配置'],
-                                        ['', '单元测试'],
+                                        ['dop/guides/application/codequality/report', '质量报告和问题列表'],
+                                        ['dop/guides/application/codequality/sonar', '门禁规则配置'],
+                                        ['dop/guides/application/codequality/unittest', '单元测试'],
                                     ]
                                 },
                             ]
