@@ -138,7 +138,10 @@ module.exports = {
                                 {
                                     title: '流水线',
                                     collapsable: true,
-                                    children: []
+                                    children: [
+                                        ['dop/guides/application/pipeline/pipeline-yml-graph', '图形化编辑'],
+                                        ['dop/guides/application/pipeline/execute-detail', '执行明细'],
+                                    ]
                                 },
                                 {
                                     title: '部署中心',
