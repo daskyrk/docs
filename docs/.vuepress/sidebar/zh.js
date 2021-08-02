@@ -44,6 +44,7 @@ module.exports = {
                     title: '使用指南',
                     collapsable: true,
                     children: [
+                        'cmp/guide/cluster-overview',
                         {
                             title: '集群管理',
                             collapsable: true,
@@ -51,6 +52,18 @@ module.exports = {
                                 'cmp/guide/cluster/management',
                                 'cmp/guide/cluster/autoscaling',
                                 'cmp/guide/cluster/cluster-node-labels',
+                            ]
+                        },
+                        'cmp/guide/dashboard',
+                        'cmp/guide/report',
+                        {
+                            title: '运维告警',
+                            collapsable: true,
+                            children: [
+                                'cmp/guide/alert/alarm-statistics',
+                                'cmp/guide/alert/alarm-strategy',
+                                'cmp/guide/alert/alarm-list',
+                                'cmp/guide/alert/alarm-custom',
                             ]
                         },
                     ]
@@ -202,6 +215,24 @@ module.exports = {
                     collapsable: true,
                     children: [
                         {
+                            title: '应用监控',
+                            collapsable: true,
+                            children: [
+                                'msp/examples/apm/service-dashboard',
+                                'msp/examples/apm/exception-alert',
+                                'msp/examples/apm/status-alert',
+                            ],
+                        },
+                        {
+                            title: '日志分析',
+                            collapsable: true,
+                            children: [
+                                'msp/examples/log/java-log-rule',
+                                'msp/examples/log/log-alert',
+                                'msp/examples/log/log-dashboard',
+                            ],
+                        },
+                        {
                             title: 'API 网关',
                             collapsable: true,
                             children: [
@@ -229,6 +260,15 @@ module.exports = {
                     collapsable: true,
                     children: [
                         {
+                            title: '应用监控',
+                            collapsable: true,
+                            children: [
+                                'msp/concepts/apm/observability',
+                                'msp/concepts/apm/arch',
+                                'msp/concepts/apm/concept',
+                            ],
+                        },
+                        {
                             title: 'API 网关',
                             collapsable: true,
                             children: [
@@ -250,6 +290,21 @@ module.exports = {
                     title: '最佳实践',
                     collapsable: true,
                     children: [
+                        {
+                            title: '应用监控',
+                            collapsable: true,
+                            children: [
+                                'msp/practice/apm/service-alert',
+                                'msp/practice/apm/pressure-test-dashboard',
+                            ],
+                        },
+                        {
+                            title: '日志分析',
+                            collapsable: true,
+                            children: [
+                                'msp/practice/log/log-to-diagnose-business-exception',
+                            ],
+                        },
                         {
                             title: 'API 网关',
                             collapsable: true,
@@ -281,10 +336,21 @@ module.exports = {
                                 'msp/guides/apm/browser-monitor-config',
                                 'msp/guides/apm/trace',
                                 'msp/guides/apm/status',
-                                'msp/guides/apm/alarm',
-                                'msp/guides/apm/custom-alarm',
+                                'msp/guides/apm/alert-config',
+                                'msp/guides/apm/alert-history',
+                                'msp/guides/apm/alert-index',
+                                'msp/guides/apm/alert-custom',
                                 'msp/guides/apm/dashboard',
                                 'msp/guides/apm/dashboard-advanced',
+                            ]
+                        },
+                        {
+                            title: '日志分析',
+                            collapsable: true,
+                            children: [
+                                'msp/guides/log/quickstart',
+                                'msp/guides/log/query',
+                                'msp/guides/log/rules',
                             ]
                         },
                         {
