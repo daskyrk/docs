@@ -65,8 +65,8 @@ module.exports = {
                     title: '场景示例',
                     collapsable: true,
                     children: [
-                        ['', 'Erda 的持续集成'],
-                        ['', '业务项目管理'],
+                        ['dop/examples/cicd', 'Erda 的持续集成'],
+                        ['dop/examples/project-management', '业务项目管理'],
                     ]
                 },
                 {
@@ -90,11 +90,11 @@ module.exports = {
                             children: [
                                 'dop/best-practices/CICD/deploy-from-git',
                                 'dop/best-practices/CICD/deploy-from-image',
-                                ['', '部署一个 Go Web 程序'],
-                                ['', '更灵活的自定义构建你的 Java 应用'],
-                                ['', '使用缓存加速你的构建'],
-                                ['', '使用Nexus加速你的构建'],
-                                ['', '你的镜像是如何被管理的'],
+                                ['dop/best-practices/CICD/deploy-from-go-build', '部署一个 Go Web 程序'],
+                                ['dop/best-practices/CICD/deploy-from-java-build', '更灵活的自定义构建你的 Java 应用'],
+                                ['dop/best-practices/CICD/deploy-from-caches-build', '使用缓存加速你的构建'],
+                                ['dop/best-practices/CICD/nexus', '使用Nexus加速你的构建'],
+                                ['dop/best-practices/CICD/manage-mirror', '你的镜像是如何被管理的'],
                                 {
                                     title: '开发语言',
                                     collapsable: true,
@@ -120,10 +120,10 @@ module.exports = {
                             children: [
                                 ['dop/guides/project/agile', '项目协同'],
                                 ['dop/guides/project/ticket', '工单'],
-                                ['', '项目大盘'],
-                                ['', '扩展服务'],
-                                ['', '资源汇总'],
-                                ['', '通知管理'],
+                                ['dop/guides/project/statistics', '项目大盘'],
+                                ['dop/guides/project/addon', '扩展服务'],
+                                ['dop/guides/project/resource-summary', '资源汇总'],
+                                ['dop/guides/project/notification-management', '通知管理'],
                             ]
                         },
                         {
@@ -133,7 +133,7 @@ module.exports = {
                                 {
                                     title: '代码仓库',
                                     collapsable: true,
-                                    children: []
+                                    children: ['dop/guides/application/codehub/code-hub']
                                 },
                                 {
                                     title: '流水线',
@@ -144,8 +144,8 @@ module.exports = {
                                     title: '部署中心',
                                     collapsable: true,
                                     children: [
-                                        ['', '制品部署'],
-                                        ['', '制品管理'],
+                                        ['dop/guides/application/deploy/release-deploy', '制品部署'],
+                                        ['dop/guides/application/deploy/release-manage', '制品管理'],
                                         'dop/guides/application/deploy/config',
                                         'dop/guides/application/deploy/config-center',
                                         'dop/guides/application/deploy/management',
@@ -156,7 +156,7 @@ module.exports = {
                                     title: '代码质量',
                                     collapsable: true,
                                     children: [
-                                        ['', '质量报告和问题列表'],
+                                        ['dop/guides/application/codequality/report', '质量报告和问题列表'],
                                         ['dop/guides/application/codequality/sonar', '门禁规则配置'],
                                         ['dop/guides/application/codequality/unittest', '单元测试'],
                                     ]
