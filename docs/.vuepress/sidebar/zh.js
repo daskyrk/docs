@@ -368,8 +368,8 @@ module.exports = {
               collapsable: true,
               children: [
                 'msp/guides/nc/dubbo',
-                'msp/guides/nc/spring-cloud',
-                'msp/guides/nc/spring',                              
+                'msp/guides/nc/springcloud',
+                'msp/guides/nc/spring',
               ]
             },
           ]
