@@ -387,7 +387,7 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['ecp/resource', '资源管理'],
-                        ['ecp/config-set', '配置管理'],
+                        ['ecp/config-set', '配置集管理'],
                         ['ecp/application', '应用管理'],
                     ]
                 },
@@ -407,7 +407,6 @@ module.exports = {
             title: '命令行工具',
             collapsable: true,
             children: [
-                'cli/deploy-by-code',
                 'cli/explain-args'
             ]
         },
