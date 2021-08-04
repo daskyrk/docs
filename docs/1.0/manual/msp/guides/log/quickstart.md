@@ -34,6 +34,7 @@ addons:
 
 - **monitor-collector**: 用于接收`filebeat`采集的应用日志，写入 `kafka`
 - **kafka**: 作为缓冲通道存储 `monitor-collector` 收集的日志，供 `log-exporter` 消费
+- **zookeeper**: 给kafka使用  
 - **log-exporter**: 读取kafka存储的日志，写入 `elaticsearch`
 - **elasticsearch**: 存储并索引日志数据
 
