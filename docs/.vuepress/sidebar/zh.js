@@ -78,7 +78,7 @@ module.exports = {
           title: '场景示例',
           collapsable: true,
           children: [
-            ['dop/examples/erda-project', 'Erda 的持续集成'],
+            ['dop/examples/erda-project', 'Erda 工程实践'],
             ['dop/examples/project-management', '业务项目管理'],
           ]
         },
