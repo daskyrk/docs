@@ -367,8 +367,9 @@ module.exports = {
                             title: '注册中心&配置中心',
                             collapsable: true,
                             children: [
-                                'msp/guides/nc/console',
-                                'msp/guides/nc/info',
+                                'msp/guides/nc/dubbo',
+                                'msp/guides/nc/springcloud',
+                                'msp/guides/nc/spring',
                             ]
                         },
                     ]
