@@ -41,4 +41,4 @@ addons:
 ## 进入日志分析模块查看数据
 
 部署完成之后，应用容器的日志会被收集并写入到日志分析的 `elasticsearch` 中，我们可以通过进入 `微服务治理平台` 模块，选择对应项目和环境后，点击左侧 `日志分析` 菜单进行日志数据的查看和操作
-
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/05/cd34efff-ee81-48e1-8c73-8aad9df9bdc7.png)
