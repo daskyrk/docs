@@ -11,12 +11,20 @@
 制品ID可在制品管理中查看
 :::
 
+部署完成之后，点击制品卡片，可查看制品的终端、微服务、动态、日志
+
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/a6d65aac-43d2-4de4-ad32-8d08ee30e63e.png)
 
 ## 修改部署
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/505aa8fb-0d33-4c2e-9f56-b8e3ca2a2f25.png)
 
 在部署中心中选择想要更新或删除的已被部署的制品旁的下拉菜单，点击更新/删除/重启即可
+
+更新操作可以重新选择一个制品以覆盖原有部署制品
+
+删除操作会从环境中删除一个制品的部署
+
+重启操作会重新部署该制品
 
 ## 跨集群部署
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/29/8278f955-6ede-43c1-ba41-2f135612829d.png)
