@@ -1,5 +1,14 @@
 # 性能数据
 
+## 从应答头观测网关附加的延时
+
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/06/9036125a-d18c-4dfe-8015-bfed3f54890e.png)
+
+如图所示，红框内的应答头 `x-kong-proxy-latency` 就是网关附加的处理延时，此例为 1 毫秒，如果为 0 说明小于 1 毫秒；
+
+应答头 `x-kong-upstream-latency` 则是从发送请求给后端服务，到收到后端完整应答的延时，此例为 6 毫秒。
+
+
 ## 压测数据
 
 实例数：1

@@ -251,15 +251,6 @@ module.exports = {
                                 'msp/examples/apigw/openapi',
                             ],
                         },
-                        {
-                            title: '注册中心&配置中心',
-                            collapsable: true,
-                            children: [
-                                'msp/examples/nc/dubbo',
-                                'msp/examples/nc/springcloud',
-                                'msp/examples/nc/spring',
-                            ],
-                        },
                     ]
                 },
                 {
