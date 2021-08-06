@@ -333,7 +333,17 @@ module.exports = {
                     title: '使用指南',
                     collapsable: true,
                     children: [
-                        ['msp/guides/apm/topology', '全局拓扑'],
+                        ['msp/guides/platform/msp-project', '创建微服务项目'],
+                        ['msp/guides/platform/msp-project-list', '平台总览'],
+                        ['msp/guides/platform/msp-overview', '项目列表'],
+                        'msp/guides/apm/topology',
+                        // {
+                        //     title: '微服务环境',
+                        //     collapsable: true,
+                        //     children: [
+                               
+                        //     ]
+                        // },
                         {
                             title: '应用监控',
                             collapsable: true,
