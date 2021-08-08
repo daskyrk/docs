@@ -3,11 +3,7 @@
 为更好地支持边缘应用的发布和运维，平台抽象化边缘场景的相关概念，并通过底层的 OpenYurt 以云原生的方式管理，从而将 Erda 本身具有的统一发布、服务编排、监控、日志等特性带入边缘场景。
 
 ## 站点（Node Pool）
-在边缘场景下，边缘节点一般具有明显的地域性，或是其他逻辑上的分组特性。不同分组的节点间通常存在网络不互通、资源不共享、资源异构、应用独立等隔离属性，这也是站点（Node Pool）的由来。
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/4a869d82-5ac1-443e-87e1-fdc883c06710.png)
-
-不同站点的节点会共享一个 Kubernetes 网络平面。理想状态下，同一个应用的流量应该在一个站点中闭环。在 K8s 中，Service 可以为 Pod 做均衡负载，访问 Service 时流量会被均衡地调度到后端的 Pod 中。
+在边缘场景下，往往一个边缘应用会由若干个微服务以及少量的中间件组成，业务场景相对比较简单，但是也需要一定的稳定性，因此也是需要高可用部署，对应的底层的计算资源也就需要多台服务器。我们将这一组服务器称之为站点，站点是地域分散的，站点之间的网络是互相隔离的，ECP 通过底层的 Node Pool 资源来管理这些站点的生命周期，提供给运维工程师资源管理的功能来有效纳管分布在不同地缘的海量计算资源。
 
 对于边缘场景下的部署来说，为了访问距离最近的 Pod，即在站点级别只访问本站点对应的 Pod，平台封装了 K8s Service Topology 特性，以实现站点级别的流量闭环。在创建边缘应用 SVC 时增加 `topologyKeys`，结合 Node Pool 的统一标签管理完成流量的站点级分发。
 
@@ -31,21 +27,33 @@ spec:
 ```
 
 ## 单元化部署
-不同于传统应用，边缘应用需要将相同的应用分发到多个地域的计算节点上。以 Deployment 为例，传统的做法是将同一地域的计算节点设置相同的 Label，再建立多个 Deployment，每一个 Deployment 经过 nodeSelectors 选定不一样的 Label，以此达到相同的应用部署到不同地域的需求。然而除了 name、nodeselectors、replicas 等特性外，这些 Deployment 的其他配置并无差异。
+不同于传统的 Kubernetes 应用，对边缘应用而言，是将传统的 Deployment 或者 StatefulSet 资源批量部署到海量的边缘站点上，也就是前文提到 Node Pool 资源，ECP 底层使用 UnitedDeployment 来描述这种边缘应用，UnitedDeployment 通过 topology 字段来描述一个 Deployment 或者 StatefulSet资源会被部署到那些 Node Pool 上以及每个 Node Pool 需要部署多少个副本，未来也可以扩展更多的站点级配置的字段，如下是一段简单的 topology 实例：
+```
+topology:
+    pools:
+    - name: beijing 
+      nodeSelectorTerm:
+        matchExpressions:
+        - key: apps.openyurt.io/nodepool
+          operator: In
+          values:
+          - beijing 
+      replicas: 1
+    - name: hangzhou 
+      nodeSelectorTerm:
+        matchExpressions:
+        - key: apps.openyurt.io/nodepool
+          operator: In
+          values:
+          - hangzhou 
+      replicas: 2
+      tolerations:
+      - effect: NoSchedule
+        key: apps.openyurt.io/example
+        operator: Exists
+```
 
-随着分布地域的增加，以及不同地域对应用的差异化需求的增长，运维也面临着越来越多的挑战：
-
-* 镜像版本升级，需要将 Deployment 逐一修改。
-* 需要自定义 Deployment 的命名规范，以此来代表相同的应用。
-* 边缘场景需求复杂，数量增加，每个节点池的 Deployment 都有一些差别化的配置，管理难度大。
-
-单元化部署（UnitedDeployment）通过更上层次的抽象，对这些 Deployment 进行统一管理（自动建立、更新、删除），如下图所示：
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/f082f9c6-6fc0-49cf-9717-8258c582116a.png)
-
-UnitedDeployment 控制器可以提供模板来定义应用，并通过管理多个 Workload 匹配不一样的区域。每个区域的 Workload 被称为 Pool， 目前支持两种 Workload，StatefulSet 和 Deployment。控制器会根据 UnitedDeployment 中 Pool 的配置建立子 workload 资源对象，每个资源对象都有期望的 replicas Pod 数量。如此一来，通过一个 UnitedDeployment 实例就可以自动维护多个 Deployment 或者 Statefulset 资源。
-
-Erda 边缘计算平台即通过底层封装 UnitedDeployment 来实现边缘应用的分发。
+Erda 边缘计算平台即通过底层封装 UnitedDeployment 来实现边缘应用的分发，同时解决了多个边缘应用之间的依赖问题。ECP 通过资源的监控以及日志组件实现了对边缘应用的统一监控以及统一日志采集， 同时基于 websocket 隧道实现了容器控制台的访问功能，是的对于边缘应用的运维管理可以像普通的云端应用的一样的简单高效。
 
 ## 配置集
 
