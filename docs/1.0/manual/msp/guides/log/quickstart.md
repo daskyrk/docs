@@ -27,7 +27,7 @@ addons:
 
 ## 重建流水线执行部署
 
-编辑并保存dice.yml之后，需要到重建应用对应分支的流水线，执行部署：
+编辑并保存erda.yml之后，需要到重建应用对应分支的流水线，执行部署：
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/04/bfd2b603-ad29-48b6-b18c-db97f810d12d.png)
 
 流水线执行成功之后，会在所部署的集群中部署日志分析的必要组件，包括：
