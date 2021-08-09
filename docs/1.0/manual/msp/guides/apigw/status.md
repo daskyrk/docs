@@ -2,7 +2,7 @@
 
 特定含义的状态码及应答如下：
 
-状态码|应答 body | 含义
+状态码|应答 Body | 含义
 :-----:|:--------:|:----:
 401    | {"message":"No authenticate credentials found"}  | 请求没有携带授权凭证
 403    | {"message":"Invalid authentication credentials"}  | 授权凭证鉴权失败
