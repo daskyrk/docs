@@ -18,7 +18,7 @@ Erda 边缘计算平台旨在解决分布在众多地理位置的同类应用问
 
 Erda 边缘计算平台默认使用镜像来发布应用，镜像可以是任意被边缘节点访问到的镜像仓库。推荐使用 [Docker Hub](https://www.docker.com/products/docker-hub)，利用 Erda 的流水线功能将代码打包成镜像并且推送到 Docker Hub 中。
 
-首先创建一个应用，编辑具备代码拉取、构建的 pipeline.yaml，再增加一个容器镜像推送的 Action 将打好的镜像推送到 Docker Hub 中，具体操作步骤如下：
+首先创建一个应用，编辑具备代码拉取、构建的 pipeline.yaml，再增加一个容器镜像推送的 Action 将打包好的镜像推送到 Docker Hub 中，具体操作步骤如下：
 
 1. 增加一个容器推送的节点。
 
