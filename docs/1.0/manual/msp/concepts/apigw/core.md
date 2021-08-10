@@ -8,6 +8,25 @@
 
 ![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/30/dc03d1f6-89f5-4dd7-850d-06582a1a88a7.png)
 
+流量入口是隶属于一个项目的某个环境的，这也限制了跨项目共用域名的情况。
+
+::: tip 集群级别的域名共用
+
+在一些特殊的企业环境中，对域名的管理会特别严格，例如必须要加独立的 DNS 解析，或者在企业自己的 LB 节点上添加域名转发配置。这时，可能需要将一个环境下的所有服务都收敛到同一个域名下。
+
+API 网关提供了针对集群泛域名生成的，四个环境域名，例如对于泛域名"app.terminus.io"，分别是以下域名：
+
+- gateway.app.terminus.io
+- staging-gateway.app.terminus.io
+- test-gateway.app.terminus.io
+- dev-gateway.app.terminus.io
+
+在 API 网关的流量入口中，默认会有一个特殊的“统一域名入口”，即是用于此场景的：
+
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/06/2a9f18d5-40f2-4946-95e9-6a2c5bde6ea2.png)
+
+:::
+
 查看流量入口的具体路由规则：
 
 ![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/30/e6e2b7e5-bdc1-4779-92cc-98c167ebcfd1.png)

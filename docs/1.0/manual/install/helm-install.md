@@ -15,7 +15,7 @@
 
 ## 安装步骤
 
-1. 在 Kubernetes Master 节点上下载 [压缩包](https://github.com/erda-project/erda/releases) 并解压。
+1. 从 Kubernetes Master 节点下载 [安装包](https://github.com/erda-project/erda/releases) 并解压。
 	
    ```shell
    tar -xzvf erda-linux.tar.gz
@@ -26,21 +26,20 @@
    当前仅支持 Linux 系统。
    :::
    
-2. 在 Kubernetes Master 节点上设置安装 Erda 时的必要配置。
+2. 在 Kubernetes Master 节点进行安装配置。
 
-   * 请确保 `~/.kube/` 路径下有 kubeconfig 文件。
+   * 确认 `~/.kube/` 路径下有 `kubeconfig` 文件，且文件中有如下配置：
 
-   - 请确保 kubeconfig 文件中有如下配置：
-   	- `certificate-authority-data`
-   	- `client-certificate-data`
-   	- `client-key-data`
+     * `certificate-authority-data`
+     * `client-certificate-data`
+     * `client-key-data`
 
-   - 设置 Erda 安装前的配置并执行 `prepare.sh` 脚本，脚本中会执行如下操作:
+   - 完成 Erda 安装前期所需配置，并执行 `prepare.sh` 脚本，脚本中会运行如下操作：
 
      - 生成 etcd 的 SSL
      - 生成多集群管理的 SSL
-     - 为节点设置上 Erda 应用所需要用的标签
-     - Erda 安装工具中需要的一些配置
+     - 为节点设置 Erda 应用所需标签
+     - Erda 安装工具中所需配置
 
      ```shell
      # 可以在此处指定 Erda 组件所在的命名空间，默认为 default 且当前仅支持 default 命名空间
@@ -56,7 +55,7 @@
      bash scripts/prepare.sh
      ```
 
-   - 修改 docker daemon 文件中的 `insecure-registries` 字段。
+   - 修改 `/docker/daemon` 文件中的 `insecure-registries` 字段。
 
       ```shell
       # 在*每台节点*上编辑 /etc/docker/daemon.json 文件
@@ -70,9 +69,9 @@
       systemctl restart docker
       ```
 
-   - 在每个节点上设置 NFS 作为网络共享存储
+   - 在每个节点上设置 NFS 作为网络共享存储。
 
-      - 如您有如阿里云的网络共享存储您可以用如下命令将其设置在每台节点上:
+      - 如果您已经有网络共享存储（如阿里云），可运行如下命令将其设置在每个节点上：
       
         ```shell
         mount -t <storage_type> <your-share-storage-node-ip>:<your-share-storage-dir> /netdata
@@ -82,13 +81,13 @@
         mount -t nfs -o vers=4,minorversion=0,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport file-system-id.region.nas.aliyuncs.com:/ /netdata  
         ```
 
-      - 否则您需要执行如下脚本，它会协助安装 NFS 组件，在当前节点上创建 `/netdata` 文件夹并将其挂载到剩余的节点上
+      - 或者执行如下脚本，以协助安装 NFS 组件，在当前节点上创建 `/netdata` 文件夹并将其挂载到剩余节点。
 
         ```shell
         bash scripts/storage_prepare.sh
         ```
       
-   - 您需要在 LB 机器上开放 80， 443 端口，这台机器将承载所有的外部流量。
+   - 在 LB 机器上开放 80，443 端口，这台机器将承载所有的外部流量。
 
       ```shell
       # 您可以使用如下命令在您的 Kubernetes 集群上找到 LB 节点：
@@ -96,9 +95,12 @@
       kubectl get node -o wide --show-labels | grep dice/lb
       ```
 
-      - 记住节点的 IP，您将会在后续设置泛域名时用到该节点 IP。
+      ::: tip
+      该节点 IP 将用于后续泛域名设置，请妥善保存。
+      :::
+      
 
-3. 通过 Helm 安装 Erda Helm 包，并且等待所有的 Erda 组件准备就绪。
+3. 通过 Helm 安装 Erda Helm 包，并等待所有的 Erda 组件准备就绪。
 
    ```shell
    # 安装 erda-base
@@ -111,9 +113,9 @@
    helm install package/erda-$(cat VERSION).tgz --generate-name
    ```
 
-4. 安装 Erda 平台组件之后
+4. 安装 Erda 平台组件。
 
-   - 设置管理员用户名和密码，用于推送 Erda 扩展组件（扩展组件将作为一种插件被用于流水线）
+   - 设置管理员用户名和密码，用于推送 Erda 扩展组件（扩展组件将作为一种插件应用于流水线）。
 
      ```shell
      export ERDA_ADMIN_USERNAME=admin
@@ -122,27 +124,35 @@
      bash scripts/push-ext.sh
      ```
 
-   - 如果您购买了真实的泛域名，您需要将其与上述获取到的 LB 节点 IP 绑定
+   - 如果您购买了真实的泛域名，请将该泛域名与之前获取到的 LB 节点 IP 绑定。
 
-     > 例如，假设您有 LB 节点的 IP 为 10.0.0.1，泛域名(ERDA_GENERIC_DOMAIN 变量中设置)为 `erda.io`, 您需要将 LB 节点 IP 与泛域名在您的解析器（如 DNS 或 F5 服务器）上绑定
+     ::: details 示例如下：
 
-   - 如果没有真实的泛域名地址, 您需要在您浏览器所在的机器上将下列的 URL 写到 `etc/hosts` 文件中，请替换 IP 为 **LB 节点**的 IP
+     假设您有 LB 节点的 IP 为 10.0.0.1，泛域名（ERDA_GENERIC_DOMAIN 变量中设置）为 `erda.io`，您需要在解析器（如 DNS 或 F5 服务器）上，将 LB 节点 IP 与泛域名绑定。
 
-     > 例如:  假设您有 LB 节点的 IP 为 10.0.0.1，泛域名（ERDA_GENERIC_DOMAIN 变量中设置）为 `erda.io`, org-name 为 `erda-test`. 所以您需要将下列的信息写入到 `/etc/hosts` 文件中
+     :::
+
+   - 如果没有真实的泛域名，您需要在浏览器所在机器上，将下列 URL 写入 `etc/hosts` 文件，并替换 IP 为 LB 节点的 IP。
+
+     ::: details 示例如下：
+
+     假设您有 LB 节点的 IP 为 10.0.0.1，泛域名（ERDA_GENERIC_DOMAIN 变量中设置）为 `erda.io`，org-name 为 `erda-test`，您需要将下列信息写入 `/etc/hosts` 文件。
 
      ```shell
-  10.0.0.1 collector.erda.io
+      10.0.0.1 collector.erda.io
      10.0.0.1 openapi.erda.io
-  10.0.0.1 uc.erda.io
+      10.0.0.1 uc.erda.io
      10.0.0.1 erda.io
      # 注意: org-name 举例为 erda-test
      10.0.0.1 erda-test-org.erda.io
      ```
-   
-   - 将您创建好的组织名称作为标签设置到您的 Kubernetes 节点上（组织名称是 Erda 中的一种组）
-   
+
+     :::
+
+   - 将创建的组织名称作为标签，设置到您的 Kubernetes 节点上。
+
      ```shell
-  kubectl label node <node_name> dice/org-<orgname>=true --overwrite
+      kubectl label node <node_name> dice/org-<orgname>=true --overwrite
      ```
 
 5. 在您设置过 `/etc/hosts` 文件的机器上用浏览器访问 http://erda.io，开始您的 Erda 之旅。

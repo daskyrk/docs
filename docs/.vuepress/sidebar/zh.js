@@ -78,8 +78,15 @@ module.exports = {
                     title: '场景示例',
                     collapsable: true,
                     children: [
-                        ['dop/examples/erda-project', 'Erda 的持续集成'],
+                        ['dop/examples/erda-project', 'Erda 工程实践'],
                         ['dop/examples/project-management', '业务项目管理'],
+                        'dop/examples/deploy/deploy-from-git',
+                        'dop/examples/deploy/deploy-from-image',
+                        'dop/examples/deploy/deploy-from-go-build',
+                        'dop/examples/deploy/deploy-from-java-build',
+                        'dop/examples/deploy/deploy-from-caches-build',
+                        'dop/examples/deploy/nexus',
+                        ['dop/examples/deploy/manage-mirror', '你的镜像是如何被管理的'],
                     ]
                 },
                 {
@@ -88,8 +95,9 @@ module.exports = {
                     children: [
                         ['dop/concepts/overview', '概述 | Overview'],
                         ['dop/concepts/agile-info', '高效协同'],
-                        ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
                         ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
+                        ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
+                        ['dop/concepts/artifact', '制品'],
                         ['dop/concepts/gitflow', 'gitflow'],
                     ]
                 },
@@ -97,29 +105,7 @@ module.exports = {
                     title: '最佳实践',
                     collapsable: true,
                     children: [
-                        {
-                            title: 'CI/CD',
-                            collapsable: true,
-                            children: [
-                                'dop/best-practices/CICD/deploy-from-git',
-                                'dop/best-practices/CICD/deploy-from-image',
-                                ['dop/best-practices/CICD/deploy-from-go-build', '部署一个 Go Web 程序'],
-                                ['dop/best-practices/CICD/deploy-from-java-build', '更灵活的自定义构建你的 Java 应用'],
-                                ['dop/best-practices/CICD/deploy-from-caches-build', '使用缓存加速你的构建'],
-                                ['dop/best-practices/CICD/nexus', '使用Nexus加速你的构建'],
-                                ['dop/best-practices/CICD/manage-mirror', '你的镜像是如何被管理的'],
-                                {
-                                    title: '开发语言',
-                                    collapsable: true,
-                                    children: [
-                                        'dop/best-practices/CICD/language/java',
-                                        'dop/best-practices/CICD/language/javascript',
-                                        'dop/best-practices/CICD/language/php',
-                                        'dop/best-practices/CICD/language/go',
-                                    ]
-                                },
-                            ]
-                        },
+                        'dop/best-practices/api-management',
                     ]
                 },
                 {
@@ -128,78 +114,99 @@ module.exports = {
                     children: [
                         ['dop/guides/overview', '概述 | Overview'],
                         {
-                            title: '项目管理',
+                            title: '协同',
                             collapsable: true,
                             children: [
-                                ['dop/guides/project/agile', '项目协同'],
-                                ['dop/guides/project/ticket', '工单'],
-                                ['dop/guides/project/statistics', '项目大盘'],
-                                ['dop/guides/project/addon', '扩展服务'],
-                                ['dop/guides/project/resource-summary', '资源汇总'],
-                                ['dop/guides/project/notification-management', '通知管理'],
+                                'dop/guides/collaboration/milestone',
+                                'dop/guides/collaboration/backlog-and-iteration',
+                                'dop/guides/collaboration/ticket',
+                                'dop/guides/collaboration/issue',
+                                'dop/guides/collaboration/issue-requirement-and-task',
+                                'dop/guides/collaboration/issue-bug',
+                                'dop/guides/collaboration/issue-customize-and-workflow',
+                                'dop/guides/collaboration/statistics',
+                                'dop/guides/collaboration/label',
+                                'dop/guides/collaboration/notification',
                             ]
                         },
                         {
-                            title: '应用管理',
+                            title: '代码',
                             collapsable: true,
                             children: [
-                                {
-                                    title: '代码仓库',
-                                    collapsable: true,
-                                    children: ['dop/guides/application/codehub/code-hub']
-                                },
-                                {
-                                    title: '流水线',
-                                    collapsable: true,
-                                    children: [
-                                        ['dop/guides/application/pipeline/pipeline-yml-graph', '图形化编辑'],
-                                        ['dop/guides/application/pipeline/execute-detail', '执行明细'],
-                                    ]
-                                },
-                                {
-                                    title: '部署中心',
-                                    collapsable: true,
-                                    children: [
-                                        ['dop/guides/application/deploy/release-deploy', '制品部署'],
-                                        ['dop/guides/application/deploy/release-manage', '制品管理'],
-                                        'dop/guides/application/deploy/config',
-                                        'dop/guides/application/deploy/config-center',
-                                        'dop/guides/application/deploy/management',
-                                        'dop/guides/application/deploy/metrics_logs.md',
-                                    ]
-                                },
-                                {
-                                    title: '代码质量',
-                                    collapsable: true,
-                                    children: [
-                                        ['dop/guides/application/codequality/report', '质量报告和问题列表'],
-                                        ['dop/guides/application/codequality/sonar', '门禁规则配置'],
-                                        ['dop/guides/application/codequality/unittest', '单元测试'],
-                                    ]
-                                },
+                                'dop/guides/code/code-hosting',
+                                'dop/guides/code/branch-and-tag',
+                                'dop/guides/code/merge-request',
                             ]
                         },
-                        ['dop/api-management', 'API集市'],
                         {
-                            title: '测试平台',
+                            title: 'API',
                             collapsable: true,
                             children: [
-                                'dop/testing/auto-test-getting-started',
-                                'dop/testing/function-test',
+                                'dop/guides/api/api-design',
+                            ]
+                        },
+                        {
+                            title: '开发语言',
+                            collapsable: true,
+                            children: [
+                                'dop/guides/language/java',
+                                'dop/guides/language/javascript',
+                                'dop/guides/language/php',
+                                'dop/guides/language/go',
+                            ]
+                        },
+                        {
+                            title: '部署和管理',
+                            collapsable: true,
+                            children: [
+                                'dop/guides/deploy/artifact-and-build',
+                                'dop/guides/deploy/deploy-from-artifact',
+                                'dop/guides/deploy/addon-out-of-box',
+                                'dop/guides/deploy/addon-custom',
+                                'dop/guides/deploy/deploy-by-cicd-pipeline',
+                                'dop/guides/deploy/config',
+                                'dop/guides/deploy/config-center',
+                                'dop/guides/deploy/db-migration',
+                                'dop/guides/deploy/management',
+                                'dop/guides/deploy/metrics_logs',
+                                'dop/guides/deploy/resource-management',
+                                'dop/guides/deploy/block-deploy',
+                            ]
+                        },
+                        {
+                            title: 'CI/CD Pipeline',
+                            collapsable: true,
+                            children: [
+                                'dop/guides/cicd-pipeline/pipeline-yml-config',
+                                'dop/guides/cicd-pipeline/pipeline-yml-graph',
+                                'dop/guides/cicd-pipeline/pipeline-execution',
+                                'dop/guides/cicd-pipeline/pipeline-customize-and-extension',
+                            ]
+                        },
+                        {
+                            title: '质量保障和测试',
+                            collapsable: true,
+                            children: [
+                                'dop/guides/qa-and-testing/sonar-report',
+                                'dop/guides/qa-and-testing/sonar-quality-gate',
+                                'dop/guides/qa-and-testing/unit-test',
+                                'dop/guides/qa-and-testing/auto-test-getting-started',
+                                'dop/guides/qa-and-testing/testing-in-cicd-pipeline',
+                                'dop/guides/qa-and-testing/function-test',
                             ]
                         },
                         {
                             title: '移动开发',
                             collapsable: true,
                             children: [
-                                'dop/mobileapp/basic',
-                                'dop/mobileapp/framework',
-                                'dop/mobileapp/local-environment',
-                                'dop/mobileapp/howto-dev',
-                                'dop/mobileapp/management',
-                                'dop/mobileapp/certificates',
-                                'dop/mobileapp/libraries',
-                                'dop/mobileapp/ios-ci'
+                                'dop/guides/mobileapp/basic',
+                                'dop/guides/mobileapp/framework',
+                                'dop/guides/mobileapp/local-environment',
+                                'dop/guides/mobileapp/howto-dev',
+                                'dop/guides/mobileapp/management',
+                                'dop/guides/mobileapp/certificates',
+                                'dop/guides/mobileapp/libraries',
+                                'dop/guides/mobileapp/ios-ci'
                             ]
                         },
                     ]
@@ -242,15 +249,6 @@ module.exports = {
                                 'msp/examples/apigw/access-limit',
                                 'msp/examples/apigw/cors',
                                 'msp/examples/apigw/openapi',
-                            ],
-                        },
-                        {
-                            title: '注册中心&配置中心',
-                            collapsable: true,
-                            children: [
-                                'msp/examples/nc/dubbo',
-                                'msp/examples/nc/springcloud',
-                                'msp/examples/nc/spring',
                             ],
                         },
                     ]
@@ -326,7 +324,17 @@ module.exports = {
                     title: '使用指南',
                     collapsable: true,
                     children: [
-                        ['msp/guides/apm/topology', '全局拓扑'],
+                        ['msp/guides/platform/msp-project', '创建微服务项目'],
+                        ['msp/guides/platform/msp-project-list', '平台总览'],
+                        ['msp/guides/platform/msp-overview', '项目列表'],
+                        'msp/guides/apm/topology',
+                        // {
+                        //     title: '微服务环境',
+                        //     collapsable: true,
+                        //     children: [
+                               
+                        //     ]
+                        // },
                         {
                             title: '应用监控',
                             collapsable: true,
@@ -367,8 +375,9 @@ module.exports = {
                             title: '注册中心&配置中心',
                             collapsable: true,
                             children: [
-                                'msp/guides/nc/console',
-                                'msp/guides/nc/info',
+                                'msp/guides/nc/dubbo',
+                                'msp/guides/nc/springcloud',
+                                'msp/guides/nc/spring',
                             ]
                         },
                     ]
@@ -387,7 +396,7 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['ecp/resource', '资源管理'],
-                        ['ecp/config-set', '配置管理'],
+                        ['ecp/config-set', '配置集管理'],
                         ['ecp/application', '应用管理'],
                     ]
                 },
@@ -407,7 +416,6 @@ module.exports = {
             title: '命令行工具',
             collapsable: true,
             children: [
-                'cli/deploy-by-code',
                 'cli/explain-args'
             ]
         },

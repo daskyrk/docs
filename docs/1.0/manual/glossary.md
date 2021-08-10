@@ -24,7 +24,7 @@ APM（Application Performance Management，应用性能管理）对企业的应�
 
 **CI**
 
-CI（Continuous Integration，持续集成）将各个开发人员的工作集合在一个代码仓库中，新提交的代码在最终合并到主干前，需要经过编译和自动化测试流进行验证，以尽早发现问题，保障代码质量。
+CI（Continuous Integration，持续集成）将各个开发人员的工作集合在一个代码仓库中，新提交的代码在最终合并到主干前，需要经过编译和自动化测试流程进行验证，以尽早发现问题，保障代码质量。
 
 
 
