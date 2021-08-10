@@ -68,7 +68,7 @@
 | ---- | ---- | ---- |
 | request-id | 关联请求ID | request-id=bc3d8ffa-5388-4c76-861b-f121955c2dec |
 
-对于 java 应用，还可以结合使用 Mapped Diagnostic Context(MDC) 来向日志中插入自定义标签，agent 会感知到 MDC 中的值并自动按照前述格式插入到日志的 `ext_info` 位置。
+对于 java 应用，还可以结合使用 slf4j 提供的 Mapped Diagnostic Context(MDC) 来向日志中插入自定义键值对，agent 会感知到 MDC 中的值并自动按照前述格式作为标签插入到日志的 `ext_info` 位置。
 
 ## 日志数量统计图表区
 
