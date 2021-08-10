@@ -62,11 +62,13 @@
 ```
 如上日志输出，正则表达式的 `ext_info` 分组将匹配出 `apm-demo-api,bc3d8ffa-5388-4c76-861b-f121955c2dec,tag1=value1,tag2=value2`，其中 `tag1=value1,tag2=value2` 部分便是允许业务插入自定义标签的位置。 前两个逗号分割的内容，目前是保留字段，专用于 Trace 信息的插入，如示例中的`bc3d8ffa-5388-4c76-861b-f121955c2dec`便为当前日志所对应的请求的ID。
 
-如果是 java 或 nodejs 应用，通过平台提供的对应的 agent，可以实现自动的注入 Trace 信息，当前注入的信息主要是请求ID：
+如果是 java 或 nodejs 应用，通过平台提供的对应的 agent，会自动的注入 Trace 信息，当前注入的信息主要是请求ID：
 
 | 标签 | 含义 | 示例 |
 | ---- | ---- | ---- |
 | request-id | 关联请求ID | request-id=bc3d8ffa-5388-4c76-861b-f121955c2dec |
+
+对于 java 应用，还可以结合使用 Mapped Diagnostic Context(MDC) 来向日志中插入自定义标签，agent 会感知到 MDC 中的值并自动按照前述格式插入到日志的 `ext_info` 位置。
 
 ## 日志数量统计图表区
 
