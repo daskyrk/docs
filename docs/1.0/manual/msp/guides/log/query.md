@@ -77,6 +77,7 @@
 ## 日志信息列表区
 
 日志信息列表分页展示符合筛选条件的日志详细列表。
+
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/09/4c9de1a5-5367-49fc-86e0-eaecb0b2fb06.png)
 
 如上图所示，列表中的每行数据，支持点击行首的 `+` 号展开查看日志的 Text 或 Json 格式。
