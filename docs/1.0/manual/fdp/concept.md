@@ -6,7 +6,7 @@
 
 平台主要包含三大产品线：数据开发套件、数据科学套件和数据资产套件。
 
-![img](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/257802/1625466805858-25aa68ba-9b69-406d-a6bf-b977bd36357d.png)
+![](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/257802/1625466805858-25aa68ba-9b69-406d-a6bf-b977bd36357d.png)
 
 平台中各模块的定位如下：
 
