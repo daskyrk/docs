@@ -31,7 +31,7 @@ cat ~/.erda.d/config
 server: https://openapi.example.io
 ```
 
-::: tip
+::: tip 提示
 
 CLI 的多数子命令需在登陆后执行，但有少数命令无需登录也能执行，例如 dice.yml 相关命令。
 
@@ -48,7 +48,7 @@ password: (hidden password)
 ✔ Successfully login as XXX
 ```
 
-:::tip
+:::tip 提示
 登录成功后会保存 Session，Session 过期则需要重新登录。
 :::
 
