@@ -29,7 +29,7 @@
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/1f1e2353-7c4e-4220-bf46-47a1670d2a30.png)
 
-::: tip  
+::: tip 提示
 
 配置项变更后，需重启对应站点下的应用才能生效。
 
@@ -41,7 +41,7 @@
 
 在 **配置集管理** 页面，选择对应的配置集，点击 **删除**。
 
-::: warning  
+::: warning 警告
 
 删除配置集会删除该配置集下的所有配置项。
 
