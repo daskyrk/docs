@@ -66,7 +66,7 @@
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/10/c4b5133d-15cf-4691-8031-d6cf4bfad083.png)
 
 | 配置项           | 含义                                                         |
-| ---------------- | ------------------------------------------------------------ |
+| :--------------- | :----------------------------------------------------------- |
 | 允许的 HTTP 方法   | 作为跨域应答头 `Access-Control-Allow-Methods` 的值           |
 | 允许的 HTTP 请求头 | 作为跨域应答头 `Access-Control-Allow-Headers` 的值（因浏览器兼容性问题，请勿配置为通配符 “*”） |
 | 允许的跨域地址   | 作为跨域应答头 `Access-Control-Allow-Origin` 的值            |
@@ -153,14 +153,14 @@ proxy_set_header hello world;
 
 用户在访问恶意站点时会触发恶意脚本。跨站攻击能够在用户无感知的情况下，发起修改用户信息的请求。由于浏览器记录了用户 Cookie，该请求便可以顺利通过认证，进行恶意篡改。具体示意如下：
 
-![csrf1](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2019/08/30/f8d7b58e-ca94-44dd-97b2-f07e4a5334c9.jpg)
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2019/08/30/f8d7b58e-ca94-44dd-97b2-f07e4a5334c9.jpg)
 
 跨站防护开启后，会在用户登录成功时种下 CSRF Token，同时配合前端改造，对所有请求均带上 CSRF Token。网关收到请求后会对 CSRF Tokenn 进行校验，确认属于当前用户后，才会将请求正常转发给后端。具体示意如下：
 
-![csrf2](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2019/08/30/bb252336-b2cf-44d4-89be-92581ccd2d52.jpg)
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2019/08/30/bb252336-b2cf-44d4-89be-92581ccd2d52.jpg)
 
 | 配置项                 | 含义                                                         |
-| ---------------------- | ------------------------------------------------------------ |
+| :--------------------- | :----------------------------------------------------------- |
 | 鉴别用户的 Cookie 名称 | 用于生成 CSRF Token，未携带该 Cookie 则不会进行 CSRF 校验，后端识别该 Cookie 过期时需配合前端进行清除，避免缺失 CSRF Token 导致登录报错 |
 | 关闭校验的 HTTP 方法 | 对于这类请求方法，将跳过 CSRF 校验，但仍会种下 CSRF-Token 的 Cookie |
 | Token 名称       | 网关将生成的 CSRF Token 设置在该名称的 Cookie 里，前端需从 Cookie 中获取 CSRF Token，带在同名请求头里发起请求 |
