@@ -43,7 +43,7 @@
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/e40c1592-c97c-46aa-849f-8d49d2559fff.png)
 
-::: tip 
+::: tip 提示
 初始化成功会出现 Success 提示。若无提示，请查看安装日志 `/tmp/edge-install.log` 排查错误。
 :::
 
@@ -55,7 +55,7 @@
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/a16b350f-417a-4c12-bc86-7b07c850da0b.png)
 
-::: tip  
+::: tip 提示
 
 如有以下情况，下线节点前需先下线应用：
 
@@ -70,7 +70,7 @@
 
 在 **站点管理** 页面，选择对应的边缘站点，点击 **删除**。
 
-::: warning
+::: warning 警告
 
 删除边缘站点会清空该边缘站点绑定的所有配置项 。
 
