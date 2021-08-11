@@ -9,15 +9,25 @@
 
 ## 查看执行
 可在界面上看到各个action当前的执行状态，鼠标悬浮在特定的action上，可以看到相应的结果
+
 ![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/31/2311b0cf-d294-4693-aa13-fd42d6285b25.png
 )
 
-## 查看action执行日志
-点击相应action上的日志按钮，可以查看执行日志
+## 查看 action 执行日志
+点击相应action上的日志按钮，可以查看执行日志。
+
 ![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/31/7c841350-8408-4865-88eb-ba38b768bad4.png)
-还可以根据需要下载日志，查看标准日志等
+还可以根据需要下载日志，切换成错误日志等
+
+## 查看 action 错误日志
+点击相应action上的日志按钮，可以查看执行日志，点击标准按钮则可以切换成错误执行日志。
+在流水线运行失败时可以查看错误日志，错误日志会打印具体的错误信息。
+
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/10/700c0f9a-9956-4fa7-bc61-5cc560e0b81f.png)
+还可以根据需要下载日志，切换成标准日志等
 
 ## 查看历史执行明细
 点击右上角的执行记录按钮，可以选择历史执行明细查看
+
 ![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/31/2216c4e6-55e5-41b5-865e-b8b7fbc3ace9.png)
 点击需要的历史记录后，将可以看到相应的历史执行明细
