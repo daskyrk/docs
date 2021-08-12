@@ -1,5 +1,5 @@
 <template>
-  <router-link class="post-category" :to="'/blog/category/' + category">
+  <router-link class="post-category" :to="'/blog/' + category">
     <iconpark-icon name="folder-close"></iconpark-icon>
     <span>{{ categoryMap[category] || category }}</span>
   </router-link>

@@ -57,7 +57,6 @@
 </template>
 
 <script>
-
 import Vue from "vue";
 import dayjs from "dayjs";
 import dayjsPluginUTC from "dayjs/plugin/utc";
@@ -72,7 +71,7 @@ import BlogCategories from "@theme/components/BlogCategories.vue";
 dayjs.extend(dayjsPluginUTC);
 
 export default {
-  components: {  PostCategory, CategoryLink, BlogCategories },
+  components: { PostCategory, CategoryLink, BlogCategories },
   data() {
     return {
       paginationComponent: null,
@@ -210,8 +209,7 @@ export default {
   font-weight: 200;
 }
 
-.ui-post-tag,
-.ui-post-category {
+.ui-post-tag, .ui-post-category {
   color: rgba($darkTextColor, 0.54);
   font-weight: 200;
 
@@ -226,5 +224,4 @@ export default {
     }
   }
 }
-
 </style>

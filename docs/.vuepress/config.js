@@ -128,7 +128,7 @@ module.exports = ctx => ({
             // Decide that the frontmatter keys will be grouped under this classification
             keys: ['category'],
             // Path of the `entry page` (or `list page`)
-            path: '/blog/category/',
+            path: '/blog/',
             // Layout of the `entry page`
             layout: 'Blog-Layout',
             // Layout of the `scope page`

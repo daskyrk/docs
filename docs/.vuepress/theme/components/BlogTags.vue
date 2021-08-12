@@ -8,17 +8,18 @@
 import BlogTag from "@theme/components/BlogTag.vue";
 
 export default {
-  components: {  BlogTag },
+  components: { BlogTag },
 
-  props: ['tags'],
-}
+  props: ["tags"],
+};
 </script>
 
 <style lang="stylus">
-.blog-tags
-  width 66%
+.blog-tags {
 
-@media screen and (max-width: 1000px)
-  .blog-tags
-    width 90%
+  a {
+    border: 1px solid $borderColor;
+  }
+}
+
 </style>

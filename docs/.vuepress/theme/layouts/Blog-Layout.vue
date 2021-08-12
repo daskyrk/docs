@@ -3,8 +3,11 @@
     <BlogNavbar v-if="shouldShowNavbar" />
 
     <div class="blog-layout">
-      <BlogList v-if="$pagination" />
-      <Post v-else />
+      <ClientOnly>
+        <BlogTags v-if="$route.path ==='/blog/'" :tags="$frontmatterKey.list" />
+        <BlogList v-else-if="$pagination" />
+        <Post v-else />
+      </ClientOnly>
     </div>
   </div>
 </template>
@@ -13,6 +16,7 @@
 import BlogNavbar from "@theme/components/BlogNavbar.vue";
 import BlogList from "@theme/components/BlogList.vue";
 import Post from "@theme/components/Post.vue";
+import BlogTags from "@theme/components/BlogTags.vue";
 
 export default {
   name: "Blog-Layout",
@@ -20,6 +24,7 @@ export default {
   components: {
     BlogNavbar,
     BlogList,
+    BlogTags,
     Post,
   },
 
@@ -77,7 +82,6 @@ export default {
       }
     },
   },
-
 };
 </script>
 
