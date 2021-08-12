@@ -103,7 +103,7 @@ export default {
   max-width: 25rem;
   max-height: calc(100% - 190px);
   overflow: auto;
-  border-left: 0.2rem $accentColor solid;
+  border-left: 0.2rem $activeColor solid;
   font-size: 14px;
   font-weight: 500;
   transition: max-height 0.25s;
@@ -134,11 +134,11 @@ ul .side-anchor-link {
 }
 
 ul .side-anchor-link:hover {
-  color: $highlightColor;
+  color: $activeColor;
 }
 
 .side-anchor-link.active {
-  color: $accentColor;
+  color: $activeColor;
 }
 
 .side-anchor::-webkit-scrollbar {
