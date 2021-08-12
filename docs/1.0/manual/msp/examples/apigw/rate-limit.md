@@ -2,7 +2,7 @@
 
 ## erda.yml 配置
 
-削峰填谷限流支持通过 erda.yml 配置，具体配置方式详见[使用 erda.yml 管理配置](./config.md)
+您可以通过 `erda.yml` 配置削峰填谷的限流，具体请参见 [使用 erda.yml 管理配置](./config.md)。
 
 ```yaml
       policies:
@@ -19,51 +19,49 @@
 
 ## 流量入口 API 策略设置
 
-也可以通过流量入口下的 API 策略，基于交互式控制台进行配置
+您也可以通过流量入口下的 API 策略进行配置。
 
-::: tip
+具体操作路径如下：
 
-如果已经使用 erda.yml 进行了配置，会覆盖此处配置
+- 全局策略：进入 **微服务治理平台 > API 网关 > 流量入口管理**，选择对应的流量入口，点击 **详情 > 全局策略 > 安全策略 > 服务负载保护**。
+- 具体 API 策略：进入 **微服务治理平台 > API 网关 > 流量入口管理**，选择对应的流量入口，点击 **详情** 后选择对应的 API，点击 **策略 > 安全策略 > 服务负载保护**。
+
+::: tip 提示
+
+如果您已通过 `erda.yml` 完成了配置，前者将覆盖此处配置。
 
 :::
 
-具体操作入口：
-
-- 全局策略：API 网关控制面板->流量入口管理->选择对应的流量入口，点击详情->全局策略->安全策略下的`服务负载保护`
-- 针对具体 API 的策略：API网关控制面板->流量入口管理->选择对应的流量入口，点击详情->选择对应的 API，点击策略->安全策略下的`服务负载保护`
-
-## 配置示例
-
 ### 示例一
 
-**需求**
+若需求为：
 
-- 限制流量入口下所有 API 各自的最大接收请求速率为 100 次/秒
-- 当超过 100 次/秒时，通过增加延迟的方式对请求进行削峰填谷，并且延迟不得超过 50 毫秒
-- 削峰填谷后仍然超出 100 次/秒，则超出部分的请求返回 429 状态码，将 http 应答体设置为 `System is busy, please try it later.`
+- 限制流量入口下所有 API 的最大接收请求速率为 100 次/秒。
+- 当超过 100 次/秒时，通过增加延迟的方式对请求进行削峰填谷，且延迟不超过 50 毫秒。
+- 如削峰填谷后仍超过 100 次/秒，则超出部分的请求返回 429 状态码，HTTP 应答体设置为 “System is busy, please try it later.”。
 
+则配置示意如下：
 
-**配置截图示意**
-
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/06/d5155189-af2f-431f-9b1a-fd1156d79d3c.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/e78bd432-dde4-4fcc-b01b-f7060e00e8fc.png)
 
 ### 示例二
 
-**需求**
+若需求为：
 
-- 全局限流的需求与上例相同，但对于一个首页 URL: `web.playground.erda.cloud/index.html` 要进行特殊配置
-- 当超过限流时，返回 302 状态码，然后跳转到 CDN 静态页面 `cdn.erda.cloud/playground/index.html` （在这个页面设计了 UI 透出更为友好的限流提示）
+- 全局限流的配置与上例相同，但需对特定 URL（web.playground.erda.cloud/index.html）做单独配置。
+- 当超过限流时，返回 302 状态码，随后跳转至 CDN 静态页面（cdn.erda.cloud/playground/index.html）。
 
-**配置截图示意**
+则配置示意如下：
 
-选择 URL 对应的 API 路由配置，点击策略
+1. 选择该 URL 对应的 API 路由配置，点击 **策略**。
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/06/ca2110d2-8945-41c4-a7cb-355a112eb865.png)
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/943e43d5-80e7-4721-8ec7-4207e875c3c9.png)
 
-关闭`使用全局策略`的开关
+2. 关闭 **使用全局策略**。
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/06/5d49383b-1e0c-4add-b49a-ef19a1183577.png)
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/a5067e0a-da56-4416-a5de-5b14dc147a67.png)
 
-配置此 API 专属的策略配置，点击提交
+3. 配置该 API 的专属策略，点击 **提交**。
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/06/8ea42cd1-337c-4440-b380-8be1de559a68.png)
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/b5731472-ea8b-471a-8fdf-d8162e856f4d.png)
+
