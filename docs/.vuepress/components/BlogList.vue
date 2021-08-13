@@ -64,9 +64,9 @@ import {
   Pagination,
   SimplePagination,
 } from "@vuepress/plugin-blog/lib/client/components";
-import PostCategory from "@theme/components/PostCategory.vue";
-import CategoryLink from "@theme/components/CategoryLink.vue";
-import BlogCategories from "@theme/components/BlogCategories.vue";
+import PostCategory from "./PostCategory.vue";
+import CategoryLink from "./CategoryLink.vue";
+import BlogCategories from "./BlogCategories.vue";
 
 dayjs.extend(dayjsPluginUTC);
 

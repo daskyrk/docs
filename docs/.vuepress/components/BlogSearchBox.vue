@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import matchQuery from '../util/match-query'
+import matchQuery from '../theme/util/match-query'
 
 /* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
 export default {

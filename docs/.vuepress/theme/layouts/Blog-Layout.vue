@@ -13,20 +13,9 @@
 </template>
 
 <script>
-import BlogNavbar from "@theme/components/BlogNavbar.vue";
-import BlogList from "@theme/components/BlogList.vue";
-import Post from "@theme/components/Post.vue";
-import BlogTags from "@theme/components/BlogTags.vue";
 
 export default {
   name: "Blog-Layout",
-
-  components: {
-    BlogNavbar,
-    BlogList,
-    BlogTags,
-    Post,
-  },
 
   data() {
     return {

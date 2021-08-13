@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import BlogTag from "@theme/components/BlogTag.vue";
+import BlogTag from "./BlogTag.vue";
 
 export default {
   components: { BlogTag },

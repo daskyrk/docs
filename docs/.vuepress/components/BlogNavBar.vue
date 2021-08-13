@@ -35,7 +35,7 @@
 <script>
 import SidebarButton from '@theme/components/SidebarButton.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
-import BlogSearchBox from "@theme/components/BlogSearchBox.vue";
+import BlogSearchBox from "./BlogSearchBox.vue";
 
 export default {
   name: 'Navbar',

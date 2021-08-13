@@ -20,7 +20,7 @@
 
 <script>
 // import Toc from '@theme/components/Toc.vue'
-import PostMeta from "@theme/components/PostMeta.vue";
+import PostMeta from "./PostMeta.vue";
 import { Comment } from "@vuepress/plugin-blog/lib/client/components";
 
 export default {
