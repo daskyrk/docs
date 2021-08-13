@@ -236,8 +236,8 @@ module.exports = {
                             collapsable: true,
                             children: [
                                 'msp/examples/log/java-log-rule',
-                                'msp/examples/log/log-alert',
-                                'msp/examples/log/log-dashboard',
+                                // 'msp/examples/log/log-alert',
+                                // 'msp/examples/log/log-dashboard',
                             ],
                         },
                         {
