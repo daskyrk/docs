@@ -16,8 +16,8 @@ stages:
               - npm run build
             workdir: ${git-checkout}
           resources:
-            cpu: 0.5
-            mem: 1024
+            cpu: 1
+            mem: 2048
           caches:
             - path: ${git-checkout}/node_modules
   - stage:
