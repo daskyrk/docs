@@ -21,7 +21,6 @@ module.exports = {
             children: [
                 'install/helm-install',
                 'install/high-availability',
-                'install/provider-install',
                 'install/upgrade'
             ]
         },

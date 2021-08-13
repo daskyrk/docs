@@ -144,8 +144,7 @@ global:
   size: prod
 # 配置 Erda 集群名及泛域名
 erda:
-	clusterName: "erda-prod"
-	domain: "erda.io"
+  clusterName: "erda-prod"domain: "erda.io"
 # 指定 Registry 安装的节点信息
 registry:
   custom:
@@ -161,6 +160,8 @@ mysql:
     user: "erda"
     password: "********"
 ```
+
+指定上述文件进行安装
 
 ```SHELL
 helm install erda erda -f custom_values.yaml
@@ -253,11 +254,11 @@ bash scripts/push-ext.sh
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/98b75395-4055-4f38-83b3-381936281dde.png)
 
-此时可以根据平台引导快速创建一个属于您的组织
+此时可以根据平台引导快速创建一个属于您的[组织](../quick-start/premise.html#组织)
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/bfb9bf44-625d-4e8b-94e2-89d47b579095.png)
 
-组织创建完成后，您需要将创建好的组织名称作为标签设置到您希望被 Erda 托管的所有 Kubernetes 节点上（组织名称是 Erda 中的一种组）
+组织创建完成后，您需要将创建好的组织名称作为标签设置到您希望被 Erda 托管的所有 Kubernetes 节点上
 
 ```
 kubectl label node <node_name> dice/org-<orgname>=true --overwrite
@@ -271,7 +272,7 @@ kubectl label node <node_name> dice/org-<orgname>=true --overwrite
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/e205320d-d73e-4a7c-b2e4-8b15e8e7b86c.png)
 
-导入集群时，您界面中填写的配置需要与安装时指定的配置**保持一致**，比如图中，集群标识为 `erda-demo`，泛域名为 `erda.io`, 并采用 Kubeconfig 作为认证方式
+导入[集群](../quick-start/premise.html#集群)时，您界面中填写的配置需要与安装时指定的配置**保持一致**，比如图中，集群标识为 `erda-demo`，泛域名为 `erda.io`, 并采用 Kubeconfig 作为认证方式
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/6ec45959-7d02-43e7-82c0-0dc49f8f0dd9.png)
 
@@ -279,7 +280,7 @@ kubectl label node <node_name> dice/org-<orgname>=true --overwrite
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/03fa7584-fa65-4a47-bcce-cff44d6d5c71.png)
 
-在创建项目之前，您需要对节点进行标签设置，用于 Erda 的节点标签调度，请参考[节点标签设置](../cmp/guide/cluster/cluster-node-labels.html)
+在创建[项目](../quick-start/premise.html#项目)之前，您需要对节点进行标签设置，用于 Erda 的节点标签调度，请参考[节点标签设置](../cmp/guide/cluster/cluster-node-labels.html)
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/d816f4b0-cf85-4b5e-a5a4-d17e96488f90.png)
 
