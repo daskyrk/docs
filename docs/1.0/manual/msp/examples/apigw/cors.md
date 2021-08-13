@@ -1,1 +1,98 @@
 # 让 API 可以被跨域访问
+
+## erda.yml 配置
+
+您可以通过 `erda.yml` 配置跨域访问限制，具体请参见 [使用 erda.yml 管理配置](./config.md)。
+
+```yaml
+          policies:
+            cors:
+              # 必填字段，当为 any 时，允许 origin 是任何域名进行跨域访问
+              allow_origins: any
+              # 非必填，默认是 any，允许 http method 是任何类型
+              allow_methods: any
+              # 非必填，默认是 any，允许 http header 是任何字段
+              allow_headers: any
+              # 非必填，默认是 true，允许 cookie 字段跨域传输
+              allow_credentials: true
+              # 非必填，默认是 86400，跨域预检请求一次成功后的有效时间
+              max_age: 86400
+```
+
+## 流量入口 API 策略设置
+
+您也可以通过流量入口下的 API 策略进行配置。
+
+具体操作路径如下：
+
+- 全局策略：进入 **微服务治理平台 > API 网关 > 流量入口管理**，选择对应的流量入口，点击 **详情 > 全局策略 > 业务策略 > 跨域访问**。
+- 具体 API 策略：进入 **微服务治理平台 > API 网关 > 流量入口管理**，选择对应的流量入口，点击 **详情** 后选择对应的 API，点击 **策略 > 业务策略 > 跨域访问**。
+
+::: tip 提示
+
+如果您已通过 `erda.yml` 完成了配置，前者将覆盖此处配置。
+
+:::
+
+### 示例一
+
+若需求为：
+
+- 允许所有外部站点，调用任意 http 方法
+- 开放的 API 无需携带 cookie 即可访问，禁止来自外部站点的 cookie 透传，来保障安全
+
+则配置示意如下：
+
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/ad77622c-3260-4659-87dc-1ae35743557b.png)
+
+如若使用 erda.yml 配置，则如下：
+
+```yaml
+          policies:
+            cors:
+              allow_origins: any
+              allow_methods: any
+              allow_headers: any
+              allow_credentials: false
+
+```
+
+### 示例二
+
+若需求为：
+
+- 只允许域名符合 `*.example.com` 的站点访问，可调用任意方法，可以携带 cookie
+
+跨域访问策略当前暂未较好地支持此类需求的快速配置，需要先关闭跨域访问策略，然后通过[自定义 nginx 配置](../../guides/apigw/policy.md#自定义-nginx-配置)来实现
+
+可以在 nginx 配置框中添加如下配置：
+
+```bash
+set $methodandorigin $request_method$http_origin;
+
+if ($http_origin ~* 'https?://.*\.example\.com$') {
+    more_set_headers 'Access-Control-Allow-Origin: $http_origin';
+    more_set_headers 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS';
+    more_set_headers 'Access-Control-Allow-Credentials: true';
+}
+
+if ($methodandorigin ~* '^OPTIONS-https?://.*\.example\.com$') {
+    more_set_headers 'Access-Control-Allow-Origin: $http_origin';
+    more_set_headers 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS';
+    more_set_headers 'Access-Control-Allow-Headers: $http_access_control_request_headers';
+    more_set_headers 'Access-Control-Allow-Credentials: true';
+    more_set_headers 'Access-Control-Max-Age: 86400';
+    more_set_headers 'Content-Type: text/plain charset=UTF-8';
+    more_set_headers 'Content-Length: 0';
+    return 200;
+}
+```
+如下图所示
+
+关闭跨域访问策略：
+
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/c9d8986d-b6bf-4745-9a31-7571b5374d38.png)
+
+开启 nginx 自定义配置：
+
+![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/a0f4a623-3fa3-4405-89d8-a558e6d08bb2.png)
