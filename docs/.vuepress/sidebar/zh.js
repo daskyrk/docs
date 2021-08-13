@@ -177,6 +177,7 @@ module.exports = {
                             title: 'CI/CD Pipeline',
                             collapsable: true,
                             children: [
+                                'dop/guides/cicd-pipeline/pipeline',
                                 'dop/guides/cicd-pipeline/pipeline-yml-config',
                                 'dop/guides/cicd-pipeline/pipeline-yml-graph',
                                 'dop/guides/cicd-pipeline/pipeline-execution',
