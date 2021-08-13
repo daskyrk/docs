@@ -1,6 +1,10 @@
 <template>
   <div class="blog-list">
-
+    <Carousel class='top-imgs' autoplay autoplayHoverPause :perPage='1' :paginationSize='12'>
+      <Slide v-bind:key="img" v-for="img in this.topImgs">
+        <img :src="img" alt="">
+      </Slide>
+    </Carousel>
     <BlogCategories :categoryList="categoryList" />
     <!-- <div v-if="categoryList" class="blog-tags">
       <BlogTag v-for="tag in tags" :key="tag.name" :tag="tag" />
@@ -60,6 +64,7 @@
 import Vue from "vue";
 import dayjs from "dayjs";
 import dayjsPluginUTC from "dayjs/plugin/utc";
+import { Carousel, Slide } from "vue-carousel";
 import {
   Pagination,
   SimplePagination,
@@ -71,10 +76,22 @@ import BlogCategories from "./BlogCategories.vue";
 dayjs.extend(dayjsPluginUTC);
 
 export default {
-  components: { PostCategory, CategoryLink, BlogCategories },
+  components: {
+    PostCategory,
+    CategoryLink,
+    BlogCategories,
+    Carousel,
+    Slide,
+  },
+
   data() {
     return {
       paginationComponent: null,
+      topImgs: [
+        "http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/f78006b0-2762-45a3-b384-43c058068edf.png",
+        "http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/df89d9c7-cd79-4ad8-ac55-2162399b9cee.png",
+        "http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/942038b9-3ea2-4b48-9d3e-91b4019d5ba2.png",
+      ],
     };
   },
 
@@ -102,7 +119,6 @@ export default {
           path: window.encodeURI(current.path),
         };
       });
-      console.log('categoryList:', categoryList);
       return [all, ...categoryList];
     },
   },
@@ -142,6 +158,25 @@ export default {
 <style lang="stylus">
 .post-list {
   margin-top: 4rem;
+}
+
+.top-imgs {
+  margin-bottom: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+  img {
+    max-height: 240px;
+    max-width: 100%;
+  }
+
+  .VueCarousel-inner {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .VueCarousel-dot-container {
+    margin-top: 0 !important;
+  }
 }
 
 .ui-post {

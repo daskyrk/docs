@@ -51,5 +51,7 @@
     "vuepress-plugin-img-lazy": "^1.0.4",
     "watchpack": "^2.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue-carousel": "^0.18.0"
+  }
 }

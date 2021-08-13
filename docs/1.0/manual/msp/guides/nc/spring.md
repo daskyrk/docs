@@ -9,7 +9,7 @@
 
 :::
 
-#### dice.yml 中引用配置中心 Addon
+#### erda.yml 中引用配置中心 Addon
 
 
 ```yaml
