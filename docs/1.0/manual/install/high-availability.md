@@ -8,13 +8,13 @@
 
 ## 高可用部署可配置参数列表
 
-Erda 的 helm chart 中的 values.yaml 文件中定义了大量的配置参数。下表总结了高可用部署时，可以根据实际部署情况考虑修改的配置参数，以供高可用部署时参考。
+Erda 的 helm chart 中的 [values.yaml](https://github.com/erda-project/erda-release/tree/release/1.1/erda-helm/README.md) 文件中定义了大量的配置参数。下表总结了高可用部署时，可以根据实际部署情况考虑修改的配置参数，以供参考。
 
 
 | 参数 | 描述 | 默认值 |
 |:----|:---|:---:|
 |**Gobal**|  |  |
-| golbal.size | 表示部署模式（支持`demo`和`prod`两种），高可用部署设置为‘prod’ | "prod" |
+| golbal.size | 表示部署模式（支持`demo`和`prod`两种），高可用部署设置为‘prod’ | - |
 | golbal.image.repository | 设置镜像仓库地址，对于不能访问外网的用户，需要修改该配置为内网私有仓库，并在部署前将 Erda 部署所需的镜像都上传到这里设置的私有仓库中 | "registry.erda.cloud/erda" |
 | golbal.image.imagePullPolicy | 设置镜像拉取策略 | "IfNotPresent" |
 | golbal.image.imagePullSecrets | 如果不是从用户私有仓库拉取镜像则无需设置，否则需要设置为访问用户私有镜像仓库的 secrets |  |
@@ -64,16 +64,6 @@ Erda 的 helm chart 中的 values.yaml 文件中定义了大量的配置参数�
 | kms.resources.requests.memory | 设置 kms 实例 Pod 的 Memory 资源请求值 | "1Gi" |
 | kms.resources.limits.cpu | 设置 kms 实例 Pod 的 CPU 资源限制值 | "1" |
 | kms.resources.limits.memory | 设置 kms 实例 Pod 的 Memory 资源限制值 | "2Gi" |
-| **Mysql** |  |  |
-| mysql.user | 访问 mysql 的用户 | 'erda' |
-| mysql.database | 访问 mysql 的目标数据库 | 'erda' |
-| mysql.password | 访问 mysql 数据库的密码 | 'password' |
-| mysql.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
-| mysql.capacity | 设置 mysql 单节点存储容量，可以根据实际集群及业务量规模进行缩放 | 100Gi |
-| mysql.resources.requests.cpu | 设置 kms 实例 Pod 的 CPU 资源请求值 | "500m" |
-| mysql.resources.requests.memory | 设置 kms 实例 Pod 的 Memory 资源请求值 | "512Mi" |
-| mysql.resources.limits.cpu | 设置 kms 实例 Pod 的 CPU 资源限制值 | "2" |
-| mysql.resources.limits.memory | 设置 kms 实例 Pod 的 Memory 资源限制值 | "2Gi" |
 | **Redis** |  |  |
 | redis.redisFailover.redis.replicas | 设置 redis 副本数量，redis 实例之间用于主备切换 | 2 |
 | redis.redisFailover.redis.resources.requests.cpu | 设置 redis Pod 的 CPU 资源请求值 | "150m" |
@@ -292,15 +282,17 @@ Erda 的 helm chart 中的 values.yaml 文件中定义了大量的配置参数�
 
 
 ## 如何接入已有中间件
-Erda 部署时包含大量中间件类组件，如 ElasticSearch、Mysql、Kafka、镜像仓库 Registry 等。对于部分中间件，用户的部署环境中可能已有可以直接访问的实例，因此可以通过设置特定参数实现无需部署对应的中间件组件，直接使用已有中间件。
+Erda 平台依赖了多款中间件，如 ElasticSearch、Mysql、Kafka、Registry 等，部分中间件可以直接配置成用户已有实例，无需安装。
 
-**注意**：当前版本支持接入外部 Mysql，对其他常用中间件（如 Kafka、ElasticSearch）的接入后续会陆续支持。
+**注意**：当前版本仅支持接入外部 Mysql，其他常用中间件（如 Kafka、ElasticSearch）正在陆续接入中。
 
 ### 接入外部 Mysql
+**Note**：接入外部 mysql 要求 mysql 版本 >= 5.7.9
 如需接入外部 Mysql，可以通过修改 Erda 的 chart 包的 values.yaml 增加如下字段设置实现:
 
 ```yaml
 mysql:
+  enabled: false
   custom:
     address:      #  eg: 192.168.100.100
     port:         #  eg: 3306
@@ -313,65 +305,23 @@ mysql:
 
 具体参数解释如下：
 
-| 参数 | 描述 | 默认值 |
-|:----|:---|:---:|
-| mysql.custom.address | 接入用户提供的 mysql 主机地址 |  |
-| mysql.custom.port | 接入用户提供的 mysql 主机端口 |  |
-| mysql.custom.databases | 接入用户提供的 mysql 数据库 |  |
-| mysql.custom.user | 接入用户提供的 mysql 数据库的访问用户名 |  |
-| mysql.custom.password | 接入用户提供的 mysql 数据库的访问用户名对应的访问密码 |  |
+| 参数 | 描述 | 
+|:----|:---|
+| mysql.enabled | 开关，接入外部 mysql 时需要设置为 false |
+| mysql.custom.address | 接入用户提供的 mysql 主机地址 |
+| mysql.custom.port | 接入用户提供的 mysql 主机端口 |
+| mysql.custom.databases | 接入用户提供的 mysql 数据库 |
+| mysql.custom.user | 接入用户提供的 mysql 数据库的访问用户名 |
+| mysql.custom.password | 接入用户提供的 mysql 数据库的访问用户名对应的访问密码 |
 
 
-
-
-# 补充说明
-
-## 如何根据部署模式（demo 或 prod）设置相关参数配置？
-
-demo 部署模式的相关参数配置是经过测试验证的有效配置，原则上无需调整即可安装且功能正常。
-
-由于 demo 模式 和 prod 模式部署安装使用的是相同的 helm chart，对应的 values.yaml 中变量置空以确保 demo 部署模式和 prod 部署模式都能使用对应的默认值。如果需要修改 demo 模式的相关参数配置，可以通过修改 helm chart 的  values.yaml 文件来设置 demo 相关配置参数。但需要注意的是：
-* 如果想使用默认 demo 设置，必须将 values.yaml 文件中对应的参数置空
-* 如果想采用默认 prod 部署，必须将  values.yaml 文件中对应的参数置空
-* 如果想自定义 demo 设置，请合理设置 values.yaml 文件中对应的参数值，确保资源足够 Erda 所有组件部署成功
-* 如果想自定义 prod 设置，请合理设置 values.yaml 文件中对应的参数值，确保配置合理以满足高并发高吞吐量需求
-
-## 如何保存私有化配置
+## 补充说明
+### 如何保存私有化配置
 
 虽然直接使用 values.yaml 文件中的参数配置部署 helm chart 包是最简单的部署方式，但仍然存在可能无法满足用户需求的情况。此时，用户可以有三个选择来设置调整参数配置：
-* 方式一：执行 helm 安装/升级 时，使用 --set 参数设置参数值
+* 方式一（推荐）：将需要修改的参数写入到自定义的 values.yaml 文件中，执行 helm 安装/升级时，使用 -f 指定该文件
+* 方式二：执行 helm 安装/升级 时，使用 --set 参数设置参数值
     * 缺点：--set 选项无法持久化配置，可能导致升级操作与安装操作参数设置不一致的情况
-* 修改 helm chart 包中的  values.yaml 文件中的参数值
+* 方式三：修改 helm chart 包中的  values.yaml 文件中的参数值
     * 缺点：参数量大、参数多的情况下，参数是否需要更改、参数是否已经更改难以快速确定
-* 将用户希望修改的参数变量写入到自定义配置的 custom_values.yaml 文件，执行 helm 安装/升级 时，使用 -f 参数指定自定义配置文件 custom_values.yaml
-    * 推荐的保存私有化配置信息的方案
-
-
-## Erda 离线部署所需镜像列表
-
-以下是 Erda 部署所需镜像列表，对于不能访问外网的用户，可以获取相应镜像之后上传到私有镜像仓库。然后修改 erda 的 helm chart 包的 gloabl.image.repository 来从私有仓库获取镜像，完成安装。具体镜像列表如下：
-* registry.erda.cloud/erda/cassandra-operator:v1.1.3-release
-* registry.erda.cloud/erda/addon-kms:1.0.0-20200608-f11445f
-* registry.erda.cloud/erda/redis-operator:1.0.0-20200723-1a7a9f14
-* registry.erda.cloud/erda/addon-sonar:8.4.2
-* registry.erda.cloud/erda/dice-operator:v1.1-f08d3a78-20210728
-* registry.erda.cloud/erda/addon-elasticsearch:6.2.4
-* registry.erda.cloud/erda/kubedb-busybox:1.0.0
-* registry.erda.cloud/erda/erda-etcd:3.3.15-0
-* registry.erda.cloud/erda/addon-kafka:1.1.0-20210323-be01a9b
-* registry.erda.cloud/erda/erda-mysql:5.7.34
-* registry.erda.cloud/erda/addon-redis:3.2.12
-* registry.erda.cloud/erda/addon-registry:2.7.1
-* registry.erda.cloud/erda/addon-zookeeper:3.4.13-monitor
-* registry.erda.cloud/erda/instaclustr-icarus:1.0.9
-* registry.erda.cloud/erda/init-image:20210730-ca1833c
-* registry.erda.cloud/erda/erda:1.1-20210801-b21ed4e
-* registry.erda.cloud/erda/erda:4.0-20210521-3a995ee
-* registry.erda.cloud/erda/ui-ce:1.1-20210801-4d7018ba6a91ad4d334b7a23caf0889cc240f4ea
-* registry.erda.cloud/erda/erda-analyzer-alert:1.1.0-20210801-a274c27
-* registry.erda.cloud/erda/erda-analyzer-error-insight:1.1.0-20210801-a274c27
-* registry.erda.cloud/erda/uc:dice-4.0-20210630-f4d63b99
-* registry.erda.cloud/erda/terminus/telegraf:4.0-20210801-ee49757
-* registry.erda.cloud/erda/terminus/filebeat:4.0.0-20210801-02ea6b8
-* registry.cn-shanghai.aliyuncs.com/viper/etcd_ssl_gen:v0.2.0
-* registry.cn-shanghai.aliyuncs.com/viper/dop:v1.1
+  
