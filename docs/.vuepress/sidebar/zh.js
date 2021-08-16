@@ -20,9 +20,9 @@ module.exports = {
             collapsable: true,
             children: [
                 'install/helm-install',
+                'install/docker-install',
                 'install/high-availability',
-                'install/upgrade',
-                'install/docker-install'
+                'install/upgrade'
             ]
         },
         {
@@ -39,7 +39,7 @@ module.exports = {
             children: [
                 'cmp/example',
                 'cmp/concept',
-                'cmp/best-practice',
+                'cmp/best-practice/alert-config',
                 {
                     title: '使用指南',
                     collapsable: true,
