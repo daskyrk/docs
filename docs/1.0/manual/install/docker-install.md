@@ -1,7 +1,7 @@
 # 基于 docker-compose 本地安装
 
 ::: tip
-使用 docker-compose 安装的方式仅适用于在您不具备k8s条件的情况下，在本地快速体验 Erda，并不推荐您在生产环境采用此方式安装部署。
+使用 docker-compose 安装的方式仅适用于在您不具备 Kubernetes 条件的情况下，在本地快速体验 Erda，并不推荐您在生产环境采用此方式安装部署。
 :::
 
 ## 前置条件

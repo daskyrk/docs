@@ -1,4 +1,4 @@
-# 基于 Helm 在 k8s 中安装
+# 基于 Helm 在 Kubernetes 中安装
 
 本节主要包含如下几个部分：
 
