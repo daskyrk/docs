@@ -2,7 +2,7 @@
 
 ## 基础名词
 
-![组织架构图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/18/55cbf305-035d-49bd-8670-771b620d1cd3.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/18/55cbf305-035d-49bd-8670-771b620d1cd3.png)
 
 Erda 平台中存在三层组织层级，即组织层、项目层和应用层，以此实现组织租户隔离以及项目、应用、资源和用户管理。在项目层和应用层，则通过各自的成员角色管理，来区分不同成员对项目、应用的访问和操作权限。
 
@@ -17,12 +17,8 @@ Erda 平台中存在三层组织层级，即组织层、项目层和应用层，
 ### 项目
 项目（Project）是研发运维的主要对象，是多个应用的集合。它可以是一个产品，也可以是一个大型解决方案，主要实现项目协同工作的管理，包含需求、任务、缺陷事项、迭代、测试用例等。
 
-关于项目的具体操作，请参见 [项目管理]()。
-
 ### 应用
 应用（Application）是研发运维的最小单元，包含代码仓库、流水线等一系列 DevOps 工具。 平台中所有的开发、部署都是基于应用实现的。
-
-关于应用的具体操作，请参见 [应用管理]()。
 
 ### 集群
 集群（Cluster）是一个由多台物理机或虚拟机组成的有机整体，是一个由 Kubernetes + Docker 组建的集群，主要用于资源管理和服务部署运行。
@@ -39,7 +35,7 @@ Erda 平台中存在三层组织层级，即组织层、项目层和应用层，
 
 ## 高级名词
 
-![应用环境实例架构图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/19/4d03b30c-2b79-4e53-bbab-bf4919bad36a.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/19/4d03b30c-2b79-4e53-bbab-bf4919bad36a.png)
 
 ### 环境
 
