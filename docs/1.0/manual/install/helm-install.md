@@ -1,11 +1,4 @@
-# Erda 快速安装指南
-
-本文档介绍 Erda 的安装，目前提供两种快速安装的方式：
-
-- [基于Helm在k8s中安装](helm-install.md#基于Helm在k8s中安装)
-- [基于docker-compose本地安装](helm-install.md#基于docker-compose本地安装)
-
-## 基于Helm在k8s中安装
+# 基于 Helm 在 Kubernetes 中安装
 
 本节主要包含如下几个部分：
 
@@ -23,7 +16,7 @@
 
 
 
-### 先决条件
+## 先决条件
 
 - 硬件资源配置(其中资源数据不包含运行 Kubernetes 组件所需的资源)
 
@@ -44,7 +37,7 @@
 
 
 
-### 前置操作
+## 前置操作
 
 - 您的 Kubernetes 集群中需要执行如下必要的前置操作（如已具备则无需执行）
 
@@ -109,11 +102,11 @@
 
 
 
-### 安装 Erda
+## 安装 Erda
 
 > **Note:** 当前版本 Erda 仅支持安装在 default namespace
 
-#### Demo 模式安装
+### Demo 模式安装
 
 通过 Helm 安装 Erda ，并且等待所有的 Erda 组件准备就绪
 
@@ -129,7 +122,7 @@ helm install erda erda --set erda.clusterName="erda-demo",erda.domain="erda.io"
 
 
 
-#### Prod 模式安装
+### Prod 模式安装
 
 Prod 模式部署 Erda，我们提供了适用于生产环境的默认配置，但是需要您注意以下几点：
 
@@ -176,7 +169,7 @@ helm install erda erda -f custom_values.yaml
 
 
 
-#### 验证安装
+### 验证安装
 
 Erda 安装完成后，您可以通过如下命令验证 Erda 安装结果
 
@@ -221,11 +214,11 @@ rfr-erda-redis             2/2     12h
 
 
 
-### Erda 平台的配置及访问
+## Erda 平台的配置及访问
 
 安装完成 Erda 后，您需要进行一些简单的配置
 
-#### 推送 Erda 扩展组件
+### 推送 Erda 扩展组件
 
 您需要执行如下命令用于推送 Erda 扩展组件（扩展组件将作为一种插件被用于流水线）
 
@@ -240,7 +233,7 @@ bash scripts/push-ext.sh
 
 
 
-#### 域名配置
+### 域名配置
 
 如果有真实的泛域名，您需要进行域名配置，将该域名的访问流量导入 Kubernetes 集群的 Ingress Controller，让集群中配置的 Ingress 域名能正常访问。如果没有真实的泛域名, 您需要在浏览器所在的机器上将下列的 URL 写到 `etc/hosts` 文件中，请将下面的示例 IP 替换为该 Kubernetes 集群的 Ingress Controller 的入口 IP
 
@@ -255,7 +248,7 @@ bash scripts/push-ext.sh
 
 
 
-#### 访问平台
+### 访问平台
 
 通过配置的域名，访问 Erda 平台并注册用户登录
 
@@ -296,24 +289,3 @@ kubectl label node <node_name> dice/org-<orgname>=true --overwrite
 此时，您可以根据引导创建您的第一个项目， [开始您的Erda 之旅](../quick-start/newbie.html)
 
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/12/dbddabe5-2468-4de7-bdd0-84675448afcb.png)
-
-## 基于docker-compose本地安装
-
-::: tip
-使用 docker-compose 安装的方式仅适用于在您不具备k8s条件的情况下，在本地快速体验 Erda，并不推荐您在生产环境采用此方式安装部署。
-:::
-
-### 前置条件
-
-- docker 20.10.0+
-- 节点配置 4 核 8G
-
-### 使用脚本快速安装
-
-您可以通过执行如下命令快速部署 Erda
-
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/erda-project/erda/master/quick-start/quick-start.sh)"
-```
-
-命令成功执行之后，您可以通过访问 [http://erda.local](http://erda.local) 体验 Erda。
