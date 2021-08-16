@@ -1,6 +1,6 @@
 # 高可用配置说明
 
-使用 Erda 的 Helm chart 包部署 Erda 时，可通过全局参数 global.size 实现不同的部署模式：
+使用 Erda 的 Helm Chart 包部署 Erda 时，可通过全局参数 global.size 实现不同的部署模式：
 * 设置 global.size 为 `demo`，则 Erda 各组件将以极简方式（低资源配置、单实例副本）部署，适用于试用环境部署。
 * 设置 global.size 为 `prod`，则 Erda 的核心组件将以高可用方式（高资源配置、多实例副本）部署，适用于生产环境部署。
 
@@ -8,19 +8,19 @@
 
 ## 高可用部署可配置参数
 
-Erda Helm chart 中的 [values.yaml](https://github.com/erda-project/erda-release/tree/release/1.1/erda-helm/README.md) 文件定义了大量的配置参数。高可用部署时，可根据实际部署情况修改配置参数，具体如下：
+Erda Helm Chart 中的 [values.yaml](https://github.com/erda-project/erda-release/tree/release/1.1/erda-helm/README.md) 文件定义了大量的配置参数。高可用部署时，可根据实际部署情况修改配置参数，具体如下：
 
 
 | 参数 | 描述 | 默认值 |
 |-----|:---|:----|
-|**Gobal**|  |  |
-| golbal.size | 表示部署模式（支持 `demo` 和 `prod` 两种），高可用部署设置为 `prod` | / |
-| golbal.image.repository | 设置镜像仓库地址，对于无法访问外网的用户，需修改该配置为内网私有仓库，并在部署前将 Erda 部署所需的镜像上传至该私有仓库中 | "registry.erda.cloud/erda" |
-| golbal.image.imagePullPolicy | 设置镜像拉取策略 | "IfNotPresent" |
-| golbal.image.imagePullSecrets | 如果不是从用户私有仓库拉取镜像则无需设置，否则需要设置为访问用户私有镜像仓库的 secrets | / |
+|**Global**|  |  |
+| global.size | 表示部署模式（支持 `demo` 和 `prod` 两种），高可用部署设置为 `prod` | / |
+| global.image.repository | 设置镜像仓库地址，对于无法访问外网的用户，需修改该配置为内网私有仓库，并在部署前将 Erda 部署所需的镜像上传至该私有仓库中 | "registry.erda.cloud/erda" |
+| global.image.imagePullPolicy | 设置镜像拉取策略 | "IfNotPresent" |
+| global.image.imagePullSecrets | 若不是从用户私有仓库拉取镜像则无需设置，否则需要设置为访问用户私有镜像仓库的 secrets | / |
 | **Cassandra** |  |  |
 | cassandra.capacity | 设置 Cassandra 单节点存储容量，可根据实际集群及业务量规模进行缩放 | "1000Gi" |
-| cassandra.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
+| cassandra.storageClassName | 设置存储卷对应的 Kubernetes StorageClass 对象 | "dice-local-volume" |
 | cassandra.resources.requests.cpu | 设置 Cassandra 实例 Pod 的 CPU 资源请求值 | "2" |
 | cassandra.resources.requests.memory | 设置 Cassandra 实例 Pod 的 Memory 资源请求值 | "4Gi" |
 | cassandra.resources.limits.cpu | 设置 Cassandra 实例 Pod 的 CPU 资源限制值 | "4" |
@@ -29,29 +29,29 @@ Erda Helm chart 中的 [values.yaml](https://github.com/erda-project/erda-releas
 | **Elasticsearch** |  |  |
 | elasticsearch.replicas | 设置 Elasticserarch 集群节点数量 | 3 |
 | elasticsearch.capacity | 设置 Elasticsearch 单节点存储容量，可根据实际集群及业务量规模进行缩放 | "1000Gi" |
-| elasticsearch.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
-| elasticsearch.numberOfMasters | 高可用部署 Elasticsearch 集群时，可作为 Master 的 Elasticsearch 实例数量，一般至少设置为超过集群节点数量一半以避免 Elasticsearch 集群脑裂 | 2 |
+| elasticsearch.storageClassName | 设置存储卷对应的 Kubernetes StorageClass 对象 | "dice-local-volume" |
+| elasticsearch.numberOfMasters | 高可用部署 Elasticsearch 集群时，可作为 Master 的 Elasticsearch 实例数量，一般至少设置为超过一半集群节点数以避免 Elasticsearch 集群脑裂 | 2 |
 | elasticsearch.javaOpts | 设置 Elasticsearch 的环境变量 JAVA_OPTS（java heap size 建议设置为 0.75 * resources.limits.memory） | "-Xms6144m -Xmx6144m" |
 | elasticsearch.resources.requests.cpu | 设置 Elasticsearch 实例 Pod 的 CPU 资源请求值 | "2" |
 | elasticsearch.resources.requests.memory | 设置 Elasticsearch 实例 Pod 的 Memory 资源请求值 | "4Gi" |
 | elasticsearch.resources.limits.cpu | 设置 Elasticsearch 实例 Pod 的 CPU 资源限制值 | "4" |
 | elasticsearch.resources.limits.memory | 设置 Elasticsearch 实例 Pod 的 Memory 资源限制值 | "8Gi" |
 | **etcd** |  |  |
-| etcd.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
+| etcd.storageClassName | 设置存储卷对应的 Kubernetes StorageClass 对象 | "dice-local-volume" |
 | etcd.capacity | 设置 etcd 单节点存储容量，可根据实际集群及业务量规模进行缩放 | "32Gi" |
 | etcd.resources.requests.cpu | 设置 etcd 实例 Pod 的 CPU 资源请求值 | "1" |
 | etcd.resources.requests.memory | 设置 etcd 实例 Pod 的 Memory 资源请求值 | "2Gi" |
 | etcd.resources.limits.cpu | 设置 etcd 实例 Pod 的 CPU 资源限制值 | "4" |
 | etcd.resources.limits.memory | 设置 etcd 实例 Pod 的 Memory 资源限制值 | "8Gi" |
 | **Zookeeper** |  |  |
-| zookeeper.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
+| zookeeper.storageClassName | 设置存储卷对应的 Kubernetes StorageClass 对象 | "dice-local-volume" |
 | zookeeper.capacity | 设置 Zookeeper 单节点存储容量，可根据实际集群及业务量规模进行缩放 | "32Gi" |
 | zookeeper.resources.requests.cpu | 设置 Zookeeper 实例 Pod 的 CPU 资源请求值 | "100m" |
 | zookeeper.resources.requests.memory | 设置 Zookeeper 实例 Pod 的 Memory 资源请求值 | "256Mi" |
 | zookeeper.resources.limits.cpu | 设置 Zookeeper 实例 Pod 的 CPU 资源限制值 | "1" |
 | zookeeper.resources.limits.memory | 设置 Zookeeper 实例 Pod 的 Memory 资源限制值 | "512Mi" |
 | **Kafka** |  |  |
-| kafka.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
+| kafka.storageClassName | 设置存储卷对应的 Kubernetes StorageClass 对象 | "dice-local-volume" |
 | kafka.capacity | 设置 Kafka 单节点存储容量，可根据实际集群及业务量规模进行缩放 | "32Gi" |
 | kafka.javaOpts | 设置 Kafka 的环境变量 JAVA_OPTS（java heap size 建议设置为 0.75 * resources.limits.memory） | "-Xms6144m -Xmx6144m" |
 | kafka.resources.requests.cpu | 设置 Kafka 实例 Pod 的 CPU 资源请求值 | "2" |
@@ -65,14 +65,14 @@ Erda Helm chart 中的 [values.yaml](https://github.com/erda-project/erda-releas
 | kms.resources.limits.cpu | 设置 KMS 实例 Pod 的 CPU 资源限制值 | "1" |
 | kms.resources.limits.memory | 设置 KMS 实例 Pod 的 Memory 资源限制值 | "2Gi" |
 | **Redis** |  |  |
-| redis.redisFailover.redis.replicas | 设置 Redis 副本数量，Redis 实例之间用于主备切换 | 2 |
+| redis.redisFailover.redis.replicas | 设置 Redis 副本数量，用于 Redis 实例之间主备切换 | 2 |
 | redis.redisFailover.redis.resources.requests.cpu | 设置 Redis Pod 的 CPU 资源请求值 | "150m" |
 | redis.redisFailover.redis.resources.requests.memory | 设置 Redis Pod 的 Memory 资源请求值 | "1Gi" |
 | redis.redisFailover.redis.resources.limits.cpu | 设置 Redis Pod 的 CPU 资源限制值 | "300m" |
 | redis.redisFailover.redis.resources.limits.memory | 设置 Redis Pod 的 CPU 资源限制值 | "2Gi" |
-| redis.redisFailover.sentinel.replicas | 设置 Redis sentinel 副本数量 | 3 |
+| redis.redisFailover.sentinel.replicas | 设置 Redis Sentinel 副本数量 | 3 |
 | **Registry** |  |  |
-| registry.storageClassName | 设置存储卷对应的 Kubernetes storageclass 对象 | "dice-local-volume" |
+| registry.storageClassName | 设置存储卷对应的 Kubernetes StorageClass 对象 | "dice-local-volume" |
 | registry.capacity | 设置 Registry 单节点存储容量，可根据实际集群及业务量规模进行缩放 | "1000Gi" |
 | registry.resources.requests.cpu | 设置 Registry 实例 Pod 的 CPU 资源请求值 | "500m" |
 | registry.resources.requests.memory | 设置 Registry 实例 Pod 的 Memory 资源请求值 | "512Mi" |
@@ -87,8 +87,8 @@ Erda Helm chart 中的 [values.yaml](https://github.com/erda-project/erda-releas
 | sonar.resources.limits.cpu | 设置 Sonar 实例 Pod 的 CPU 资源限制值 | "1500m" |
 | sonar.resources.limits.memory | 设置 Sonar 实例 Pod 的 Memory 资源限制值 | "3Gi" |
 | **volume-provisioner** |  |  |
-| volume-provisioner.provisioner.local.path | local volume 卷使用此挂载点作为存储卷来源 | /data |
-| volume-provisioner.provisioner.local.path | fs volume 卷使用此挂载点作为存储卷来源 | /netdata |
+| volume-provisioner.provisioner.local.path | Local Volume 卷使用此挂载点作为存储卷来源 | /data |
+| volume-provisioner.provisioner.local.path | FS Volume 卷使用此挂载点作为存储卷来源 | /netdata |
 | volume-provisioner.resouces.requests.cpu | 设置 volume-provisioner 实例 Pod 的 CPU 资源请求值 | "10m" |
 | volume-provisioner.resouces.requests.memory | 设置 volume-provisioner 实例 Pod 的 Memory 资源请求值 | "10Mi" |
 | volume-provisioner.resouces.limits.cpu | 设置 volume-provisioner 实例 Pod 的 CPU 资源限制值 | "100m" |
@@ -100,7 +100,7 @@ Erda Helm chart 中的 [values.yaml](https://github.com/erda-project/erda-releas
 | erda.operator.resources.requests.memory | 设置 erda-operator 实例 Pod 的 Memory 资源请求值  | "10Mi" |
 | erda.operator.resources.limits.cpu | 设置 erda-operator 实例 Pod 的 CPU 资源限制值 | "100m" |
 | erda.operator.resources.limits.memory | 设置 erda-operator 实例 Pod 的 Memory 资源限制值 | "128Mi" |
-| erda.clusterConfig.protocol | 声明当前 erda 集群的请求协议，http/https/http,https | http |
+| erda.clusterConfig.protocol | 声明当前 Erda 集群的请求协议，HTTP/HTTPS | http |
 | erda.clusterConfig.clusterType | Erda 集群标识，例如 Kubernetes、EDAS | kubernetes |
 | erda.component.admin.replicas | erda admin 组件副本数 | 2 |
 | erda.component.admin.resources.cpu | erda admin 组件实例 Pod 的 CPU 资源请求值 | "100m" |
@@ -251,7 +251,7 @@ Erda Helm chart 中的 [values.yaml](https://github.com/erda-project/erda-releas
 
 ## 核心数据存储组件配置参数
 
-针对不同节点规模的集群，高可用配置中对于 Cassandra、ElasticSearch、Kafka 等存储组件的参数配置可以参考下表：
+针对不同节点规模的集群，高可用配置中对于 Cassandra、Elasticsearch、Kafka 等存储组件的参数配置可参考下表：
 
 | 集群规模 | 0～50 节点 | 50～100 节点 | 100～200 节点 | 200～300 节点 | 300+ 节点 |
 |:---|:----|:----|:----|:----|:----|
@@ -287,7 +287,7 @@ Erda 平台依赖了多款中间件，例如 Elasticsearch、MySQL、Kafka、Reg
 
 :::
 
-如需接入外部 MySQL，可通过修改 Erda chart 包的 `values.yaml`， 增加如下字段实现：
+如需接入外部 MySQL，可通过修改 Erda Chart 包的 `values.yaml`， 增加如下字段实现：
 
 ```yaml
 mysql:
@@ -300,13 +300,13 @@ mysql:
     password:     #  eg: HasdDwqwe23#
 
 ```
-加入以上配置后，Erda 部署过程中便无需部署 MySQL 组件，Erda 组件可直接使用用户提供的 MySQL 数据库。
+增加以上配置后，Erda 部署过程中便无需部署 MySQL 组件，Erda 组件可直接使用用户提供的 MySQL 数据库。
 
 具体参数信息如下：
 
 | 参数 | 描述 |
 |:----|:---|
-| mysql.enabled | 开关，接入外部 MySQL 时需要设置为 false |
+| mysql.enabled | 开关，接入外部 MySQL 时需设置为 false |
 | mysql.custom.address | 接入用户提供的 MySQL 主机地址 |
 | mysql.custom.port | 接入用户提供的 MySQL 主机端口 |
 | mysql.custom.databases | 接入用户提供的 MySQL 数据库 |
@@ -315,10 +315,8 @@ mysql:
 
 ## 如何保存私有化配置
 
-虽然直接使用 `values.yaml` 文件中的参数配置部署 helm chart 包是最简单的部署方式，但仍然存在可能无法满足用户需求的情况。此时，用户可以有三个选择来设置调整参数配置：
-* 方式一（推荐）：将需要修改的参数写入到自定义的 values.yaml 文件中，执行 helm 安装/升级时，使用 -f 指定该文件
-* 方式二：执行 helm 安装/升级 时，使用 --set 参数设置参数值
-    * 缺点：--set 选项无法持久化配置，可能导致升级操作与安装操作参数设置不一致的情况
-* 方式三：修改 helm chart 包中的  values.yaml 文件中的参数值
-    * 缺点：参数量大、参数多的情况下，参数是否需要更改、参数是否已经更改难以快速确定
+使用 `values.yaml` 文件中的参数配置部署 Helm Chart 包是最简单的部署方式，但仍可能存在无法满足用户需求的情况。此时，用户可选择以下方式来调整参数配置：
+* 方式一（推荐）：将需要修改的参数写入自定义的 `values.yaml` 文件中，执行 Helm 安装/升级时，使用 `-f` 指定该文件。
+* 方式二：执行 Helm 安装/升级 时，使用 `--set` 参数设置参数值。但 `--set` 选项无法持久化配置，可能导致升级操作与安装操作的参数设置不一致。
+* 方式三：修改 Helm Chart 包中 `values.yaml` 文件的参数值。但在参数量庞大的情况下，难以快速确定参数是否需要更改、参数是否已经更改等问题。
 
