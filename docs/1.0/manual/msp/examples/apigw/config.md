@@ -19,7 +19,7 @@ services:
       # 允许跨域访问
         cors:
           allow_origins: any
-      # 限制访问 qps 为100
+      # 限制访问 QPS 为100
         rate_limit:
           qps: 100
     # 可以写完整域名
@@ -53,7 +53,7 @@ services:
 
   当前支持跨域策略和限流策略。
 
-  * 跨域策略：有关跨域具体信息，请参见 [跨域资源共享](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)。
+  * 跨域策略：关于跨域相关信息，请参见 [跨域资源共享](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)。
 
     以允许跨域应答头 `Access-Control-Allow-Origin` 为例，`allow_origins ` 配置的值将作为这个应答头的值。当值为 `any` 时，则直接获取请求头的 `Orgin` 字段作为值。
 
