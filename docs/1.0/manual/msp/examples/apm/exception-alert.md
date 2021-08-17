@@ -20,11 +20,21 @@
 
 ### 1、通过容器日志查看日志
 
-![容器日志图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/16/84afb504-6094-4288-9f55-46b51aacc75f.png)
+首先最直接的手段是看日志，可以通过容器日志找到对应的日志
+
+![容器日志](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/ba687acd-4941-4453-b3f0-b540293afea3.png)
 
 ### 2、通过错误分析页诊断异常
 
-![错误分析图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/16/a8b5bfd4-f029-4a28-bc10-705dacfda13a.png)
+对应的错误可在错误分析中找到：
+
+![错误分析列表图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/07bdf717-a560-4eba-9b34-2be862fc9af1.png)
+
+查看错误详情：
+
+![错误分析详情图](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/1191dde3-03ff-4220-9ee7-46a2b07da36f.png)
+
+在错误详情中可以查看链路追踪 id ，获取到链路追踪 id 之后可以在链路追踪中查看链路详情
 
 ### 3、通过链路追踪查看调用链路
 
