@@ -48,8 +48,8 @@
 
 若需求为：
 
-- 全局限流的配置与上例相同，但需对特定 URL（web.playground.erda.cloud/index.html）做单独配置。
-- 当超过限流时，返回 302 状态码，随后跳转至 CDN 静态页面（cdn.erda.cloud/playground/index.html）。
+- 全局限流的配置与上例相同，但需对特定 URL（*web.playground.erda.cloud/index.html*）做单独配置。
+- 当超过限流时，返回 302 状态码，随后跳转至 CDN 静态页面（*cdn.erda.cloud/playground/index.html*）。
 
 则配置示意如下：
 
