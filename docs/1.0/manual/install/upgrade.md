@@ -32,7 +32,7 @@ v1.0.x 版本不支持升级。
    * 使用指定私有化配置文件升级 Erda。
 
      ```shell
-     # 指定您的私有化配置文件，比如 custom_values.yamls
+     # 指定您的私有化配置文件，例如 custom_values.yamls
      helm upgrade** erda -f custom_values.yaml 
      ```
 
