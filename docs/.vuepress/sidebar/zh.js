@@ -20,8 +20,8 @@ module.exports = {
             collapsable: true,
             children: [
                 'install/helm-install',
+                'install/docker-install',
                 'install/high-availability',
-                'install/provider-install',
                 'install/upgrade'
             ]
         },
@@ -39,7 +39,7 @@ module.exports = {
             children: [
                 'cmp/example',
                 'cmp/concept',
-                'cmp/best-practice',
+                'cmp/best-practices/alert-config',
                 {
                     title: '使用指南',
                     collapsable: true,
@@ -236,8 +236,8 @@ module.exports = {
                             collapsable: true,
                             children: [
                                 'msp/examples/log/java-log-rule',
-                                'msp/examples/log/log-alert',
-                                'msp/examples/log/log-dashboard',
+                                // 'msp/examples/log/log-alert',
+                                // 'msp/examples/log/log-dashboard',
                             ],
                         },
                         {
@@ -333,7 +333,7 @@ module.exports = {
                         //     title: '微服务环境',
                         //     collapsable: true,
                         //     children: [
-                               
+
                         //     ]
                         // },
                         {

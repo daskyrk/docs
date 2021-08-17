@@ -1,0 +1,3 @@
+{
+  "extends": "stylelint-plugin-stylus/recommended"
+}
