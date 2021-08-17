@@ -1,4 +1,4 @@
-# 让 API 可以被跨域访问
+# 跨域访问 API
 
 ## erda.yml 配置
 
@@ -38,14 +38,14 @@
 
 若需求为：
 
-- 允许所有外部站点，调用任意 http 方法
-- 开放的 API 无需携带 cookie 即可访问，禁止来自外部站点的 cookie 透传，来保障安全
+- 允许所有外部站点调用任意 HTTP 方法。
+- 开放的 API 无需携带 Cookie 即可访问，禁止来自外部站点的 Cookie 透传以保障安全。
 
 则配置示意如下：
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/ad77622c-3260-4659-87dc-1ae35743557b.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/736f1b9e-1d6d-41a1-9d88-69d69fa8958b.png)
 
-如若使用 erda.yml 配置，则如下：
+若使用 `erda.yml` 配置，则配置信息如下：
 
 ```yaml
           policies:
@@ -54,45 +54,40 @@
               allow_methods: any
               allow_headers: any
               allow_credentials: false
-
 ```
 
 ### 示例二
 
-若需求为：
+若需求为仅允许域名符合 **.example.com* 的站点访问，可调用任意方法，可携带 Cookie，则需先关闭跨域访问策略，再通过 [自定义 nginx 配置](../../guides/apigw/policy.md#自定义-nginx-配置) 实现。
 
-- 只允许域名符合 `*.example.com` 的站点访问，可调用任意方法，可以携带 cookie
+1. 关闭跨域访问策略。
 
-跨域访问策略当前暂未较好地支持此类需求的快速配置，需要先关闭跨域访问策略，然后通过[自定义 nginx 配置](../../guides/apigw/policy.md#自定义-nginx-配置)来实现
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/69e128ce-ce19-400c-90d7-a32ea27d5b75.png)
 
-可以在 nginx 配置框中添加如下配置：
+2. 开启 nginx 自定义配置.
 
-```bash
-set $methodandorigin $request_method$http_origin;
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/42c11947-3d3f-4a44-8b0e-f67a123e115a.png)
 
-if ($http_origin ~* 'https?://.*\.example\.com$') {
-    more_set_headers 'Access-Control-Allow-Origin: $http_origin';
-    more_set_headers 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS';
-    more_set_headers 'Access-Control-Allow-Credentials: true';
-}
+3.  nginx 配置示意如下：
 
-if ($methodandorigin ~* '^OPTIONS-https?://.*\.example\.com$') {
-    more_set_headers 'Access-Control-Allow-Origin: $http_origin';
-    more_set_headers 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS';
-    more_set_headers 'Access-Control-Allow-Headers: $http_access_control_request_headers';
-    more_set_headers 'Access-Control-Allow-Credentials: true';
-    more_set_headers 'Access-Control-Max-Age: 86400';
-    more_set_headers 'Content-Type: text/plain charset=UTF-8';
-    more_set_headers 'Content-Length: 0';
-    return 200;
-}
-```
-如下图所示
+   ```bash
+   set $methodandorigin $request_method$http_origin;
+   
+   if ($http_origin ~* 'https?://.*\.example\.com$') {
+       more_set_headers 'Access-Control-Allow-Origin: $http_origin';
+       more_set_headers 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS';
+       more_set_headers 'Access-Control-Allow-Credentials: true';
+   }
+   
+   if ($methodandorigin ~* '^OPTIONS-https?://.*\.example\.com$') {
+       more_set_headers 'Access-Control-Allow-Origin: $http_origin';
+       more_set_headers 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS';
+       more_set_headers 'Access-Control-Allow-Headers: $http_access_control_request_headers';
+       more_set_headers 'Access-Control-Allow-Credentials: true';
+       more_set_headers 'Access-Control-Max-Age: 86400';
+       more_set_headers 'Content-Type: text/plain charset=UTF-8';
+       more_set_headers 'Content-Length: 0';
+       return 200;
+   }
+   ```
 
-关闭跨域访问策略：
-
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/c9d8986d-b6bf-4745-9a31-7571b5374d38.png)
-
-开启 nginx 自定义配置：
-
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/13/a0f4a623-3fa3-4405-89d8-a558e6d08bb2.png)
