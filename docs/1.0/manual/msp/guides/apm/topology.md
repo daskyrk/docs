@@ -1,23 +1,24 @@
 # 全局拓扑
 
-Erda 微服务平台能够自动发现服务的上下游依赖关系，根据生成的服务拓扑大图，可以帮助你发现服务的性能瓶颈或者系统的错误热点。在服务拓扑图上的每个节点表示服务组件或服务的依赖项，并且在节点上标注服务的运行状态和请求信息，可以点击节点获取更详细的观测图表。
+微服务治理平台能够自动发现服务的上下游依赖关系，并生成服务拓扑大图，便于您查看服务的性能瓶颈或系统的错误热点。拓扑图上的每个节点表示服务组件或服务的依赖项，且节点上标注有服务的运行状态和请求信息，点击后可获取详细的观测图表。
 
 ## API 网关
-API 网关节点，如果你的流量是基于微服务平台中的 API 网关转发，会显示该节点。点击 API 网关节点时，右侧的观测图表会切换到网关的域名请求、整体请求QPS和响应时间。  
+如果您基于微服务治理平台中的 API 网关转发流量，拓扑图中将显示 API 网关节点。点击该节点，右侧的观测图标将切换至网关的域名请求、整体请求 QPS 和响应时间。
 
-![API 网关节点](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/26/6fd21632-b731-4a06-952d-41ceefe99843.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/5675c9f0-ca3c-49cf-886c-35867feb019a.png)
 
 ## 应用服务
-平台能够自动识别 HTTP 和 RPC 请求，并标注为服务节点。在每个业务服务的节点上展示服务的运行实例、所选时间段内的已停止实例和请求错误率等状态数据，点击服务节点时，观测图表会切换到服务的状态概览、事务分析等数据，点击详情可以跳转到[服务分析](./service-analysis.md)页面。  
+平台可自动识别 HTTP 和 RPC 请求，并标注为服务节点。业务服务的节点上可查看服务的运行实例、所选时间段内已停止实例和请求错误率等状态数据，点击该节点，观测图表将切换至服务的状态概览、事务分析等数据，点击详情可跳转至 [服务分析](./service-analysis.md) 页面。  
 
-![服务节点](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/26/7f2901d5-ec9d-4d95-9e23-b30c1574ca59.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/7d7dcc97-6530-4ad9-8998-6993b7e8445b.png)
 
 ## 中间件
-平台能够自动识别服务调用的中间件，并标注为中间件节点，当前支持 MySQL、Redis、RocketMQ、ElasticSearch 等。
+平台可自动识别服务调用的中间件，并标注为中间件节点，当前支持 MySQL、Redis、RocketMQ、Elasticsearch 等。
 
-![中间件节点](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/26/2da450d7-2728-47f9-bcff-c08a7b15b0a8.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/fd504b53-cf8f-4cf2-8f2c-90d660347adb.png)
 
 ## 外部请求调用
-平台能够自动识别服务调用的外部 HTTP 请求，并标注为外部事务节点，点击节点会切换到外部请求的 QPS 和吞吐量等观测数据。
+平台可自动识别服务调用的外部 HTTP 请求，并标注为外部事务节点，点击该节点将切换至外部请求的 QPS 和吞吐量等观测数据。
 
-![外部事务节点](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/26/d6bdcbcc-5aae-46d2-bf6c-6f0aa70d54f9.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/7ce102a4-3696-490e-bb25-7209da7f80d9.png)
+
