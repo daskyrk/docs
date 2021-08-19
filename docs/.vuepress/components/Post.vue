@@ -39,8 +39,16 @@ export default {
   margin: 0 auto;
   font-size: 16px;
   letter-spacing: 0px;
-  font-family: PT Serif, Serif;
   color: $textColor;
+
+  img {
+    max-width: 100%;
+  }
+
+  p {
+    line-height: 1.75;
+    letter-spacing: 0.8px;
+  }
 }
 
 .blog-content-title {

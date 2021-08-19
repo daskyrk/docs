@@ -218,7 +218,7 @@ export default {
     background-size 1rem
     &:focus
       cursor auto
-      border-color $accentColor
+      border-color $activeColor
   .suggestions
     background #fff
     width 20rem
@@ -246,7 +246,7 @@ export default {
     &.focused
       background-color #f3f4f5
       a
-        color $accentColor
+        color $activeColor
 
 @media (max-width: $MQNarrow)
   .search-box

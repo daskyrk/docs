@@ -54,10 +54,10 @@ module.exports = ctx => ({
     sidebar: require('./sidebar/zh'),
     categoryMap: {
       post: '全部',
-      msp: '微服务治理平台',
-      back: '后端',
+      msp: '微服务治理',
+      opensource: ' 开源',
       pipeline: '流水线',
-      fdp: '快数据',
+      frontend: '前端',
     },
     // algolia: {
     //   apiKey: '75ceab77c4536a615806be21b7e3b39c',

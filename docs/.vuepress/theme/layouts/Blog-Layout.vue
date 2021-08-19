@@ -68,7 +68,7 @@ export default {
       const { title } = this.$page.frontmatter;
       if (title === "Post") return "博客";
       const category = /^(\w+) Category$/.exec(title);
-      if(category && this.$themeConfig.categoryMap[category[1]]) {
+      if (category && this.$themeConfig.categoryMap[category[1]]) {
         return this.$themeConfig.categoryMap[category[1]];
       }
       return title;
@@ -118,10 +118,15 @@ export default {
 
 <style lang="stylus">
 .blog-layout {
+  font-family: pingfang SC, helvetica neue, arial, 'microsoft yahei ui', 'microsoft yahei', sans-serif;
   padding: 50px 15px 80px 15px;
   min-height: calc(100vh - 80px - 60px - 50px);
   max-width: 800px;
   margin: 360px auto 0;
+
+  .search-box .suggestion a {
+    color: $activeColor;
+  }
 }
 
 .blog-header-image {
@@ -137,7 +142,6 @@ export default {
   position: absolute;
   top: 120px;
   max-width: 800px;
-  font-family: pingfang SC, helvetica neue, arial, 'microsoft yahei ui', 'microsoft yahei', sans-serif;
   color: #eee;
   letter-spacing: 2px;
 }
