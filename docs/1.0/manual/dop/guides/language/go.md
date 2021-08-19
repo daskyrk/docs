@@ -1,32 +1,27 @@
 # Go
 
-Erda 通过统一的任务插件机制支撑不同的构建能力，利用这一机制，Erda 提供了开箱即用的 Go 构建插件。
+Erda 通过统一的任务插件机制支撑不同的构建能力，并利用这一机制提供开箱即用的 Go 构建插件。
 
-## Go 版本
+## 版本要求
 
-当前支持的版本如下:
-
-- Go 1.14
-
-其他版本正在支持中
+当前支持 Go 1.14 版本。
 
 ## 依赖管理
-依赖管理Go Modules
-
-优先从包go vendor和go mod中探测， 否则将代码放到gopath下构建
+依赖管理 Go Modules，优先从包 go vendor 和 go mod 中探测， 否则会将代码放到 GOPATH 下构建。
 
 ## 构建打包
-go action的必须参数：
-1. `context` 需要添加到go容器的代码路径
+* Go Action 必选参数
 
-可选参数：
-1. `service` 服务名
-2. `command` 构建命令
-3. `target` 构建产物路径
-4. `assets` 静态资源文件
-5. `package` go包名（优先从包govendor和gomod中探测）
+  **context**：需要添加到 Go 容器的代码路径
 
-pipeline.yml
+* Go Action 可选参数
+  * **service**：服务名
+  * **command**：构建命令
+  * **target**：构建产物路径
+  * **assets**：静态资源文件
+  * **package**：Go包名（优先从包 go vendor 和 go mod 中探测）
+
+`pipeline.yml` 示例如下：
 
 ```yml
 version: "1.1"
