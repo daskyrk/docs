@@ -22,24 +22,22 @@ Erda 边缘计算平台默认使用镜像来发布应用，镜像可以是任意
 
 1. 增加一个容器推送的节点。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/e1340599-66bb-41f2-b3ca-ad2fbb60fe98.png
-)
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/2255fb58-b6d2-4e51-aae0-cc965337d7b4.png)
 
 2. 切换至代码编辑模式，增加如下参数：
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/07/23/a2649930-49b0-467c-924c-38f1617b8ce9.png
-)
+   ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/25f97b75-4b8d-4283-bbfd-6d079fe99edb.png)
 
-```
-- docker-push:
-    alias: docker-push
-    version: "1.0"
-    params:
-      image: yourrepo/erdaxxx:v1.0                        // 要 push 到外部镜像名称, require
-      from: imageResult.img                               // 应用下面的文件
-      service: test-server                                // 服务名称，要与镜像文件里的module_name一致
-      username: admin                                     // 外部镜像仓库用户名
-      password: xxxx                                      // 外部镜像仓库用密码
-```
+   ```
+   - docker-push:
+       alias: docker-push
+       version: "1.0"
+       params:
+         image: yourrepo/erdaxxx:v1.0                        // 要 push 到外部镜像名称, require
+         from: imageResult.img                               // 应用下面的文件
+         service: test-server                                // 服务名称，要与镜像文件里的module_name一致
+         username: admin                                     // 外部镜像仓库用户名
+         password: xxxx                                      // 外部镜像仓库用密码
+   ```
 
 3. 运行流水线，成功后即可使用 Docker Hub 中的镜像来发布边缘应用。
