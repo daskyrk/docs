@@ -39,7 +39,7 @@ module.exports = {
             children: [
                 'cmp/example',
                 'cmp/concept',
-                'cmp/best-practices/alert-config',
+                ['cmp/best-practices/alert-config', '最佳实践'],
                 {
                     title: '使用指南',
                     collapsable: true,
