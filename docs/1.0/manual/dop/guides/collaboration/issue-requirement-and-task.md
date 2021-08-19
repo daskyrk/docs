@@ -97,6 +97,7 @@ As a < Role >,  I want to < Activity >,  so that < Business Value >.
 任务编辑页面：
 
 与需求编辑页面相同
+
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/09/50052539-5121-464b-8900-f913a64209c8.png)
 
 * 任务开发过程中，项目测试工程师（ QA ）会进行测试相关作业的准备，具体内容可以参考[人工测试](../qa-and-testing/function-test.md)和[自动化测试](../qa-and-testing/auto-test-getting-started.md)。
