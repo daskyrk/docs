@@ -6,6 +6,7 @@ module.exports = ctx => ({
   lang: 'zh-CN',
   title: "Erda Docs",
   description: "学习在 Erda 平台上构建、部署、管理应用",
+  shouldPrefetch: () => false, // prevent too many request in first page
   // locales: {
   //   '/en': {
   //     lang: 'en-US',
