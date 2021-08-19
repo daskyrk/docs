@@ -95,6 +95,7 @@ module.exports = {
                     children: [
                         ['dop/concepts/overview', '概述 | Overview'],
                         ['dop/concepts/agile-info', '高效协同'],
+                        ['dop/concepts/iac', '基础设施即代码 IaC'],
                         ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
                         ['dop/concepts/erda-yaml', '声明式应用部署 erda.yml'],
                         ['dop/concepts/artifact', '制品'],
@@ -177,7 +178,6 @@ module.exports = {
                             title: 'CI/CD Pipeline',
                             collapsable: true,
                             children: [
-                                'dop/guides/cicd-pipeline/pipeline',
                                 'dop/guides/cicd-pipeline/pipeline-yml-config',
                                 'dop/guides/cicd-pipeline/pipeline-yml-graph',
                                 'dop/guides/cicd-pipeline/pipeline-execution',
