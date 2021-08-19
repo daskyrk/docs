@@ -217,7 +217,7 @@ Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-s
   digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52
   ```
 
-  生成签名的方式请参见 [不存在请求 Body](./auth.md#签名算法成)。
+  生成签名的方式请参见 [不存在请求 Body](./auth.md#签名算法)。
 
 ### 参数签名认证
 
