@@ -1,406 +1,386 @@
 # API 开放鉴权
 
-## 创建流量入口
+## 流量入口管理
 
-想要做 API 的开放鉴权，创建流量入口时需要选择“面向合作伙伴开放 API ”这个场景
+### 创建流量入口
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/cd9bda74-e31e-4c1d-9efd-99dc86bb08e3.png)
+如需开放 API 鉴权，创建流量入口时需选择 **面向合作伙伴开放 API** 场景。
 
-调用方认证方式可以选择：
-* key 认证：通过请求参数中的 appKey 字段，或者请求头中的 X-App-Key 来识别调用方
-* hmac 签名认证：使用 hmac 对请求行、请求头、请求 body 进行加密，具备较高的安全性，因为根据 HTTP 签名算法标准草案设计，也具备一定的通用性，推荐使用([签名算法细节](./auth.md#hmac-签名认证-推荐))
-* 参数签名认证：通过请求参数中的 appKey 字段来识别调用方，同时使用对参数进行签名的 sign 字段进行校验([签名算法细节](./auth.md#参数签名认证))
-* OAuth2 认证：基于 OAuth2 Client Credentials 模式，通过动态 Token 识别调用方，调用方可以借助类似 Spring Cloud Security 之类的库实现
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/8a7820df-5777-4f44-a94e-b35daca555e7.png)
 
-调用方访问条件可以选择：
-* 认证通过：只要携带的调用凭证正确，能被识别出，即可访问
-* 认证通过 + 授权许可：需要额外针对调用方授权后，对应调用方才可以访问
+**调用方认证方式**
 
-## 调用者授权
+* **Key 认证**：通过请求参数中的 `appKey` 字段，或请求头中的 `X-App-Key` 识别调用方。
+* **HMAC 签名认证**：使用 HMAC 对请求行、请求头、请求 Body 进行加密，具备较高的安全性，因根据 HTTP 签名算法标准草案设计，同时具备一定的通用性，具体请参见 [HMAC 签名认证](./auth.md#hmac-签名认证-推荐)。
+* **参数签名认证**：通过请求参数中的 `appKey` 字段识别调用方，同时通过对参数进行签名的 `sign` 字段完成校验，具体请参见 [参数签名认证](./auth.md#参数签名认证)。
+* **OAuth2 认证**：基于 OAuth2 Client Credentials 模式，通过动态 Token 识别调用方，调用方可借助类似 `Spring Cloud Security` 的库实现。
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/82342c0b-16c0-42b0-97c3-389a56cadd18.png)
+**调用方访问条件**
 
-如果调用方访问条件选择了“认证通过 + 授权许可”，则需要进行调用者授权。授权调用方可以在创建流量入口的步骤中进行，也可以在创建完成之后，编辑流量入口时进行。
+* **认证通过**：仅需携带的调用凭证正确，即可通过识别进行访问。
+* **认证通过 + 授权许可**：需额外针对调用方授权后，对应调用方才可访问。
 
-## 调用量控制
+### 调用者授权
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/96632b46-3fa9-4191-aaec-392b5d8d124c.png)
+若调用方访问条件选择 **认证通过 + 授权许可**，则需进行调用者授权。
 
-调用量控制可以在创建流量入口的步骤中进行，也可以在创建完成之后，编辑流量入口时进行。
+您可以在创建流量入口时完成调用者授权，也可以在后续通过流量入口编辑操作完成。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/e8233c1c-7380-43b5-8379-8886089647dd.png)
+
+### 调用量控制
+
+您可以在创建流量入口时完成调用量控制，也可以在后续通过流量入口编辑操作完成。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/5b9e4789-eba3-4457-8b4c-5f2dd2c3dfae.png)
 
 ## 调用方凭证管理
 
-点击操作列表中的“凭证”
+选择对应调用方后，点击 **凭证**。
 
 
-![c2](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/0be4a024-9a3b-4273-a8f1-4726033d1b2e.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/962516e6-b89d-420c-8af4-838c862d1ec1.png)
 
-分别对应流量入口中可配置的三种认证方式，调用方要根据流量入口的认证方式，选择正确的凭证
+调用方需根据流量入口的认证方式，选择正确的凭证。
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/16/f805fca0-d3aa-4283-9acc-6a6175a8e268.png)
-
-
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/ad08bc3b-10c8-48f8-9a5a-5e98fa0337db.png)
 
 ## 签名认证算法
 
-在平台提供的几种认证鉴权方式中，HMAC 签名认证和参数签名认证，都是可以在识别出调用方的同时，对请求参数、body 进行签名检查，从而进一步确保请求没有被篡改或伪造
+在平台提供的认证鉴权方式中，HMAC 签名认证和参数签名认证均可在识别出调用方的同时，对请求参数、Body 进行签名检查，从而进一步确保请求未被篡改或伪造。
 
-### HMAC 签名认证 (推荐)
+### HMAC 签名认证（推荐）
 
-该算法主要依据 [HTTP 签名草案](https://tools.ietf.org/html/draft-cavage-http-signatures-12) 建立，使用的 Kong 原生的[hmac-auth 插件](https://docs.konghq.com/hub/kong-inc/hmac-auth/)
+该算法主要依据 [HTTP 签名草案](https://tools.ietf.org/html/draft-cavage-http-signatures-12) 建立，使用 Kong 原生的 [HMAC-Auth 插件](https://docs.konghq.com/hub/kong-inc/hmac-auth/)。
 
+#### Authorization 请求头构成
 
-#### 签名方式
-
-##### Authorization 请求头的构成
-
-首先来看一个标准的 Authorization 请求头:
+标准的 Authorization 请求头示例如下：
 
 ```json
 Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date request-line", signature="gaweQbATuaGmLrUr3HE0DzU1keWGCt3H96M28sSHTG8="
 ```
 
-逐个部分来看具体含义
+* **HMAC**
 
-**第1部分：hmac**
+  表明使用 HMAC 签名，此为静态字段，在所有请求中均为一致，无需变化。
 
-表明使用了 hmac 签名，这是个静态字段，所有请求都是一样的，无需变化
+* **appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu"**
 
-**第2部分：appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu"**
+  即凭证中的 App Key 字段（如下图所示），需与 HMAC 以 ASCII 空格 ` ` 分隔。
 
-即凭证中的 App Key 字段，取如图所示的值：
+  ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/2d4f4ddf-c67b-4e7c-89bb-113080955a3b.png)
 
-![](https://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/12/10/3499f817-8bed-43aa-89dc-bb3a6dda94fa.png)
+* **algorithm="hmac-sha256"**
 
-需要与第1部分之间用 ASCII 空格` `分隔
+  表示使用的签名算法，无需变化，需与 appkey 以 ASCII 字符 `,` 和 ASCII 空格 ` ` 分隔。
 
-**第3部分：algorithm="hmac-sha256"**
+* **headers="date request-line"**
 
-表示使用的签名算法，这部分也无需变化
+  参与签名的请求头，均为小写，其内容是有序的，表明签名过程中字段拼接的顺序（具体请参见 [签名算法](./auth.md#签名算法)），需与 algorithm 以 ASCII 字符 `,` 和 ASCII 空格 ` ` 分隔。
 
-需要与第2部分之间用 ASCII 字符 `,` 和 ASCII 空格 ` `分隔
+  ::: tip 提示
+  字段 `request-line` 相对特殊，表示请求行，例如 `GET /api?name=bob HTTP/1.1`，此处虽写在 headers 中，实质上并不是 header。
+  :::
 
-**第4部分：headers="date request-line"**
+* **signature="gaweQbATuaGmLrUr3HE0DzU1keWGCt3H96M28sSHTG8="**
 
-参与签名的请求头，都需要是小写的，注意这里是有序的，表明了签名过程中字段拼接的顺序，具体会在签名算法中介绍
+  基于签名算法生成的签名值，需与 headers 以 ASCII 字符 `,` 和 ASCII 空格 ` ` 分隔。
 
-::: tip request-line
-request-line 这个字段比较特殊，表示请求行，例如`GET /api?name=bob HTTP/1.1`，虽然这里写在 headers 里，但其实并不是 header
-:::
+#### 签名算法
 
-需要与第3部分之间用 ASCII 字符 `,` 和 ASCII 空格 ` `分隔
+1. 不存在请求 Body
 
-**第5部分：signature="gaweQbATuaGmLrUr3HE0DzU1keWGCt3H96M28sSHTG8="**
+* **必须请求头**
+  * Date
+  * Authorization
 
-基于签名算法生成的签名值
+* **Date 请求头**
 
-需要与第4部分之间用 ASCII 字符 `,` 和 ASCII 空格 ` `分隔
+  Date 请求头需遵循 RFC1123 HTTP 规范，例如 `Thu, 10 Dec 2020 08:47:43 GMT`。
 
-##### 签名算法
+  * Unix 命令生成：
 
-1. 不存在请求 body 时
+    ```bash
+    env LANG=eng TZ=GMT date  '+%a, %d %b %Y %T %Z'
+    ```
 
-**必须请求头**
+  * Java 代码生成：
 
-- Date
-- Authorization
+    ```java
+    System.out.println(DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC)));
+    ```
 
-**Date 请求头**
+  ::: tip 提示
+  若 Date 请求头时间与服务器时间的绝对差值大于 5 分钟，将被认为请求重放而拒绝请求。
+  :::
 
-其中 Date 请求头需要遵循 RFC1123 HTTP 规范，例如`Thu, 10 Dec 2020 08:47:43 GMT`
+* **Authorization 请求头**
 
-Unix 命令生成：
+  请求头的构造，请参见 [Authorization 请求头构成](./auth.md#authorization-请求头构成)。此处将介绍如何生成签名。
 
-```bash
-env LANG=eng TZ=GMT date  '+%a, %d %b %Y %T %Z'
-```
-Java 代码生成：
+  待签名字符串的生成规则如下：
 
-```java
-System.out.println(DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC)));
-```
+  1. 若非 `request-line`，拼接小写的请求头 `key`，并跟上 ASCII 字符 `:` 和 ASCII 空格 ` `。 
+  2. 若非 `request-line`，拼接请求头 `value`，若是 `request-line`，拼接 HTTP request line。
+  3. 若非 `request-line`，最后拼接 ASCII 换行符 `\n`。
 
-::: tip
-如果 Date 请求头里的时间与服务器时间的差值绝对值超过 5 分钟，会被认为是请求重放，拒绝请求
-:::
+  例如，对于以下请求：
 
-**Authorization 请求头**
+  ```bash
+  curl -i -X GET http://localhost/requests?name=bob \
+        -H 'Host: hmac.com' \
+        -H 'Date: Thu, 22 Jun 2017 21:12:36 GMT' \
+        -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line", signature="FiPTWoayUGvlaAk6HbnxEzlXo0JO2HhiDGEwsR4yKPo="'
+  ```
 
-对于请求头的构造，上面已经阐述。这里说明其中的 `signature` 部分是如何生成的
+  Authorization 头中指定了用于签名的请求头，`date`、`host` 以及特殊的请求行 `request-line`，按序拼接字符串，获得待签名字符串：
 
-首先是`待签名字符串`的生成，生成规则如下：
+  ```json
+  date: Thu, 22 Jun 2017 21:12:36 GMT
+  host: hmac.com
+  GET /requests?name=bob HTTP/1.1
+  ```
 
-1. 如果不是`request-line`，拼接小写的请求头的 key，并跟上 ASCII 字符 `:` 和 ASCII 空格 ` `
-2. 如果不是`request-line`， 拼接上请求头的 value; 如果是 `request-line`，拼接上 HTTP request line
-3. 如果不是最后，拼接上 ASCII 换行符 `\n`
+  对待签名字符串进行签名，规则如下：
 
-通过具体例子来说明，对于以下请求：
+  ```json
+  signed_string=HMAC-SHA256(<signing_string>, "secret")
+  signature=base64(<signed_string>)
+  ```
 
-```bash
-curl -i -X GET http://localhost/requests?name=bob \
-      -H 'Host: hmac.com' \
-      -H 'Date: Thu, 22 Jun 2017 21:12:36 GMT' \
-      -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line", signature="FiPTWoayUGvlaAk6HbnxEzlXo0JO2HhiDGEwsR4yKPo="'
-```
+  若 App Secret 为 `qdWre3pJxitNm9NOBRH3EpWeVYepnt3f`，可得到签名值为 `FiPTWoayUGvlaAk6HbnxEzlXo0JO2HhiDGEwsR4yKPo=`
 
-Authorization 头中指定了用于签名的请求头，`date`,`host` 以及特殊的请求行`request-line`，按顺序进行字符串拼接，获得`待签名字符串`：
+  使用 Unix 命令生成签名：
 
-```json
-date: Thu, 22 Jun 2017 21:12:36 GMT
-host: hmac.com
-GET /requests?name=bob HTTP/1.1
-```
+  ```bash
+  echo -ne "date: Thu, 22 Jun 2017 21:12:36 GMT\nhost: hmac.com\nGET /requests?name=bob HTTP/1.1" | \
+  openssl dgst -sha256 -hmac "qdWre3pJxitNm9NOBRH3EpWeVYepnt3f" -binary | base64
+  ```
 
-接着，对`待签名字符串`进行签名，签名规则如下：
+  使用 Java 代码生成签名：
 
-```json
-signed_string=HMAC-SHA256(<signing_string>, "secret")
-signature=base64(<signed_string>)
-```
+  ```java
+  import org.apache.commons.codec.binary.Base64;
+  import org.apache.commons.codec.digest.HmacAlgorithms;
+  import org.apache.commons.codec.digest.HmacUtils;
+  // ...
+  String digest =
+      new String(
+          Base64.encodeBase64String(
+              new HmacUtils(HmacAlgorithms.HMAC_SHA_256, "qdWre3pJxitNm9NOBRH3EpWeVYepnt3f")
+                  .hmac("date: Thu, 22 Jun 2017 21:12:36 GMT\nhost: hmac.com\nGET /requests?name=bob HTTP/1.1")));
+  ```
 
-如果 App Secret 为 `qdWre3pJxitNm9NOBRH3EpWeVYepnt3f`
+2. 存在请求 Body
 
-可以得到签名值为 `FiPTWoayUGvlaAk6HbnxEzlXo0JO2HhiDGEwsR4yKPo=`
+* **必须请求头**
+  * Date
+  * Digest
+  * Authorization
 
-对于上面的例子，使用 Unix 命令生成签名:
+* **Date 请求头**
 
-```bash
-echo -ne "date: Thu, 22 Jun 2017 21:12:36 GMT\nhost: hmac.com\nGET /requests?name=bob HTTP/1.1" | \
-openssl dgst -sha256 -hmac "qdWre3pJxitNm9NOBRH3EpWeVYepnt3f" -binary | base64
-```
+  与不存在 Body 时一致。
 
-使用 java 代码生成签名:
+* **Digest 请求头**
 
-```java
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.HmacAlgorithms;
-import org.apache.commons.codec.digest.HmacUtils;
-// ...
-String digest =
-    new String(
-        Base64.encodeBase64String(
-            new HmacUtils(HmacAlgorithms.HMAC_SHA_256, "qdWre3pJxitNm9NOBRH3EpWeVYepnt3f")
-                .hmac("date: Thu, 22 Jun 2017 21:12:36 GMT\nhost: hmac.com\nGET /requests?name=bob HTTP/1.1")));
-```
+  需使用 SHA-256 对请求 Body 进行签名，例如 Body 为 `{"name": "bob"}`，则对应的 Digest 请求头为 `Digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52`，其中 Digest 请求头的 `value` 需以 `SHA-256=` 开头。
 
-2. 存在请求 body 时
+  使用 Unix 命令生成：
 
-**必须请求头**
+  ```bash
+  echo -n '{"name": "bob"}' | openssl dgst -sha256
+  ```
 
-- Date
-- Digest
-- Authorization
+  请求限制：请求 Body 大小不超过 10 m。
 
-**Date 请求头**
+* **Authorization 请求头**
 
-与不存在 body 时一致
+  区别于不存在 Body 的情况，Headers 部分必须带上 Digest，示例如下：
 
-**Digest 请求头**
+  ```bash
+  curl -i -X POST http://localhost/requests \
+        -H 'Host: hmac.com' \
+        -H 'Date: Thu, 22 Jun 2017 21:12:36 GMT' \
+        -H 'Digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52' \
+        -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line digest", signature="CZSUv+kxWHN/vPEbwARg4r+NN3Vnb9+Aaq5XOQiENJA="'
+        -d '{"name": "bob"}'
+  ```
 
-需要使用 SHA-256 对请求 Body 进行签名，例如 body 为 `{"name": "bob"}`，则对应的 Digest 请求头为：`Digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52`
+  Authorization 头中指定了用于签名的请求头，`date`、`host` 、特殊的请求行 `request-line` 以及请求 Body 的签名值 `digest`，按序拼接字符串，获得待签名字符串：
 
-注意 Digest 请求头的 value 需要用 `SHA-256=` 开头
+  ```json
+  date: Thu, 22 Jun 2017 21:12:36 GMT
+  host: hmac.com
+  GET /requests?name=bob HTTP/1.1
+  digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52
+  ```
 
-使用 Unix 命令生成
-
-```bash
-echo -n '{"name": "bob"}' | openssl dgst -sha256
-```
-
-::: warning 请求限制
-请求 body 大小不能超过 10m
-:::
-
-**Authorization 请求头**
-
-与不存在 body 时的区别是，headers 部分必须带上 digest，举例如下：
-
-```bash
-curl -i -X POST http://localhost/requests \
-      -H 'Host: hmac.com' \
-      -H 'Date: Thu, 22 Jun 2017 21:12:36 GMT' \
-      -H 'Digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52' \
-      -H 'Authorization: hmac appkey="wsK8t77fvAAs3i7878NSkC0j95ib3oVu", algorithm="hmac-sha256", headers="date host request-line digest", signature="CZSUv+kxWHN/vPEbwARg4r+NN3Vnb9+Aaq5XOQiENJA="'
-      -d '{"name": "bob"}'
-```
-
-Authorization 头中指定了用于签名的请求头，`date`,`host`，特殊的请求行`request-line`，以及请求 body 的签名值`digest`，按顺序进行字符串拼接，获得`待签名字符串`：
-
-```json
-date: Thu, 22 Jun 2017 21:12:36 GMT
-host: hmac.com
-GET /requests?name=bob HTTP/1.1
-digest: SHA-256=956ba28434677d7d825157df180ef8123067cd58277c73f2c0f5e461a2830b52
-```
-
-生成 `signature` 的方式与不存在 body 时是一致的，不再赘述
+  生成签名的方式请参见 [不存在请求 Body](./auth.md#签名算法成)。
 
 ### 参数签名认证
 
-所有的参数（包括 appKey，但不包括签名参数 sign 自身）都按字符序增序排列，然后在排列好的参数串末尾加上 appSecret，对这整个字符串进行 SHA512 签名，生成签名参数 sign
+所有参数（包括 `appKey`，但不包括签名参数 `sign` 自身）均按照字符序增序排列，随后在排列的参数串末尾加上 `appSecret`，对完整字符串进行 SHA512 签名，生成签名参数 `sign`。
 
 #### 基于 URL 参数的签名
 
-比如调用参数为:
+例如，调用参数为：
 
 ```js
 /api?appKey=foobar&name=dadu&abc=123
 ```
 
-则首先参数名按照字母序升序排列，得到:
+参数名按照字母序升序排列，得到：
 
 ```js
 abc=123&appKey=foobar&name=dadu
 ```
 
-再假设调用凭证中的 App Secret 为 my.secret，则将其附加到参数末尾，得到:
+假设调用凭证中的 App Secret 为 `my.secret`，并将其附加到参数末尾，得到：
 
 ```js
 abc=123&appKey=foobar&name=dadumy.secret
 ```
 
-再计算这段字符串的SHA512，得到签名值为:
+计算该字符串的 SHA512，得到签名值为：
 
 ```json
 f97efc239eef4eafe69bfe41438740199d939e2e123c4c5a6b5d0b5e58d295a2818d6444c5c7b9e5985e751ad93f9c854e1966e59a63a1eeceb31e46641e291a
 ```
 
-所以最后的请求为:
+最终得到请求为：
 
 ```js
 /api?appKey=foobar&name=dadu&abc=123&sign=f97efc239eef4eafe69bfe41438740199d939e2e123c4c5a6b5d0b5e58d295a2818d6444c5c7b9e5985e751ad93f9c854e1966e59a63a1eeceb31e46641e291a
 ```
 
 
-#### 基于 body 的签名
+#### 基于 Body 的签名
 
-对于 POST 等带了 body 的请求，会对 body 进行签名，此时分为两种情况：
+对于 Post 等带有 Body 的请求，将对 Body 进行签名，此时分为两种情况：
 
-##### 1、Content-Type 是 application/x-www-form-urlencoded
+1. Content-Type 为 `application/x-www-form-urlencoded`
 
-此时与 URL 参数签名的方式一致，只不过将参数放到了 body 里面
+   此时与 URL 参数签名的方式一致，只是将参数放至 Body 里面。
 
-**请求限制：**
+   请求限制：
 
-- body 大小不能超过 10m
-- 参数个数不能大于 100 个
+   * Body 大小不超过 10 m。
+   * 参数个数不大于 100 个。
 
-##### 2、Content-Type 是 application/json
+2. Content-Type 为 `application/json`
 
-例如原始请求为：
+   例如，原始请求为：
 
-```bash
-POST --header 'Content-Type: application/json'
-     -d '
-{"userName":"abc","gender":"male"}
-'
-```
+   ```bash
+   POST --header 'Content-Type: application/json'
+        -d '
+   {"userName":"abc","gender":"male"}
+   '
+   ```
 
-则将 body 整体作为名为 data 的参数，按照字母序升序排列，得到:
+   将 Body 整体作为名为 Data 的参数，按照字母升序排列，得到：
 
-```js
-appKey=foobar&data={"userName":"abc","gender":"male"}
-```
+   ```js
+   appKey=foobar&data={"userName":"abc","gender":"male"}
+   ```
 
-再假设调用凭证中的 App Secret 为 my.secret，则将其附加到参数末尾，得到:
+   假设调用凭证中的 App Secret 为 `my.secret`，并将其附加到参数末尾，得到：
 
-```js
-appKey=foobar&data={"userName":"abc","gender":"male"}my.secret
-```
+   ```js
+   appKey=foobar&data={"userName":"abc","gender":"male"}my.secret
+   ```
 
-再计算这段字符串的 SHA512，得到签名值为:
+   计算该字符串的 SHA512，得到签名值为：
 
-```json
-ec23eeda5f88abe26311ed020439172eea409e3475875c87e9abfa8a6856138e767608e8497435f573ccb417a90448c78abdca4a0de12c4da4583aa3add7bf52
-```
+   ```json
+   ec23eeda5f88abe26311ed020439172eea409e3475875c87e9abfa8a6856138e767608e8497435f573ccb417a90448c78abdca4a0de12c4da4583aa3add7bf52
+   ```
 
-所以最终调用方需要发起的请求为:
+   最终调用方需发起的请求为：
 
-```bash
-POST --header 'Content-Type: application/json'
-     -d '
-{
-  "data": "{\"userName\":\"abc\",\"gender\":\"male\"}",
-  "appKey": "foobar",
-  "sign": "ec23eeda5f88abe26311ed020439172eea409e3475875c87e9abfa8a6856138e767608e8497435f573ccb417a90448c78abdca4a0de12c4da4583aa3add7bf52"
-}'
-```
+   ```bash
+   POST --header 'Content-Type: application/json'
+        -d '
+   {
+     "data": "{\"userName\":\"abc\",\"gender\":\"male\"}",
+     "appKey": "foobar",
+     "sign": "ec23eeda5f88abe26311ed020439172eea409e3475875c87e9abfa8a6856138e767608e8497435f573ccb417a90448c78abdca4a0de12c4da4583aa3add7bf52"
+   }'
+   ```
 
-网关收到请求后，发给后端服务的真正请求和原始请求一致：
+   网关收到请求后，发至后端服务的真正请求和原始请求一致：
 
-```bash
-POST --header 'Content-Type: application/json'
-     -d '
-{"userName":"abc","gender":"male"}
-'
-```
+   ```bash
+   POST --header 'Content-Type: application/json'
+        -d '
+   {"userName":"abc","gender":"male"}
+   '
+   ```
 
-**请求限制：**
-
-- body 大小不能超过 2m
-
-
+   请求限制：Body 大小不超过 2 m。
 
 #### 加上时间戳的签名（可选）
 
-增加一个名为 "apiTimestamp" 的时间戳参数，和其他参数一起进行字符序升序排列之后，进行签名生成sign
+增加名为 `apiTimestamp` 的时间戳参数，同其他参数一起字符升序排列之后，进行签名生成 `sign`。
 
-##### 时间戳取值
+* **时间戳取值**
 
-按照 Unix 时间戳标准：从 1970 年 1 月 1 日（UTC/GMT 的午夜 ）开始所经过的秒数
+  Unix 时间戳标准：从 1970 年 1 月 1 日（UTC/GMT 的午夜 ）开始所经过的秒数
 
-不同语言的获取方式：
+  不同语言的获取方式：
 
-| Java       | System.currentTimeMillis() / 1000     |
-| ---------- | ------------------------------------- |
-| JavaScript | Math.round(new Date().getTime()/1000) |
+  | Java       | System.currentTimeMillis() / 1000     |
+  | :--------- | :------------------------------------ |
+  | JavaScript | Math.round(new Date().getTime()/1000) |
 
-##### 时间的校验
+* **时间校验**
 
-在添加了 apiTimestamp 时间戳参数后，网关会判断是否和服务端时间接近，允许正负误差在 5 分钟内。如果超过这个时间范围，则会鉴权失败。
+  添加 `apiTimestamp` 时间戳参数后，网关将判断是否和服务端时间接近，允许正负误差在 5 分钟内，否则鉴权失败。
 
-##### example
+* **Example**
 
-以 URL 参数的签名为例
+  以 URL 参数的签名为例：
 
-```js
-/api?appKey=foobar&name=dadu&abc=123
-```
+  ```js
+  /api?appKey=foobar&name=dadu&abc=123
+  ```
 
-加上参数 apiTimestamp=1581565619，进行字符序升序排列，并加上 App Secret( 假设为 my.secret)
+  加上参数 `apiTimestamp=1581565619`，进行字符升序排列，并加上 App Secret（假设为 `my.secret`）：
 
-```js
-abc=123&apiTimestamp=1581565619&appKey=foobar&name=dadumy.secret
-```
+  ```js
+  abc=123&apiTimestamp=1581565619&appKey=foobar&name=dadumy.secret
+  ```
 
-再计算这段字符串的 SHA512，得到签名值为:
+  计算该字符串的 SHA512，得到签名值为：
 
-```
-61cabbc719e5edff3021ab5047bd3c5981e6348066d0416254dd529241a7135d57498dac56d2400139bc1040c5759d1c0798f1673913c537d10769c149879edd
-```
+  ```
+  61cabbc719e5edff3021ab5047bd3c5981e6348066d0416254dd529241a7135d57498dac56d2400139bc1040c5759d1c0798f1673913c537d10769c149879edd
+  ```
 
-所以最后的请求为:
+  最终得到请求为：
 
-```js
-/api?appKey=foobar&name=dadu&abc=123&apiTimestamp=1581565619&sign=61cabbc719e5edff3021ab5047bd3c5981e6348066d0416254dd529241a7135d57498dac56d2400139bc1040c5759d1c0798f1673913c537d10769c149879edd
-```
+  ```js
+  /api?appKey=foobar&name=dadu&abc=123&apiTimestamp=1581565619&sign=61cabbc719e5edff3021ab5047bd3c5981e6348066d0416254dd529241a7135d57498dac56d2400139bc1040c5759d1c0798f1673913c537d10769c149879edd
+  ```
 
-基于 body 签名的方式也是类似的，apiTimestamp 也需要带在 body 的 json 结构体里，例如：
+  基于 Body 签名的方式类似，`apiTimestamp` 需带在 Body 的 Json 结构体中，例如：
 
-```bash
-POST --header 'Content-Type: application/json'
-     -d '
-{
-  "data": "{\"userName\":\"abc\",\"gender\":\"male\"}",
-  "appKey": "foobar",
-  "apiTimestamp": 1581565619,
-  "sign": "xxxx",
-}'
-```
+  ```bash
+  POST --header 'Content-Type: application/json'
+       -d '
+  {
+    "data": "{\"userName\":\"abc\",\"gender\":\"male\"}",
+    "appKey": "foobar",
+    "apiTimestamp": 1581565619,
+    "sign": "xxxx",
+  }'
+  ```
 
-#### 示例代码
+#### 代码示例
 
-##### 签名实现
+签名实现：
 
 ```java
 // SignAuthHelper.Java
@@ -451,7 +431,7 @@ public class SignAuthHelper {
 }
 ```
 
-##### 测试程序
+测试程序：
 
 ```java
 import java.util.HashMap;
