@@ -8,7 +8,7 @@
 
 进入 **边缘计算平台 > 配置集管理**，点击 **新建配置集**。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/f4406750-d1bb-4ed6-a46b-e578e4887af2.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/8dd721eb-91d3-4f9c-a0f3-f05de832aeb5.png)
 
 ## 创建配置项
 
@@ -17,21 +17,21 @@
 - **通用**：通用类型的配置项会注入到每个站点中。
 - **站点**：站点类型的配置项可以选择注入到不同的站点中，如果存在与通用类型同名的配置项，则站点类型优先级高于通用类型。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/900bd6c6-d70b-4d0d-8dbf-7a4f080061bd.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/e06b4aab-1cdb-4414-b7a4-fd0ca11438fa.png)
 
 站点范围的配置项创建完成后，会根据所选站点生成对应数量的条目，后续可按需修改各站点下的个性化配置。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/68702599-20bc-4e62-9694-19340bb8d8a2.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/f6e0975b-e01c-4bbd-b418-36aa59bd1bed.png)
 
 ## 编辑配置项
 
 点击对应配置项的 **编辑**，配置项中仅可以对 **值** 进行编辑。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/1f1e2353-7c4e-4220-bf46-47a1670d2a30.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/053c9f1a-a65d-4198-b8db-a7622a8d260d.png)
 
 ::: tip 提示
 
-配置项变更后，需重启对应站点下的应用才能生效。
+配置项变更后，需重启对应站点下的应用方可生效。
 
 :::
 
