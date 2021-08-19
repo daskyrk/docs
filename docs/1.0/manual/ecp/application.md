@@ -5,7 +5,7 @@
 目前边缘应用支持以下两种部署源发布：
 
 - [镜像](#镜像发布)：以镜像作为部署源，支持资源、健康检查、私有仓库等多种配置。
-- [中间件](#Addon 发布)：即 Addon，开箱即用，支持 `mysql` 。
+- [中间件](#addon-发布)：即 Addon，开箱即用，支持 `mysql` 。
 
 ### 镜像发布
 
@@ -19,23 +19,23 @@
 - **健康检查**：支持 HTTP 和 COMMAND 类型。
 - **端口映射**：支持 TCP 类型。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/4c1d65f6-ce57-413c-bd0c-fe6fe445be67.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/b87b2f8b-9602-47d8-8fdd-7b96056c7a97.png)
 
 镜像类型的应用发布后，可以点击应用名称查看各个站点的部署状态。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/7dbe2a91-27bd-445c-b916-b30bd06eb271.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/4047b0ec-de8e-4092-b6cf-2cbf85ebe352.png)
 
 ### Addon 发布
 
 Addon 类型的边缘应用目前仅支持边缘 `mysql` ，采用主从复制的方式部署，边缘站点至少需要 2 个节点。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/a2442837-3b56-455a-ae7f-4b3a38f302b9.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/ea536a01-4582-4de0-86b3-90bc89a0d586.png)
 
 ## 查看边缘应用
 
 通过应用详情，可以查看边缘应用当前的发布配置信息以及链接信息。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/2042cfd3-b7ab-4442-bd40-17e93dd648e9.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/88571f92-0e7b-4ab1-ad3b-aea6cdbd9b02.png)
 
 ## 编辑边缘应用
 
@@ -45,6 +45,8 @@ Addon 类型的边缘应用目前仅支持边缘 `mysql` ，采用主从复制�
 
 新增站点会部署对应的实例，若删除站点，则对应实例会被销毁。其他站点不受影响。
 
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/e437d320-8b9b-424f-b73f-2491c38e0266.png)
+
 ::: tip 提示
 
 * 删除站点时，如果应用在该站点存在依赖关系，则需要先解除依赖关系。
@@ -53,19 +55,19 @@ Addon 类型的边缘应用目前仅支持边缘 `mysql` ，采用主从复制�
 
 :::
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/9ca3fb02-0901-40ce-bb9d-d65a2d1c16f1.png)
-
 ### Addon 类型
 
 Addon 类型的边缘应用仅支持对站点进行编辑。
 
 新增站点会部署对应的实例，若删除站点，则对应实例会被销毁。其他站点不受影响。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/fb30bbf9-62c6-467d-8bf1-e2abab112a36.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/86c233e8-af7d-4906-9799-3eed193f63fe.png)
 
 ## 边缘应用站点级的重启与下线
 
 点击边缘应用名称可以查看该应用的站点列表，对站点进行重启以及下线操作（站点部署状态需为 **成功**）。
+
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/84e27876-910c-4336-84ee-8d90b92d7fff.png)
 
 ::: tip 提示
 
@@ -75,13 +77,11 @@ Addon 类型的边缘应用仅支持对站点进行编辑。
 
 :::
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/f1d81cdd-4c2a-4acb-826c-59536e237221.png)
-
 ## 边缘应用监控
 
 点击站点名称可以查看该站点下的监控信息，包括日志、容器监控以及控制台操作。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/6bf08f93-6c06-45fc-8103-6abffed8fd6b.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/145b2d34-ed23-4fbf-aa30-17b1a7b70c37.png)
 
 ## 删除边缘应用
 
