@@ -8,7 +8,7 @@
 
 边缘计算平台操作需由边缘运维工程师完成，需由组织管理员指定成员并分配 **边缘运维工程师** 角色。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/1565248b-01df-48a2-aea7-ab30ade8a3b2.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/4551c6d4-7702-4576-a836-e56dd91ae999.png)
 
 ### 边缘节点配置要求
 
@@ -31,17 +31,17 @@
 
 进入 **边缘计算平台 > 资源管理**，点击 **新建站点**，通过 **关联集群** 选择已安装边缘计算云端组件的集群。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/72c63892-4157-4cca-8b81-11a9d006e6f6.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/562c4a86-d1ad-46ab-abf3-d7ace66b6492.png)
 
 ## 添加节点到边缘站点
 
 1. 点击 **添加节点**，根据界面提示执行命令进行初始化。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/0b8f8e3a-5cd3-4673-899c-0a00e9af2c2e.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/6b9b610d-2810-4ffc-b519-a4ffd808e54f.png)
 
 2. 初始化完成后，可以在 **站点管理** 页面查看注册的节点。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/e40c1592-c97c-46aa-849f-8d49d2559fff.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/e7645b45-dbce-47cf-844b-fce79cf03233.png)
 
 ::: tip 提示
 初始化成功会出现 Success 提示。若无提示，请查看安装日志 `/tmp/edge-install.log` 排查错误。
@@ -53,7 +53,7 @@
 
 如需下线节点，点击 **下线** 进行操作。
 
-![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/04/06/a16b350f-417a-4c12-bc86-7b07c850da0b.png)
+![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/18/0c233c6f-7e77-4e20-bc74-f19289a6880c.png)
 
 ::: tip 提示
 
