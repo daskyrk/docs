@@ -106,6 +106,8 @@ module.exports = {
                     collapsable: true,
                     children: [
                         'dop/best-practices/api-management',
+                        'dop/best-practices/autotest',
+                        'dop/best-practices/manual-test'
                     ]
                 },
                 {
