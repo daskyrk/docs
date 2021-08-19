@@ -288,7 +288,7 @@ Windows 系统：双击文件 startup.cmd
 true
 ```
 
-## 部署应用部署至 Erda
+## 部署应用至 Erda
 
 部署应用至 Erda 时，需注意 Erda 将注入以下 `application.yml` 中的变量：
 
