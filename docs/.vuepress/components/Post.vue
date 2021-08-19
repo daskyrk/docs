@@ -2,9 +2,9 @@
   <div>
     <article class="blog-content" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="blog-content-title">
-        <h1 class="post-title" itemprop="name headline">
+        <!-- <h1 class="post-title" itemprop="name headline">
           {{ $frontmatter.title }}
-        </h1>
+        </h1> -->
         <PostMeta :tags="$frontmatter.tags" :author="$frontmatter.author" :date="$frontmatter.date" :location="$frontmatter.location" :category="$frontmatter.category" />
       </header>
       <Content itemprop="articleBody" />

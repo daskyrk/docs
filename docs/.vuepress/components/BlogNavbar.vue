@@ -1,9 +1,9 @@
 <template>
-  <header class="navbar">
+  <header class="navbar blog-navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
     <RouterLink
-      :to="$localePath"
+      to="/blog/post"
       class="home-link"
     >
       <img
@@ -12,12 +12,6 @@
         :src="$withBase($site.themeConfig.logo)"
         :alt="$siteTitle"
       >
-      <span
-        v-if="$siteTitle"
-        ref="siteName"
-        class="site-name"
-        :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
     </RouterLink>
 
     <div
@@ -48,7 +42,7 @@ export default {
 
   data () {
     return {
-      linksWrapMaxWidth: null
+      linksWrapMaxWidth: null,
     }
   },
 
@@ -81,6 +75,9 @@ $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
 
 .navbar
+  display: flex;
+  align-items: center;
+  background: transparent;
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
   a, span, img
@@ -121,4 +118,33 @@ $navbar-horizontal-padding = 1.5rem
       overflow hidden
       white-space nowrap
       text-overflow ellipsis
+
+
+.theme-container .blog-navbar {
+  position relative
+  box-shadow none
+  border-bottom none
+  background-color rgba(0,0,0,0.3)
+
+  .links {
+    background-color transparent
+
+    a {
+      color: #ccc;
+    }
+
+    .nav-item > .nav-link:hover::after, .nav-item > .nav-link.router-link-active::after {
+      background-color #ccc
+    }
+  }
+
+  .search-box input {
+    border: none;
+  }
+
+  .home-link {
+    z-index 9
+  }
+}
+
 </style>
