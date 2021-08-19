@@ -13,6 +13,7 @@
   "scripts": {
     "build": "vuepress build docs",
     "dev": "vuepress dev docs",
+    "serve": "serve dest",
     "lint:style": "stylelint src/*.{vue,css,styl} --custom-syntax stylelint-plugin-stylus/custom-syntax",
     "lint-md": "yarn lint-md:style && yarn lint-md:wording",
     "lint-md:style": "remark --quiet --frail .",
@@ -34,6 +35,7 @@
     "remark-preset-lint-consistent": "^4.0.0",
     "remark-preset-lint-recommended": "^5.0.0",
     "remove-markdown": "^0.3.0",
+    "serve": "^12.0.0",
     "stylelint-plugin-stylus": "^0.11.0",
     "textlint": "^12.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
