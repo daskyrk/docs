@@ -11,20 +11,22 @@
 
 pipeline.yml 是一个 [YAML](https://yaml.org/spec/1.2/spec.html) 格式的文件
 
-###在 yaml 语法简介
+### yaml 语法简介
 
- yaml 语法中对象的一组键值对，使用冒号结构表示。
- ::: details YAML 示例
+它的基本语法规则如下。
+
+- 使用缩进表示层级关系
+- 缩进时不允许使用Tab键，只允许使用空格。
+- 缩进的空格数目不重要，只要相同层级的元素左侧对齐即可
+
+ yaml 语法中的对象是一组键值对，使用冒号结构表示。
  
  ``` yaml
  version: "1.1"
  ```
  
- :::
- 
 一组连词线开头的行，构成一个数组。
 例如
-::: details YAML 示例
 
 ``` yaml
 stages
@@ -33,10 +35,8 @@ stages
  - stage
 ```
 
-:::
 
 数据结构的子成员是一个数组，则可以在该项下面缩进一个空格。
-::: details YAML 示例
 
 ``` yaml
 stages
@@ -50,12 +50,9 @@ stages
     - action
     - action
 ```
-:::
 
 一个 stages 下包含着多个 stage ,所以在流水线文本编辑时，要把 stage 当成数组而不是对象。
 同理 stage 下包含多个 action。
-
-yaml 是使用缩进表示层级关系
 
 ### 配置 version
 version 表示 pipeline.yml 的版本号。目前最新版本为 1.1。
@@ -63,14 +60,12 @@ version 表示 pipeline.yml 的版本号。目前最新版本为 1.1。
 配置为：`version: 1.1` 即可
 
 初始化 pipeline.yml
-::: details YAML 示例
 
 ``` yaml
 version: "1.1"
 stages:[]
 ```
 
-:::
 ### 配置 stages
 stages 由 stage 列表组成
 
@@ -79,7 +74,6 @@ stage 表示一个 **阶段** , stage 中至少存在一个 action
 Action 是流水线的最小执行单元，表示一个 **任务** 或 **动作**。
 
 stages 与 stage 和 action 如下所示
-::: details YAML 示例
 
 ``` yaml
 # stage 和 stage 之间是串行的，即前面一个 stage 执行完毕才会开始执行下一个 stage.
@@ -107,8 +101,6 @@ stages:
         ...
 ```
 
-:::
-
 ### 配置 action
 
 #### alias
@@ -134,8 +126,6 @@ Action 运行资源。
 - cpu
 - mem (单位为 MB)
 
-::: details YAML 示例
-
 ``` yaml
 - git-checkout:
     params:
@@ -145,9 +135,7 @@ Action 运行资源。
       mem: 2048
 ```
 
-:::
-
-::: details YAML 示例
+#### 一个配置 action 的例子
 
 ``` yaml
 version: "1.1"
@@ -166,4 +154,92 @@ stages:
             mem: 1024
 ```
 
-:::
+#### 上下文引用
+
+在一条流水线中，Action 独立运行的场景很少，大多数 Action 需要拿上一个 Action 的输出作为输入。
+
+例如：
+
+用于编译和制作镜像的 buildpack Action 需要代码作为输入，而代码一般由 git-checkout Action 拉取。
+
+因此在 buildpack Action 中可以使用类似 ${git-chekcout} 的语法来引用指定 git-checkout Action 命名空间里的代码仓库。
+
+``` yaml
+...
+stages:
+- stage:
+  - git-checkout: # 代码仓库1
+      alias: repo1
+      params:
+        uri: xxx
+  - git-checkout: # 代码仓库2
+      alias: repo2
+      params:
+        uri: yyy
+
+- stage:
+  - buildpack:
+      params:
+          code_dirs:
+          - ${repo1} # 引用代码仓库1的代码
+          - ${repo2} # 引用代码仓库2的代码
+```
+
+### 配置 on push
+
+push 代码时会触发所有包含 on push 的 pipeline 
+
+``` yaml
+version: "1.1"
+"on":
+  push:
+    branches:
+      - master
+      - develop
+      - feature/*
+stages:
+  - stage:
+      - custom-script:
+          alias: custom-script
+          version: "1.0"
+          commands:
+            - echo "hello world"
+```
+
+### 配置 on merge
+
+从 develop 分支 merge 到 master 分支 
+
+a 里面包含 on merge 的 pipeline 都会触发,b 里面 包含 on push 的 pipeline 都会触发
+
+``` yaml
+version: "1.1"
+"on":
+  merge:
+    branches:
+      - master
+      - develop
+      - feature/*
+stages:
+  - stage:
+      - custom-script:
+          alias: custom-script
+          version: "1.0"
+          commands:
+            - echo "hello world"
+```
+
+#### check run 
+
+提交合并请求触发 check run 
+
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/02067b26-56a8-4b1f-82ca-8e9ec4608154.png)
+
+check run 会去查看流水线结果,如果有 流水线失败则 check run 失败
+
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/b30c07c0-6ffa-42e4-b294-e1c1969fca78.png)
+
+流水线全部成功则 check run 成功
+
+![](//terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/17/7e12d79c-2eb8-4320-8a7f-46ed1d988baf.png)
+
