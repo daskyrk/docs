@@ -154,9 +154,3 @@ git push erda feature/demo
 ![](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/06/10/4352a321-7351-4d8b-a9db-2db087deaa4a.png)
 
 仔细观察可以注意到刚才部署的 Runtime 属于开发环境中，这是由平台默认的 [分支规范](../../guides/application/deploy/branch-rule.md) 所决定的，当然可以通过应用设置来自定义分支规范。
-
-#### 下一步推荐学习
-
-* [应用管理](/manual/deploy/management.md)
-* [流水线](/manual/deploy/pipeline.md)
-* [dice.yml](./dice-yml.md)
