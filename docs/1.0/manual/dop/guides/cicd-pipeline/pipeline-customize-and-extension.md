@@ -15,26 +15,7 @@ Action 的交付产物是一个 Docker 镜像。开发者只需要在镜像中�
 
 流水线执行时，会使用该镜像创建一个 Docker 容器，并且调用 /opt/action/run 文件，运行开发者定义好的逻辑。
 
-## ActionExecutor 插件扩展
-流水线提供灵活、一致的流程编排能力, 前提是单个任务的执行已经被很好的抽象了。
+## Custom-Script Action
 
-在 Pipeline 中，我们对一个任务执行的抽象是 ActionExecutor：
-```go
-type ActionExecutor interface {
-    Kind() Kind
-    Name() Name
-
-    Create(ctx context.Context, action *spec.PipelineTask) (interface{}, error)
-    Start(ctx context.Context, action *spec.PipelineTask) (interface{}, error)
-    Update(ctx context.Context, action *spec.PipelineTask) (interface{}, error)
-
-    Exist(ctx context.Context, action *spec.PipelineTask) (created bool, started bool, err error)
-    Status(ctx context.Context, action *spec.PipelineTask) (apistructs.PipelineStatusDesc, error)
-    // Optional
-    Inspect(ctx context.Context, action *spec.PipelineTask) (apistructs.TaskInspect, error)
-
-    Cancel(ctx context.Context, action *spec.PipelineTask) (interface{}, error)
-    Remove(ctx context.Context, action *spec.PipelineTask) (interface{}, error)
-}
-```
-因此，一个执行器只要实现 单个任务 的 创建、启动、更新、状态查询、删除 等基础方法，就可以注册成为一个 ActionExecutor。
+Custom-Script是一个特殊的action，它支持运行自定义命令，平台默认提供的镜像包括 java, nodejs, golang 等编译环境，
+它接受执行的脚本命令列表，按顺序执行，可以方便的进行扩展开发。
