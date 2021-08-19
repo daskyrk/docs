@@ -33,7 +33,7 @@ server: https://openapi.example.io
 
 ::: tip 提示
 
-CLI 的多数子命令需在登陆后执行，但有少数命令无需登录也能执行，例如 dice.yml 相关命令。
+CLI 的多数子命令需在登陆后执行，但有少数命令无需登录也能执行，例如 `erda.yml` 相关命令。
 
 :::
 
