@@ -46,7 +46,7 @@ module.exports = {
                     children: [
                         'cmp/guide/cluster-overview',
                         {
-                            title: '集群管理',
+                            title: '资源管理',
                             collapsable: true,
                             children: [
                                 'cmp/guide/cluster/management',
@@ -78,7 +78,6 @@ module.exports = {
                     title: '场景示例',
                     collapsable: true,
                     children: [
-                        ['dop/examples/erda-project', 'Erda 工程实践'],
                         ['dop/examples/project-management', '业务项目管理'],
                         'dop/examples/deploy/deploy-from-git',
                         'dop/examples/deploy/deploy-from-image',
@@ -93,7 +92,6 @@ module.exports = {
                     title: '设计理念',
                     collapsable: true,
                     children: [
-                        ['dop/concepts/overview', '概述 | Overview'],
                         ['dop/concepts/agile-info', '高效协同'],
                         ['dop/concepts/iac', '基础设施即代码 IaC'],
                         ['dop/concepts/pipeline', '流水线/工作流 pipeline.yml'],
@@ -115,7 +113,6 @@ module.exports = {
                     title: '使用指南',
                     collapsable: true,
                     children: [
-                        ['dop/guides/overview', '概述 | Overview'],
                         {
                             title: '协同',
                             collapsable: true,
@@ -409,10 +406,24 @@ module.exports = {
             title: '快数据平台',
             collapsable: true,
             children: [
-                'fdp/example',
+                {
+                    title: '场景示例',
+                    collapsable: true,
+                    children: [
+                        ['fdp/example/basic', '基础操作'],
+                        ['fdp/example/integration', '数据集成'],
+                    ]
+                },
                 'fdp/concept',
                 'fdp/best-practice',
-                'fdp/guide',
+                {
+                    title: '使用指南',
+                    collapsable: true,
+                    children: [
+                        ['fdp/guide/work-space', '工作空间'],
+                        ['fdp/guide/data-map', '数据地图'],
+                    ]
+                },
             ]
         },
         {
