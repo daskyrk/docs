@@ -131,7 +131,7 @@ $navbar-horizontal-padding = 1.5rem;
   }
 }
 
-.theme-container .blog-navbar {
+.blog-container .blog-navbar {
   position: relative;
   box-shadow: none;
   border-bottom: none;

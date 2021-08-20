@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
+  <div class="theme-container blog-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
     <div class='blog-header-image' :style="{backgroundImage: `url(${this.headerImage})`}" alt="header-image">
     </div>
     <BlogNavbar v-if="shouldShowNavbar" />
@@ -166,7 +166,7 @@ export default {
   }
 }
 
-.global-ui {
+.blog-container + .global-ui {
   .go-to-top {
     height: 24px;
     width: 24px;
