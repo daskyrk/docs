@@ -3,7 +3,7 @@ services:
   doc:
     resources:
       cpu: 0.1
-      mem: 512
+      mem: 256
     deployments:
       replicas: 1
     expose:

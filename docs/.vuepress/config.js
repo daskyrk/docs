@@ -6,6 +6,7 @@ module.exports = ctx => ({
   lang: 'zh-CN',
   title: "Erda Docs",
   description: "学习在 Erda 平台上构建、部署、管理应用",
+  shouldPrefetch: () => false, // prevent too many request in first page
   // locales: {
   //   '/en': {
   //     lang: 'en-US',
@@ -25,7 +26,7 @@ module.exports = ctx => ({
     ['meta', { property: 'og:image', content: '/favicon.ico' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    ['script', { src: "https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_2649_4.114dd86864ba51fc94d6327e5989fd85.js" }],
+    ['script', { src: "https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_2649_5.ddffa67f22dad0e11114c854c2fa61a2.js" }],
     // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#5d48df' }],
     // ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     // ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
@@ -54,10 +55,10 @@ module.exports = ctx => ({
     sidebar: require('./sidebar/zh'),
     categoryMap: {
       post: '全部',
-      msp: '微服务治理平台',
-      back: '后端',
+      msp: '微服务治理',
+      opensource: ' 开源',
       pipeline: '流水线',
-      fdp: '快数据',
+      frontend: '前端',
     },
     // algolia: {
     //   apiKey: '75ceab77c4536a615806be21b7e3b39c',

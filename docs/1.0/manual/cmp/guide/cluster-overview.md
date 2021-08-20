@@ -22,7 +22,7 @@
 
 我们提供了众多的过滤条件，以方便您快速找到目标机器，点击**过滤**下拉框并选择过滤条件或者直接输入文本信息，即可实现搜索。
 
-![image-20210805112003777](/Users/wenming/Library/Application Support/typora-user-images/image-20210805112003777.png)
+![image-20210805112003777](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/2df84147-af94-40ac-8b4e-88170393b5e4.png)
 
 <center>过滤IP为10.167.0.10的机器</center>
 
@@ -30,7 +30,7 @@
 
 当您想一览所有物理机的CPU使用率状况，可以点击**着色**下拉框，选择*CPU使用*
 
-![image-20210805112459992](/Users/wenming/Library/Application Support/typora-user-images/image-20210805112459992.png)
+![image-20210805112459992](http://terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2021/08/19/e2270af9-c8a2-42c1-a850-9a8cd730d469.png)
 
 <center>通过CPU使用率来着色</center>
 

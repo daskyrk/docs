@@ -16,7 +16,7 @@ Erda 为项目内置了 4 套环境，并对应设计了 4 个环境标签：wor
 
 ## 设置宿主机可运行的服务
 
-Erda 设计了两类服务标签：service-stateless**、**service-stateful，分别用于调度无状态服务和有状态服务。
+Erda 设计了两类服务标签：service-stateless、service-stateful，分别用于调度无状态服务和有状态服务。
 
 * 无状态服务对应部署中心的 Runtime 服务，因此对运行项目应用的宿主机，均需设置 service-stateless 标签。
 

@@ -2,9 +2,9 @@
   <div>
     <article class="blog-content" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="blog-content-title">
-        <h1 class="post-title" itemprop="name headline">
+        <!-- <h1 class="post-title" itemprop="name headline">
           {{ $frontmatter.title }}
-        </h1>
+        </h1> -->
         <PostMeta :tags="$frontmatter.tags" :author="$frontmatter.author" :date="$frontmatter.date" :location="$frontmatter.location" :category="$frontmatter.category" />
       </header>
       <Content itemprop="articleBody" />
@@ -39,8 +39,16 @@ export default {
   margin: 0 auto;
   font-size: 16px;
   letter-spacing: 0px;
-  font-family: PT Serif, Serif;
   color: $textColor;
+
+  img {
+    max-width: 100%;
+  }
+
+  p {
+    line-height: 1.75;
+    letter-spacing: 0.8px;
+  }
 }
 
 .blog-content-title {

@@ -11,7 +11,7 @@
   | CPU（核）     | 8                                         | 32                 | 48                   | 64                    | 80                    | 96                |
   | Memory（GB）  | 32                                        | 96                 | 128                  | 192                   | 288                   | 336               |
   | Storage（GB） | 400                                       | 4000               | 6000                 | 12000                 | 16000                 | 22500             |
-  | 推荐配置      | 规模：2 节点 <br>规格： 4 核/16 GB/200 GB | /                  | /                    | /                     | /                     | /                 |
+  | 推荐配置      | 规模：2 节点 <br>规格：4 核/16 GB/200 GB | /                  | /                    | /                     | /                     | /                 |
 
 
 - Kubernetes 1.16～1.20（安装 [Ingress Controller](https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers/) 组件）
@@ -101,8 +101,8 @@ Demo 为极简试用模式，Erda 组件将全部以单副本方案部署。
 cd erda-release/erda-helm
 
 # 指定 Erda 集群名称, erda.clusterName=erda-test
-# 指定 Erda 平台的泛域名, erda.domain=erda.io
-helm install erda erda --set erda.clusterName="erda-demo",erda.domain="erda.io"
+# 指定 Erda 平台的泛域名, global.domain=erda.io
+helm install erda erda --set erda.clusterName="erda-demo",global.domain="erda.io"
 ```
 
 ::: tip 提示
@@ -129,9 +129,10 @@ vim custom_values.yaml
 # 指定 Prod 模式安装
 global:
   size: prod
+  domain: "erda.io"
 # 配置 Erda 集群名及泛域名
 erda:
-  clusterName: "erda-prod"domain: "erda.io"
+  clusterName: "erda-prod"
 # 指定 Registry 安装的节点信息
 registry:
   custom:
@@ -167,11 +168,11 @@ helm install erda erda -f custom_values.yaml
   ```
 
 - 验证 Erda 依赖
-  - **erda-cassandra--**：Erda 后端的 Cassandra 集群实例，由 Cassandra Operator 通过 CassandraCluster 对象创建，以 Demo 模式部署时名称为 erda-cassandra-dc1-rack1。
+  - **erda-cassandra**：Erda 后端的 Cassandra 集群实例，由 Cassandra Operator 通过 CassandraCluster 对象创建，以 Demo 模式部署时名称为 erda-cassandra-dc1-rack1。
   - **erda-elasticsearch**：Erda 后端 Elasticsearch 集群实例。
-  - **erda-etcd-***：Erda 后端的 etcd 集群节点实例，以 Demo 模式部署时名称为 erda-etcd。
-  - **erda-zookeeper-***：Erda 后端的 Zookeeper 集群节点实例，以 Demo 模式部署时名称为 erda-zookeeper。
-  - **erda-kafka-***：Erda 后端的 Kafka 集群节点实例，以 Demo 模式部署时名称为 erda-kafka。
+  - **erda-etcd***：Erda 后端的 etcd 集群节点实例，以 Demo 模式部署时名称为 erda-etcd。
+  - **erda-zookeeper***：Erda 后端的 Zookeeper 集群节点实例，以 Demo 模式部署时名称为 erda-zookeeper。
+  - **erda-kafka***：Erda 后端的 Kafka 集群节点实例，以 Demo 模式部署时名称为 erda-kafka。
   - **erda-mysql**：Erda 后端的 MySQL 实例，暂不支持高可用部署方案。
   - **erda-registry**：Erda 后端的 Registry 实例，暂不支持高可用部署方案。
   - **rfr-erda-redis**：Erda 后端 RedisFailover 部署的 Redis 主备集群实例。
@@ -205,7 +206,7 @@ helm install erda erda -f custom_values.yaml
 
 请执行如下命令以推送 Erda 扩展组件（扩展组件将作为一种插件用于流水线中）。
 
-```
+```shell
 cd erda-release/erda-helm
 
 export ERDA_ADMIN_USERNAME=admin
@@ -222,7 +223,7 @@ bash scripts/push-ext.sh
 
 例如，Kubernetes 集群的 Ingress Controller 入口 IP 为 10.0.0.1，泛域名（ERDA_GENERIC_DOMAIN 变量中设置）为 *erda.io*，则需写入 `/etc/hosts` 文件的信息如下：
 
-```
+```shell
 10.0.0.1 collector.erda.io
 10.0.0.1 openapi.erda.io
 10.0.0.1 uc.erda.io
